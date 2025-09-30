@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="main_background.png">images/u125.png</file>
+        <file alias="main_store.png">images/u132.png</file>
+        <file alias="main_fetch.png">images/u133.png</file>
+        <file alias="eye.png">images/u151.png</file>
+        <file alias="med_pic.png">images/u698.png</file>
+    </qresource>
+</RCC>

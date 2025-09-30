@@ -1,0 +1,314 @@
+/********************************************************************************
+** Form generated from reading UI file 'fetch_card.ui'
+**
+** Created by: Qt User Interface Compiler version 5.15.2
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
+
+#ifndef UI_FETCH_CARD_H
+#define UI_FETCH_CARD_H
+
+#include <QtCore/QVariant>
+#include <QtGui/QIcon>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
+#include "switchcontrol.h"
+
+QT_BEGIN_NAMESPACE
+
+class Ui_fetch_card
+{
+public:
+    QVBoxLayout *verticalLayout;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
+    QLabel *label_6;
+    QLabel *label_2;
+    SwitchControl *med_switch;
+    QWidget *widget_2;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label;
+    QLabel *label_3;
+    QToolButton *med_info;
+    QWidget *widget_4;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_4;
+    QLabel *label_5;
+    QWidget *widget_3;
+    QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer_2;
+    QPushButton *pushButton_2;
+    QSpacerItem *horizontalSpacer_3;
+    QPushButton *pushButton_3;
+    QSpacerItem *horizontalSpacer_4;
+
+    void setupUi(QWidget *fetch_card)
+    {
+        if (fetch_card->objectName().isEmpty())
+            fetch_card->setObjectName(QString::fromUtf8("fetch_card"));
+        fetch_card->resize(290, 210);
+        fetch_card->setAutoFillBackground(true);
+        fetch_card->setStyleSheet(QString::fromUtf8(""));
+        verticalLayout = new QVBoxLayout(fetch_card);
+        verticalLayout->setSpacing(0);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(8, 8, 8, 8);
+        widget = new QWidget(fetch_card);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setSpacing(0);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 5, 0, 5);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        label_6 = new QLabel(widget);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        QFont font;
+        font.setPointSize(20);
+        font.setBold(true);
+        font.setItalic(false);
+        label_6->setFont(font);
+        label_6->setAutoFillBackground(false);
+        label_6->setStyleSheet(QString::fromUtf8("min-width:     30px;     \n"
+"min-height:    30px;     \n"
+"max-width:     30px;    \n"
+"max-height:    30px;    \n"
+"border-radius: 15px;      \n"
+"border:1px solid black;  \n"
+"background: blue;\n"
+"color: white"));
+        label_6->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout->addWidget(label_6);
+
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font1.setPointSize(11);
+        label_2->setFont(font1);
+        label_2->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #333333; /* \346\267\261\347\201\260\350\211\262\346\226\207\345\255\227\357\274\214\347\241\256\344\277\235\345\217\257\350\257\273\346\200\247 */\n"
+"    background: transparent; /* \351\200\217\346\230\216\350\203\214\346\231\257\357\274\214\344\270\215\347\273\247\346\211\277\347\210\266\346\216\247\344\273\266\350\203\214\346\231\257\350\211\262 */\n"
+"}"));
+        label_2->setMidLineWidth(0);
+        label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        horizontalLayout->addWidget(label_2);
+
+        med_switch = new SwitchControl(widget);
+        med_switch->setObjectName(QString::fromUtf8("med_switch"));
+
+        horizontalLayout->addWidget(med_switch);
+
+        horizontalLayout->setStretch(0, 1);
+        horizontalLayout->setStretch(1, 2);
+        horizontalLayout->setStretch(2, 6);
+        horizontalLayout->setStretch(3, 2);
+
+        verticalLayout->addWidget(widget);
+
+        widget_2 = new QWidget(fetch_card);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        horizontalLayout_2 = new QHBoxLayout(widget_2);
+        horizontalLayout_2->setSpacing(0);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(widget_2);
+        label->setObjectName(QString::fromUtf8("label"));
+        QFont font2;
+        font2.setPointSize(12);
+        font2.setBold(false);
+        label->setFont(font2);
+        label->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #333333; /* \346\267\261\347\201\260\350\211\262\346\226\207\345\255\227\357\274\214\347\241\256\344\277\235\345\217\257\350\257\273\346\200\247 */\n"
+"    background: transparent; /* \351\200\217\346\230\216\350\203\214\346\231\257\357\274\214\344\270\215\347\273\247\346\211\277\347\210\266\346\216\247\344\273\266\350\203\214\346\231\257\350\211\262 */\n"
+"}"));
+        label->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(label);
+
+        label_3 = new QLabel(widget_2);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        QFont font3;
+        font3.setPointSize(12);
+        label_3->setFont(font3);
+        label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #333333; /* \346\267\261\347\201\260\350\211\262\346\226\207\345\255\227\357\274\214\347\241\256\344\277\235\345\217\257\350\257\273\346\200\247 */\n"
+"    background: transparent; /* \351\200\217\346\230\216\350\203\214\346\231\257\357\274\214\344\270\215\347\273\247\346\211\277\347\210\266\346\216\247\344\273\266\350\203\214\346\231\257\350\211\262 */\n"
+"}"));
+
+        horizontalLayout_2->addWidget(label_3);
+
+        med_info = new QToolButton(widget_2);
+        med_info->setObjectName(QString::fromUtf8("med_info"));
+        med_info->setStyleSheet(QString::fromUtf8("QToolButton\n"
+"{\n"
+"background: transparent;\n"
+"border: none;\n"
+"}"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/eye.png"), QSize(), QIcon::Normal, QIcon::Off);
+        med_info->setIcon(icon);
+        med_info->setIconSize(QSize(50, 50));
+
+        horizontalLayout_2->addWidget(med_info);
+
+        horizontalLayout_2->setStretch(0, 1);
+        horizontalLayout_2->setStretch(1, 4);
+        horizontalLayout_2->setStretch(2, 1);
+
+        verticalLayout->addWidget(widget_2);
+
+        widget_4 = new QWidget(fetch_card);
+        widget_4->setObjectName(QString::fromUtf8("widget_4"));
+        horizontalLayout_3 = new QHBoxLayout(widget_4);
+        horizontalLayout_3->setSpacing(0);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        label_4 = new QLabel(widget_4);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setFont(font3);
+        label_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #333333; /* \346\267\261\347\201\260\350\211\262\346\226\207\345\255\227\357\274\214\347\241\256\344\277\235\345\217\257\350\257\273\346\200\247 */\n"
+"    background: transparent; /* \351\200\217\346\230\216\350\203\214\346\231\257\357\274\214\344\270\215\347\273\247\346\211\277\347\210\266\346\216\247\344\273\266\350\203\214\346\231\257\350\211\262 */\n"
+"}"));
+        label_4->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_3->addWidget(label_4);
+
+        label_5 = new QLabel(widget_4);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setFont(font3);
+        label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #333333; /* \346\267\261\347\201\260\350\211\262\346\226\207\345\255\227\357\274\214\347\241\256\344\277\235\345\217\257\350\257\273\346\200\247 */\n"
+"    background: transparent; /* \351\200\217\346\230\216\350\203\214\346\231\257\357\274\214\344\270\215\347\273\247\346\211\277\347\210\266\346\216\247\344\273\266\350\203\214\346\231\257\350\211\262 */\n"
+"}"));
+        label_5->setMargin(0);
+
+        horizontalLayout_3->addWidget(label_5);
+
+        horizontalLayout_3->setStretch(0, 1);
+        horizontalLayout_3->setStretch(1, 5);
+
+        verticalLayout->addWidget(widget_4);
+
+        widget_3 = new QWidget(fetch_card);
+        widget_3->setObjectName(QString::fromUtf8("widget_3"));
+        widget_3->setStyleSheet(QString::fromUtf8(""));
+        horizontalLayout_4 = new QHBoxLayout(widget_3);
+        horizontalLayout_4->setSpacing(0);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalLayout_4->setContentsMargins(0, 0, 0, 5);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_2);
+
+        pushButton_2 = new QPushButton(widget_3);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy);
+        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #0078d7;\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    font-size: 16px;\n"
+"    border: none;\n"
+"    padding: 4px 8px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #106ebe;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #005a9e;\n"
+"}"));
+
+        horizontalLayout_4->addWidget(pushButton_2);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_3);
+
+        pushButton_3 = new QPushButton(widget_3);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        sizePolicy.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy);
+        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: #0078d7;\n"
+"    border: 1px solid #0078d7;\n"
+"    border-radius: 8px;\n"
+"    padding: 3px 8px;\n"
+"    font-size: 16px;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #f0f8ff;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #e1f0ff;\n"
+"}"));
+
+        horizontalLayout_4->addWidget(pushButton_3);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_4);
+
+        horizontalLayout_4->setStretch(0, 1);
+        horizontalLayout_4->setStretch(1, 3);
+        horizontalLayout_4->setStretch(2, 1);
+        horizontalLayout_4->setStretch(3, 3);
+        horizontalLayout_4->setStretch(4, 1);
+
+        verticalLayout->addWidget(widget_3);
+
+        verticalLayout->setStretch(0, 1);
+        verticalLayout->setStretch(1, 1);
+        verticalLayout->setStretch(2, 1);
+        verticalLayout->setStretch(3, 1);
+
+        retranslateUi(fetch_card);
+
+        QMetaObject::connectSlotsByName(fetch_card);
+    } // setupUi
+
+    void retranslateUi(QWidget *fetch_card)
+    {
+        fetch_card->setWindowTitle(QCoreApplication::translate("fetch_card", "Form", nullptr));
+        label_6->setText(QCoreApplication::translate("fetch_card", "1", nullptr));
+        label_2->setText(QCoreApplication::translate("fetch_card", "\346\230\257\345\220\246\346\217\220\351\206\222    ", nullptr));
+        label->setText(QCoreApplication::translate("fetch_card", "\350\215\257\345\220\215 ", nullptr));
+        label_3->setText(QCoreApplication::translate("fetch_card", "\346\212\227\347\227\205\346\257\222\346\204\237\345\206\222\351\242\227\347\262\222", nullptr));
+        med_info->setText(QString());
+        label_4->setText(QCoreApplication::translate("fetch_card", "\346\225\260\351\207\217 ", nullptr));
+        label_5->setText(QCoreApplication::translate("fetch_card", "20", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("fetch_card", "\345\217\226\350\215\257", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("fetch_card", "\346\234\215\350\215\257\350\256\241\345\210\222", nullptr));
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class fetch_card: public Ui_fetch_card {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // UI_FETCH_CARD_H
