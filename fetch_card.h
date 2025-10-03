@@ -14,7 +14,7 @@ class fetch_card : public QWidget
     Q_OBJECT
 
 public:
-    explicit fetch_card(QWidget *parent = nullptr, signal_route *router = nullptr);
+    explicit fetch_card(QWidget *parent = nullptr);
     ~fetch_card();
 
 private slots:

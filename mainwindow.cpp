@@ -7,20 +7,19 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    m_router = new signal_route(this);
 
-    connect(m_router, &signal_route::switchToPage,
+    connect(signal_route::instance(), &signal_route::switchToPage,
             this, &MainWindow::handleSwitchToPage);
 
 
-    mainpage = new main_page(this, m_router);
+    mainpage = new main_page(this);
     ui->stackedWidget->addWidget(mainpage);
     ui->stackedWidget->setCurrentWidget(mainpage);
 
-    medlist = new med_list(this, m_router);
+    medlist = new med_list(this);
     ui->stackedWidget->addWidget(medlist);
 
-    medinfo = new medcine_information(this, m_router);
+    medinfo = new medcine_information(this);
     ui->stackedWidget->addWidget(medinfo);
 }
 

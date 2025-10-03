@@ -5,6 +5,7 @@
 #include "main_page.h"
 #include "med_list.h"
 #include "medcine_information.h"
+#include "signal_route.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

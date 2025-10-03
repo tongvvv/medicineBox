@@ -14,7 +14,7 @@ class med_list : public QWidget
     Q_OBJECT
 
 public:
-    explicit med_list(QWidget *parent = nullptr, signal_route *router = nullptr);
+    explicit med_list(QWidget *parent = nullptr);
     ~med_list();
 
 private slots:

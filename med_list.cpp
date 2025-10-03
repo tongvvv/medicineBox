@@ -1,17 +1,16 @@
 #include "med_list.h"
 #include "ui_med_list.h"
 #include <QGraphicsDropShadowEffect>
-med_list::med_list(QWidget *parent, signal_route *router)
+med_list::med_list(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::med_list)
-    , m_router(router)
 {
     ui->setupUi(this);
 
     int row=0,col=0;
     for(int ii=0; ii<10; ii++)
     {
-        fetch_card *card = new fetch_card(this, m_router);
+        fetch_card *card = new fetch_card(this);
 
         QGraphicsDropShadowEffect* shadow = new QGraphicsDropShadowEffect;
         shadow->setBlurRadius(10);
@@ -37,6 +36,6 @@ med_list::~med_list()
 
 void med_list::on_back_mainpage_clicked()
 {
-    emit m_router->switchToPage("main_page");
+    emit signal_route::instance()->switchToPage("main_page");
 }
 

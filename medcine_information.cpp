@@ -1,10 +1,9 @@
 #include "medcine_information.h"
 #include "ui_medcine_information.h"
 
-medcine_information::medcine_information(QWidget *parent, signal_route *router)
+medcine_information::medcine_information(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::medcine_information)
-    , m_router(router)
 {
     ui->setupUi(this);
 }
@@ -16,7 +15,6 @@ medcine_information::~medcine_information()
 
 void medcine_information::on_pushButton_clicked()
 {
-    if(m_router)
-        emit m_router->switchToPage("med_list");
+    emit signal_route::instance()->switchToPage("med_list");
 }
 

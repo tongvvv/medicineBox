@@ -13,7 +13,7 @@ class medcine_information : public QWidget
     Q_OBJECT
 
 public:
-    explicit medcine_information(QWidget *parent = nullptr, signal_route *router = nullptr);
+    explicit medcine_information(QWidget *parent = nullptr);
     ~medcine_information();
 
 private slots:
