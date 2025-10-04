@@ -10,7 +10,6 @@
 #define UI_MAIN_PAGE_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -65,11 +64,12 @@ public:
         main_time = new QLabel(widget);
         main_time->setObjectName(QString::fromUtf8("main_time"));
         QFont font;
-        font.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font.setPointSize(11);
-        font.setBold(true);
+        font.setBold(false);
         main_time->setFont(font);
-        main_time->setAlignment(Qt::AlignCenter);
+        main_time->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        main_time->setIndent(10);
 
         horizontalLayout->addWidget(main_time);
 
@@ -85,32 +85,37 @@ public:
         sizePolicy.setHeightForWidth(med_list->sizePolicy().hasHeightForWidth());
         med_list->setSizePolicy(sizePolicy);
         QFont font1;
+        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font1.setPointSize(15);
+        font1.setBold(false);
         med_list->setFont(font1);
 
         horizontalLayout->addWidget(med_list);
 
         use_record = new QPushButton(widget);
         use_record->setObjectName(QString::fromUtf8("use_record"));
-        use_record->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font2.setPointSize(15);
+        use_record->setFont(font2);
 
         horizontalLayout->addWidget(use_record);
 
         med_plan = new QPushButton(widget);
         med_plan->setObjectName(QString::fromUtf8("med_plan"));
-        med_plan->setFont(font1);
+        med_plan->setFont(font2);
 
         horizontalLayout->addWidget(med_plan);
 
         settings = new QPushButton(widget);
         settings->setObjectName(QString::fromUtf8("settings"));
-        settings->setFont(font1);
+        settings->setFont(font2);
 
         horizontalLayout->addWidget(settings);
 
         special_med = new QPushButton(widget);
         special_med->setObjectName(QString::fromUtf8("special_med"));
-        special_med->setFont(font1);
+        special_med->setFont(font2);
 
         horizontalLayout->addWidget(special_med);
 
@@ -148,15 +153,16 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(main_store->sizePolicy().hasHeightForWidth());
         main_store->setSizePolicy(sizePolicy1);
+        main_store->setAutoFillBackground(false);
         main_store->setStyleSheet(QString::fromUtf8("QPushButton#main_store\n"
 "{\n"
 "    border-radius: 50%; \n"
+"	\n"
+"	border-image: url(:/images/main_store.png);\n"
 "}\n"
 ""));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/images/main_store.png"), QSize(), QIcon::Normal, QIcon::Off);
-        main_store->setIcon(icon);
         main_store->setIconSize(QSize(222, 222));
+        main_store->setAutoRepeat(false);
 
         verticalLayout_2->addWidget(main_store);
 
@@ -188,12 +194,11 @@ public:
         main_fetch->setSizePolicy(sizePolicy1);
         main_fetch->setStyleSheet(QString::fromUtf8("#main_fetch\n"
 "{\n"
-"    border-radius: 50%;  /* \345\205\263\351\224\256\357\274\232\344\275\277\347\224\250\347\231\276\345\210\206\346\257\224\357\274\214\345\247\213\347\273\210\344\270\272\345\256\275\351\253\230\347\232\204\344\270\200\345\215\212 */\n"
+"    border-radius: 50%;  \n"
+"	\n"
+"	border-image: url(:/images/main_fetch.png);\n"
 "}\n"
 ""));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/images/main_fetch.png"), QSize(), QIcon::Normal, QIcon::Off);
-        main_fetch->setIcon(icon1);
         main_fetch->setIconSize(QSize(222, 222));
 
         verticalLayout_3->addWidget(main_fetch);

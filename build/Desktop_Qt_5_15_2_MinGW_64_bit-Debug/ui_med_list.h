@@ -118,11 +118,14 @@ public:
         patient_list->addItem(QString());
         patient_list->addItem(QString());
         patient_list->setObjectName(QString::fromUtf8("patient_list"));
-        QSizePolicy sizePolicy4(QSizePolicy::Ignored, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(patient_list->sizePolicy().hasHeightForWidth());
         patient_list->setSizePolicy(sizePolicy4);
+        QFont font2;
+        font2.setPointSize(13);
+        patient_list->setFont(font2);
 
         horizontalLayout_2->addWidget(patient_list);
 
@@ -158,6 +161,7 @@ public:
         medcine_name->setObjectName(QString::fromUtf8("medcine_name"));
         sizePolicy4.setHeightForWidth(medcine_name->sizePolicy().hasHeightForWidth());
         medcine_name->setSizePolicy(sizePolicy4);
+        medcine_name->setFont(font2);
 
         horizontalLayout_3->addWidget(medcine_name);
 
@@ -178,7 +182,9 @@ public:
 "	background: transparent;\n"
 "	border: none;\n"
 "}"));
+        scrollArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
         scrollArea->setWidgetResizable(true);
+        scrollArea->setAlignment(Qt::AlignCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 966, 430));
@@ -188,8 +194,9 @@ public:
 "	background: transparent;\n"
 "}"));
         med_card_gridLayout = new QGridLayout(scrollAreaWidgetContents);
-        med_card_gridLayout->setSpacing(15);
+        med_card_gridLayout->setSpacing(50);
         med_card_gridLayout->setObjectName(QString::fromUtf8("med_card_gridLayout"));
+        med_card_gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         med_card_gridLayout->setContentsMargins(20, 20, 20, 20);
         scrollArea->setWidget(scrollAreaWidgetContents);
 

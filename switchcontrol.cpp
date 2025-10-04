@@ -1,161 +1,201 @@
-#include <QPainter>
-#include <QMouseEvent>
-#include <QPainterPath>
-#include "switchControl.h"
+#include "switchcontrol.h"
+#include <QDebug>
 
-SwitchControl::SwitchControl(QWidget *parent)
-    : QWidget(parent),
-    m_nHeight(16),
-    m_bChecked(false),
-    m_radius(15.0),
-    m_nMargin(3),
-    m_checkedColor(10, 100, 255),
-    m_thumbColor(Qt::white),
-    m_disabledColor(190, 190, 190),
-    m_background(Qt::black)
+SwitchButton::SwitchButton(QWidget *parent)
+    : QWidget{parent}
 {
-    // 鼠标滑过光标形状 - 手型
-    setCursor(Qt::PointingHandCursor);
 
-    // 连接信号槽
-    connect(&m_timer, SIGNAL(timeout()), this, SLOT(onTimeout()));
 }
 
-// 绘制开关
-void SwitchControl::paintEvent(QPaintEvent *event)
+bool SwitchButton::getSwitch(){
+    return mOnOff;
+}
+
+void SwitchButton::setSwitch(bool onoff){
+    if(mWaitSigModel) return ;
+    /// 状态切换
+    mOnOff = onoff;
+    /// 发送信号
+    sigSwitchChanged(mOnOff);
+    /// 动画-背景颜色
+    QPropertyAnimation * colorAnimation = new QPropertyAnimation(this,"pBackColor");
+    colorAnimation->setDuration(mAnimationPeriod);
+    colorAnimation->setStartValue(mBackColor);
+    colorAnimation->setEndValue(mOnOff ?  mBackOnColor: mBackOffColor);
+    colorAnimation->start(QAbstractAnimation::DeletionPolicy::DeleteWhenStopped);   //停止后删除
+    /// 动画-开关按钮位置
+    QVariantAnimation* posAnimation = new QVariantAnimation(this);
+    posAnimation->setDuration(mAnimationPeriod);
+    posAnimation->setStartValue(mButtonRect.topLeft());
+    posAnimation->setEndValue(mOnOff ?  mRightPos : mLeftPos);
+    connect(posAnimation,&QPropertyAnimation::valueChanged,[=](const QVariant &value){
+        mButtonRect.moveTo(value.toPointF());
+        update();
+    });
+    posAnimation->start(QAbstractAnimation::DeletionPolicy::DeleteWhenStopped);   //停止后删除
+}
+
+void SwitchButton::setSwitchForWaitModel(bool onoff)
 {
-    Q_UNUSED(event);
-
-    QPainter painter(this);
-    painter.setPen(Qt::NoPen);
-    painter.setRenderHint(QPainter::Antialiasing);
-
-    QPainterPath path;
-    QColor background;
-    QColor thumbColor;
-    qreal dOpacity;
-    if (isEnabled())
-    { // 可用状态
-        if (m_bChecked)
-        { // 打开状态
-            background = m_checkedColor;
-            thumbColor = m_checkedColor;
-            dOpacity = 0.600;
-        }
-        else
-        { //关闭状态
-            background = m_background;
-            thumbColor = m_thumbColor;
-            dOpacity = 0.800;
-        }
+    if(!mWaitSigModel) return ;
+    if(mOnOff == onoff){
+        /// 表示值未改变先运行按钮位置动画
+        QVariantAnimation* posAnimation = new QVariantAnimation(this);
+        posAnimation->setDuration(mAnimationPeriod);
+        posAnimation->setStartValue(mOnOff ? mLeftPos : mRightPos);
+        posAnimation->setEndValue(mOnOff ?  mRightPos : mLeftPos);
+        connect(posAnimation,&QVariantAnimation::valueChanged,[=](const QVariant &value){
+            mButtonRect.moveTo(value.toPointF());
+            update();
+        });
+        posAnimation->start(QAbstractAnimation::DeletionPolicy::DeleteWhenStopped);   //停止后删除
+        return ;
     }
-    else
-    {  // 不可用状态
-        background = m_background;
-        dOpacity = 0.260;
-        thumbColor = m_disabledColor;
-    }
-    // 绘制大椭圆
-    painter.setBrush(background);
-    painter.setOpacity(dOpacity);
-    path.addRoundedRect(QRectF(m_nMargin, m_nMargin, width() - 2 * m_nMargin, height() - 2 * m_nMargin), m_radius, m_radius);
-    painter.drawPath(path.simplified());
-
-    // 绘制小椭圆
-    painter.setBrush(thumbColor);
-    painter.setOpacity(1.0);
-    painter.drawEllipse(QRectF(m_nX - (m_nHeight / 2), m_nY - (m_nHeight / 2), height(), height()));
+    /// 状态切换
+    mOnOff = onoff;
+    /// 发送信号
+    sigSwitchChanged(mOnOff);
+    /// 后运行背景颜色动画
+    QPropertyAnimation * colorAnimation = new QPropertyAnimation(this,"pBackColor");
+    colorAnimation->setDuration(mAnimationPeriod);
+    colorAnimation->setStartValue(mBackColor);
+    colorAnimation->setEndValue(mOnOff ?  mBackOnColor: mBackOffColor);
+    colorAnimation->start(QAbstractAnimation::DeletionPolicy::DeleteWhenStopped);   //停止后删除
+    connect(colorAnimation,&QPropertyAnimation::valueChanged,[=](const QVariant &value){
+        update();
+    });
 }
 
-// 鼠标按下事件
-void SwitchControl::mousePressEvent(QMouseEvent *event)
-{
-    if (isEnabled()) {
-        if (event->buttons() & Qt::LeftButton) {
-            event->accept();
-        } else {
-            event->ignore();
-        }
-    }
-}
-
-// 鼠标释放事件 - 切换开关状态、发射toggled()信号
-void SwitchControl::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (isEnabled()) {
-        if ((event->type() == QMouseEvent::MouseButtonRelease) && (event->button() == Qt::LeftButton)) {
-            event->accept();
-            m_bChecked = !m_bChecked;
-            emit toggled(m_bChecked);
-            m_timer.start(2);
-        } else {
-            event->ignore();
-        }
-    }
-}
-
-// 大小改变事件
-void SwitchControl::resizeEvent(QResizeEvent *event)
-{
-    m_nX = m_nHeight / 2;
-    m_nY = m_nHeight / 2;
-    QWidget::resizeEvent(event);
-}
-
-// 默认大小
-QSize SwitchControl::sizeHint() const
-{
-    return minimumSizeHint();
-}
-
-// 最小大小
-QSize SwitchControl::minimumSizeHint() const
-{
-    return QSize(2 * (m_nHeight + m_nMargin), m_nHeight);
-}
-
-// 切换状态 - 滑动
-void SwitchControl::onTimeout()
-{
-    if (m_bChecked) {
-        m_nX += 1;
-        if (m_nX >= width() - m_nHeight)
-            m_timer.stop();
-    } else {
-        m_nX -= 1;
-        if (m_nX <= m_nHeight / 2)
-            m_timer.stop();
-    }
+void SwitchButton::setEnabled(bool enable){
+    QWidget::setEnabled(enable);
+    mEnable = enable;
+    emit sigEnableChanged(mEnable);
     update();
 }
 
-// 返回开关状态 - 打开：true 关闭：false
-bool SwitchControl::isToggled() const
+bool SwitchButton::getEnabled()
 {
-    return m_bChecked;
+    return mEnable;
 }
 
-// 设置开关状态
-void SwitchControl::setToggle(bool checked)
-{
-    m_bChecked = checked;
-    m_timer.start(2);
+void SwitchButton::setAnimationPeriod(int period){
+    mAnimationPeriod = period;
 }
 
-// 设置背景颜色
-void SwitchControl::setBackgroundColor(QColor color)
-{
-    m_background = color;
+void SwitchButton::setPrecisionClick(bool flag){
+    mPrecisionClickFlagh = flag;
 }
 
-// 设置选中颜色
-void SwitchControl::setCheckedColor(QColor color)
+void SwitchButton::setWaitModel(bool flag)
 {
-    m_checkedColor = color;
+    mWaitSigModel = flag;
 }
 
-// 设置不可用颜色
-void SwitchControl::setDisbaledColor(QColor color)
-{
-    m_disabledColor = color;
+void SwitchButton::setButtonColor(QColor color){
+    mButtonColor = color;
+    update();
 }
+
+void SwitchButton::setBackOnColor(QColor color){
+    mBackOnColor = color;
+    update();
+}
+
+void SwitchButton::setBackOffColor(QColor color){
+    mBackOffColor = color;
+    update();
+}
+
+void SwitchButton::setEdgeColor(QColor color){
+    mEdgeColor = color;
+    update();
+}
+
+void SwitchButton::paintEvent(QPaintEvent *event){
+    Q_UNUSED(event)
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setPen(Qt::NoPen);
+
+    /// 绘制边缘颜色
+    QPainterPath path;
+    path.addRect(this->rect());
+    path.addRoundedRect(this->rect(),mRadius,mRadius);
+    path.setFillRule(Qt::OddEvenFill);
+    painter.setBrush(mEdgeColor);
+    painter.drawPath(path);
+
+    /// 绘制背景颜色
+    painter.setBrush(mBackColor);
+    painter.drawRoundedRect(this->rect(),mRadius,mRadius);
+
+    /// 绘制圆形按钮
+    painter.setBrush(mButtonColor);
+    painter.drawEllipse(mButtonRect);
+
+    /// 绘制按钮阴影
+    painter.setBrush(Qt::NoBrush);
+    QColor color(Qt::black);
+    int count = (this->height() - mButtonRect.height())/2;
+    float stepColor = (0.15-0.0)/count;
+    for (int i = mButtonRect.height()/2 + 1; i < this->height()/2; i++){
+        color.setAlphaF(0.15 - stepColor*(i - mButtonRect.height()/2));
+        painter.setPen(color);
+        painter.drawEllipse(mButtonRect.center(),i,i);
+    }
+
+    /// 失能显示，添加一层蒙层
+    if(!mEnable){
+        QColor disable(Qt::black);
+        disable.setAlphaF(0.5);
+        painter.setBrush(disable);
+        painter.drawRoundedRect(this->rect(),mRadius,mRadius);
+    }
+}
+
+void SwitchButton::resizeEvent(QResizeEvent *event){
+    Q_UNUSED(event)
+    /// 更新按钮大小、圆角大小、动画两个位置
+    int size = qMin(this->width(),this->height());
+    mRadius = size/2;
+    float width = size * 3 / 4;
+    float border = (size - width) / 2;
+    mLeftPos = QPoint(border,border);
+    mRightPos = QPoint(this->width() - border - width,border);
+    mButtonRect.setWidth(width);
+    mButtonRect.setHeight(width);
+    mButtonRect.moveTo(mOnOff ? mRightPos : mLeftPos);
+    mBackColor = mOnOff ? mBackOnColor : mBackOffColor ;
+    update();
+}
+
+void SwitchButton::mouseReleaseEvent(QMouseEvent *event){
+    if(mWaitSigModel){
+        /// 先运行按钮位置动画
+        QVariantAnimation* posAnimation = new QVariantAnimation(this);
+        posAnimation->setDuration(mAnimationPeriod);
+        posAnimation->setStartValue(mOnOff ? mRightPos : mLeftPos);
+        posAnimation->setEndValue(mOnOff ?  mLeftPos : mRightPos);
+        connect(posAnimation,&QVariantAnimation::valueChanged,[=](const QVariant &value){
+            mButtonRect.moveTo(value.toPointF());
+            update();
+        });
+        posAnimation->start(QAbstractAnimation::DeletionPolicy::DeleteWhenStopped);   //停止后删除
+        return ;
+    }
+    if(!mEnable)    return ;
+    if(mButtonRect.contains(event->pos()) || !mPrecisionClickFlagh){
+        setSwitch(!mOnOff);
+    }
+}
+
+void SwitchButton::enterEvent(QEvent *event){
+    Q_UNUSED(event)
+    mHover = true;
+}
+
+void SwitchButton::leaveEvent(QEvent *event){
+    Q_UNUSED(event)
+    mHover = false;
+}
+

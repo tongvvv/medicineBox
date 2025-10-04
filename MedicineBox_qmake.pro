@@ -17,6 +17,8 @@ SOURCES += \
     med_list.cpp \
     medcine_information.cpp \
     signal_route.cpp \
+    store_page.cpp \
+    store_page1.cpp \
     switchcontrol.cpp
 
 HEADERS += \
@@ -27,6 +29,8 @@ HEADERS += \
     med_list.h \
     medcine_information.h \
     signal_route.h \
+    store_page.h \
+    store_page1.h \
     switchcontrol.h
 
 FORMS += \
@@ -34,7 +38,9 @@ FORMS += \
     main_page.ui \
     mainwindow.ui \
     med_list.ui \
-    medcine_information.ui
+    medcine_information.ui \
+    store_page.ui \
+    store_page1.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

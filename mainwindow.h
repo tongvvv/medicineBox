@@ -6,6 +6,7 @@
 #include "med_list.h"
 #include "medcine_information.h"
 #include "signal_route.h"
+#include "store_page.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,6 +28,7 @@ private:
     main_page *mainpage;
     med_list *medlist;
     medcine_information *medinfo;
+    store_page *StorePage;
 
 private slots:
     void handleSwitchToPage(const QString &pageName);

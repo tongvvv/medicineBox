@@ -23,6 +23,12 @@ void main_page::on_main_fetch_clicked()
 
 void main_page::on_med_list_clicked()
 {
-    on_main_fetch_clicked();
+    emit signal_route::instance()->switchToPage("med_list_nofetch");
+}
+
+
+void main_page::on_main_store_clicked()
+{
+    emit signal_route::instance()->switchToPage("store_page");
 }
 

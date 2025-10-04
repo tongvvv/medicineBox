@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     medinfo = new medcine_information(this);
     ui->stackedWidget->addWidget(medinfo);
+
+    StorePage = new store_page(this);
+    ui->stackedWidget->addWidget(StorePage);
 }
 
 MainWindow::~MainWindow()
@@ -32,6 +35,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
 {
     if(pageName == "med_list")
     {
+        medlist->card_is_fetch(true);
         ui->stackedWidget->setCurrentWidget(medlist);
     }
     else if(pageName == "main_page")
@@ -41,5 +45,14 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     else if(pageName == "medcine_information1")
     {
         ui->stackedWidget->setCurrentWidget(medinfo);
+    }
+    else if(pageName == "med_list_nofetch")
+    {
+        medlist->card_is_fetch(false);
+        ui->stackedWidget->setCurrentWidget(medlist);
+    }
+    else if(pageName == "store_page")
+    {
+        ui->stackedWidget->setCurrentWidget(StorePage);
     }
 }

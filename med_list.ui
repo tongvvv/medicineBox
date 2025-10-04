@@ -119,10 +119,15 @@
       <item>
        <widget class="QComboBox" name="patient_list">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
         </property>
         <item>
          <property name="text">
@@ -189,10 +194,15 @@
       <item>
        <widget class="QComboBox" name="medcine_name">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
         </property>
         <item>
          <property name="text">
@@ -241,8 +251,14 @@
 	border: none;
 }</string>
      </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustIgnored</enum>
+     </property>
      <property name="widgetResizable">
       <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
      <widget class="QWidget" name="scrollAreaWidgetContents">
       <property name="geometry">
@@ -262,7 +278,10 @@
 	background: transparent;
 }</string>
       </property>
-      <layout class="QGridLayout" name="med_card_gridLayout">
+      <layout class="QGridLayout" name="med_card_gridLayout" rowstretch="0" rowminimumheight="0" columnminimumwidth="0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
        <property name="leftMargin">
         <number>20</number>
        </property>
@@ -276,7 +295,7 @@
         <number>20</number>
        </property>
        <property name="spacing">
-        <number>15</number>
+        <number>50</number>
        </property>
       </layout>
      </widget>

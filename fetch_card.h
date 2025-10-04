@@ -5,6 +5,8 @@
 #include <QPainter>
 #include "signal_route.h"
 
+//这里的卡片最小设置成了400*290， 注意一下。
+
 namespace Ui {
 class fetch_card;
 }
@@ -15,6 +17,7 @@ class fetch_card : public QWidget
 
 public:
     explicit fetch_card(QWidget *parent = nullptr);
+    void card_is_fetch(bool state);
     ~fetch_card();
 
 private slots:
@@ -24,6 +27,7 @@ private slots:
 private:
     Ui::fetch_card *ui;
     signal_route *m_router;
+    bool m_state;
 };
 
 #endif // FETCH_CARD_H

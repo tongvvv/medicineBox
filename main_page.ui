@@ -33,16 +33,19 @@
        <widget class="QLabel" name="main_time">
         <property name="font">
          <font>
-          <family>黑体</family>
+          <family>微软雅黑</family>
           <pointsize>11</pointsize>
-          <bold>true</bold>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
          <string>2026-06-30 星期一 09:30</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <property name="indent">
+         <number>10</number>
         </property>
        </widget>
       </item>
@@ -69,7 +72,9 @@
         </property>
         <property name="font">
          <font>
+          <family>微软雅黑</family>
           <pointsize>15</pointsize>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -81,6 +86,7 @@
        <widget class="QPushButton" name="use_record">
         <property name="font">
          <font>
+          <family>微软雅黑</family>
           <pointsize>15</pointsize>
          </font>
         </property>
@@ -93,6 +99,7 @@
        <widget class="QPushButton" name="med_plan">
         <property name="font">
          <font>
+          <family>微软雅黑</family>
           <pointsize>15</pointsize>
          </font>
         </property>
@@ -105,6 +112,7 @@
        <widget class="QPushButton" name="settings">
         <property name="font">
          <font>
+          <family>微软雅黑</family>
           <pointsize>15</pointsize>
          </font>
         </property>
@@ -117,6 +125,7 @@
        <widget class="QPushButton" name="special_med">
         <property name="font">
          <font>
+          <family>微软雅黑</family>
           <pointsize>15</pointsize>
          </font>
         </property>
@@ -180,25 +189,29 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton#main_store
 {
     border-radius: 50%; 
+	
+	border-image: url(:/images/main_store.png);
 }
 </string>
            </property>
            <property name="text">
             <string/>
            </property>
-           <property name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/main_store.png</normaloff>:/images/main_store.png</iconset>
-           </property>
            <property name="iconSize">
             <size>
              <width>222</width>
              <height>222</height>
             </size>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -258,16 +271,14 @@
            <property name="styleSheet">
             <string notr="true">#main_fetch
 {
-    border-radius: 50%;  /* 关键：使用百分比，始终为宽高的一半 */
+    border-radius: 50%;  
+	
+	border-image: url(:/images/main_fetch.png);
 }
 </string>
            </property>
            <property name="text">
             <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/main_fetch.png</normaloff>:/images/main_fetch.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -311,8 +322,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
