@@ -11,7 +11,7 @@ med_list::med_list(QWidget *parent)
     int row=0,col=0;
     for(int ii=0; ii<16; ii++)
     {
-        fetch_card *card = new fetch_card(this);
+        fetch_card *card = new fetch_card(this, ii+1);
         cards.append(card);
         QGraphicsDropShadowEffect* shadow = new QGraphicsDropShadowEffect;
         shadow->setBlurRadius(10);

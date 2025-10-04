@@ -21,8 +21,8 @@ public:
     Q_PROPERTY(QColor pBackColor MEMBER mBackColor)  //新增背景颜色属性,用于动画
 
     explicit SwitchButton(QWidget *parent = nullptr);
-    bool getSwitch();   /// 获取开关状态
-    bool getEnabled();    /// 获取使能状态
+    bool getSwitch() const;   /// 获取开关状态
+    bool getEnabled() const;    /// 获取使能状态
 
 public slots:
     void setSwitch(bool onoff);    /// 设置开关状态,default:0

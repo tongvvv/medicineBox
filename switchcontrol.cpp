@@ -7,16 +7,18 @@ SwitchButton::SwitchButton(QWidget *parent)
 
 }
 
-bool SwitchButton::getSwitch(){
+bool SwitchButton::getSwitch() const
+{
     return mOnOff;
 }
 
-void SwitchButton::setSwitch(bool onoff){
+void SwitchButton::setSwitch(bool onoff)
+{
     if(mWaitSigModel) return ;
     /// 状态切换
     mOnOff = onoff;
     /// 发送信号
-    sigSwitchChanged(mOnOff);
+    emit sigSwitchChanged(mOnOff);
     /// 动画-背景颜色
     QPropertyAnimation * colorAnimation = new QPropertyAnimation(this,"pBackColor");
     colorAnimation->setDuration(mAnimationPeriod);
@@ -54,7 +56,7 @@ void SwitchButton::setSwitchForWaitModel(bool onoff)
     /// 状态切换
     mOnOff = onoff;
     /// 发送信号
-    sigSwitchChanged(mOnOff);
+    emit sigSwitchChanged(mOnOff);
     /// 后运行背景颜色动画
     QPropertyAnimation * colorAnimation = new QPropertyAnimation(this,"pBackColor");
     colorAnimation->setDuration(mAnimationPeriod);
@@ -73,7 +75,7 @@ void SwitchButton::setEnabled(bool enable){
     update();
 }
 
-bool SwitchButton::getEnabled()
+bool SwitchButton::getEnabled() const
 {
     return mEnable;
 }

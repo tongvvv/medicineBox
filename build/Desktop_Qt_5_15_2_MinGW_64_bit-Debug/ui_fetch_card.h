@@ -29,7 +29,7 @@ public:
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
-    QLabel *label_6;
+    QLabel *number;
     QLabel *label_2;
     SwitchButton *med_switch;
     QWidget *widget_2;
@@ -53,15 +53,18 @@ public:
     {
         if (fetch_card->objectName().isEmpty())
             fetch_card->setObjectName(QString::fromUtf8("fetch_card"));
-        fetch_card->resize(400, 290);
+        fetch_card->resize(442, 320);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(fetch_card->sizePolicy().hasHeightForWidth());
         fetch_card->setSizePolicy(sizePolicy);
-        fetch_card->setMinimumSize(QSize(400, 290));
-        fetch_card->setAutoFillBackground(true);
-        fetch_card->setStyleSheet(QString::fromUtf8(""));
+        fetch_card->setMinimumSize(QSize(442, 320));
+        fetch_card->setAutoFillBackground(false);
+        fetch_card->setStyleSheet(QString::fromUtf8("#fetch_card{\n"
+"	\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}"));
         verticalLayout = new QVBoxLayout(fetch_card);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -78,15 +81,15 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        label_6 = new QLabel(widget);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
+        number = new QLabel(widget);
+        number->setObjectName(QString::fromUtf8("number"));
         QFont font;
-        font.setPointSize(20);
+        font.setPointSize(18);
         font.setBold(true);
         font.setItalic(false);
-        label_6->setFont(font);
-        label_6->setAutoFillBackground(false);
-        label_6->setStyleSheet(QString::fromUtf8("min-width:     40px;     \n"
+        number->setFont(font);
+        number->setAutoFillBackground(false);
+        number->setStyleSheet(QString::fromUtf8("min-width:     40px;     \n"
 "min-height:    40px;     \n"
 "max-width:     40px;    \n"
 "max-height:    40px;    \n"
@@ -94,9 +97,9 @@ public:
 "border:1px solid black;  \n"
 "background: blue;\n"
 "color: white"));
-        label_6->setAlignment(Qt::AlignCenter);
+        number->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout->addWidget(label_6);
+        horizontalLayout->addWidget(number);
 
         label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -300,7 +303,7 @@ public:
     void retranslateUi(QWidget *fetch_card)
     {
         fetch_card->setWindowTitle(QCoreApplication::translate("fetch_card", "Form", nullptr));
-        label_6->setText(QCoreApplication::translate("fetch_card", "1", nullptr));
+        number->setText(QCoreApplication::translate("fetch_card", "1", nullptr));
         label_2->setText(QCoreApplication::translate("fetch_card", "\346\230\257\345\220\246\346\217\220\351\206\222    ", nullptr));
         label->setText(QCoreApplication::translate("fetch_card", "\350\215\257\345\220\215 ", nullptr));
         label_3->setText(QCoreApplication::translate("fetch_card", "\346\212\227\347\227\205\346\257\222\346\204\237\345\206\222\351\242\227\347\262\222", nullptr));

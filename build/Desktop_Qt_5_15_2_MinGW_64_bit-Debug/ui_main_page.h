@@ -65,8 +65,8 @@ public:
         main_time->setObjectName(QString::fromUtf8("main_time"));
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font.setPointSize(11);
-        font.setBold(false);
+        font.setPointSize(14);
+        font.setBold(true);
         main_time->setFont(font);
         main_time->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         main_time->setIndent(10);

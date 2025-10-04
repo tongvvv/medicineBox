@@ -54,7 +54,7 @@ public:
         verticalLayout = new QVBoxLayout(med_list);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(17, 17, 17, 17);
+        verticalLayout->setContentsMargins(25, 17, 25, 17);
         widget = new QWidget(med_list);
         widget->setObjectName(QString::fromUtf8("widget"));
         horizontalLayout = new QHBoxLayout(widget);
@@ -187,7 +187,7 @@ public:
         scrollArea->setAlignment(Qt::AlignCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 966, 430));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 950, 430));
         scrollAreaWidgetContents->setAutoFillBackground(false);
         scrollAreaWidgetContents->setStyleSheet(QString::fromUtf8("QWidget#scrollAreaWidgetContents\n"
 "{\n"
