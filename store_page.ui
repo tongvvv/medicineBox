@@ -52,6 +52,9 @@
           <pointsize>15</pointsize>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true">padding: 6px 12px;</string>
+        </property>
         <property name="text">
          <string>返回首页</string>
         </property>
@@ -73,13 +76,13 @@
        <number>0</number>
       </property>
       <property name="leftMargin">
-       <number>0</number>
+       <number>30</number>
       </property>
       <property name="topMargin">
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>30</number>
       </property>
       <property name="bottomMargin">
        <number>0</number>
@@ -121,10 +124,11 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label">
+             <widget class="QLabel" name="num1">
               <property name="font">
                <font>
                 <pointsize>16</pointsize>
+                <bold>false</bold>
                </font>
               </property>
               <property name="layoutDirection">
@@ -252,7 +256,7 @@ color: white</string>
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="num2">
               <property name="font">
                <font>
                 <pointsize>15</pointsize>
@@ -383,7 +387,7 @@ color: black</string>
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="num3">
               <property name="font">
                <font>
                 <pointsize>15</pointsize>
@@ -509,7 +513,7 @@ color: black</string>
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label_7">
+             <widget class="QLabel" name="num4">
               <property name="font">
                <font>
                 <pointsize>15</pointsize>

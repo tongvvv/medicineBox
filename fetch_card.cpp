@@ -1,5 +1,7 @@
 #include "fetch_card.h"
+#include "qdebug.h"
 #include "ui_fetch_card.h"
+#include "utils.h"
 
 fetch_card::fetch_card(QWidget *parent, unsigned short num)
     : QWidget(parent)
@@ -70,4 +72,60 @@ void fetch_card::card_is_fetch(bool state)
         ui->verticalLayout->setStretch(1, 3);
         ui->verticalLayout->setStretch(2, 3);
     }
+}
+
+//取药按钮
+void fetch_card::on_card_get_med_clicked()
+{
+    QSize parentSize = this->parentWidget()->size();
+
+    qDebug() << parentSize.width();
+    qDebug() << parentSize.height();
+
+        QSize dialogSize(
+        static_cast<int>(parentSize.width() * 0.75),
+        static_cast<int>(parentSize.height() * 0.6)
+        );
+
+    dialog_fetch_med *dialog = new dialog_fetch_med(this);
+    dialog->resize(dialogSize);
+    dialog->exec();
+
+    switch(dialog->get_ret())
+    {
+        //正常放入药盒
+    case NormalReturn:
+        handleNormalReturn();
+        break;
+    case NoReturn:
+        handleNoReturn();
+        break;
+    case WrongReturn:
+        handleWrongReturn();
+        break;
+    case RecognitionError:
+        handleRecognitionError();
+        break;
+    default:
+        qDebug()<<dialog->get_ret();
+        break;
+    }
+    dialog->deleteLater(); //调用完要删除对话框
+}
+
+void fetch_card::handleNormalReturn()
+{
+
+}
+void fetch_card::handleNoReturn()
+{
+
+}
+void fetch_card::handleWrongReturn()
+{
+
+}
+void fetch_card::handleRecognitionError()
+{
+
 }

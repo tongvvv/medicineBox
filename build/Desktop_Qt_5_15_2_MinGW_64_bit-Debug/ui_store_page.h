@@ -35,7 +35,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QWidget *widget_7;
     QHBoxLayout *horizontalLayout_3;
-    QLabel *label;
+    QLabel *num1;
     QLabel *label_2;
     QWidget *widget_11;
     QVBoxLayout *verticalLayout_6;
@@ -45,7 +45,7 @@ public:
     QVBoxLayout *verticalLayout_3;
     QWidget *widget_8;
     QHBoxLayout *horizontalLayout_4;
-    QLabel *label_4;
+    QLabel *num2;
     QLabel *label_3;
     QWidget *widget_12;
     QVBoxLayout *verticalLayout_7;
@@ -55,7 +55,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QWidget *widget_9;
     QHBoxLayout *horizontalLayout_5;
-    QLabel *label_5;
+    QLabel *num3;
     QLabel *label_6;
     QWidget *widget_13;
     QVBoxLayout *verticalLayout_8;
@@ -65,7 +65,7 @@ public:
     QVBoxLayout *verticalLayout_5;
     QWidget *widget_10;
     QHBoxLayout *horizontalLayout_6;
-    QLabel *label_7;
+    QLabel *num4;
     QLabel *label_8;
     QStackedWidget *stackedWidget;
 
@@ -91,6 +91,7 @@ public:
         QFont font;
         font.setPointSize(15);
         back_main_page->setFont(font);
+        back_main_page->setStyleSheet(QString::fromUtf8("padding: 6px 12px;"));
 
         horizontalLayout->addWidget(back_main_page);
 
@@ -107,7 +108,7 @@ public:
         horizontalLayout_2 = new QHBoxLayout(widget_2);
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_2->setContentsMargins(30, 0, 30, 0);
         widget_3 = new QWidget(widget_2);
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
         verticalLayout_2 = new QVBoxLayout(widget_3);
@@ -120,13 +121,14 @@ public:
         horizontalLayout_3->setSpacing(0);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget_7);
-        label->setObjectName(QString::fromUtf8("label"));
+        num1 = new QLabel(widget_7);
+        num1->setObjectName(QString::fromUtf8("num1"));
         QFont font1;
         font1.setPointSize(16);
-        label->setFont(font1);
-        label->setLayoutDirection(Qt::RightToLeft);
-        label->setStyleSheet(QString::fromUtf8("min-width:     70px;     \n"
+        font1.setBold(false);
+        num1->setFont(font1);
+        num1->setLayoutDirection(Qt::RightToLeft);
+        num1->setStyleSheet(QString::fromUtf8("min-width:     70px;     \n"
 "min-height:    70px;     \n"
 "max-width:     70px;    \n"
 "max-height:    70px;    \n"
@@ -134,9 +136,9 @@ public:
 "border:1px solid black;  \n"
 "background: rgb(23, 201, 255);\n"
 "color: white"));
-        label->setAlignment(Qt::AlignCenter);
+        num1->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_3->addWidget(label);
+        horizontalLayout_3->addWidget(num1);
 
 
         verticalLayout_2->addWidget(widget_7);
@@ -190,10 +192,10 @@ public:
         horizontalLayout_4->setSpacing(0);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(widget_8);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setFont(font);
-        label_4->setStyleSheet(QString::fromUtf8("min-width:     70px;     \n"
+        num2 = new QLabel(widget_8);
+        num2->setObjectName(QString::fromUtf8("num2"));
+        num2->setFont(font);
+        num2->setStyleSheet(QString::fromUtf8("min-width:     70px;     \n"
 "min-height:    70px;     \n"
 "max-width:     70px;    \n"
 "max-height:    70px;    \n"
@@ -201,9 +203,9 @@ public:
 "border:1px solid black;  \n"
 "background: white;\n"
 "color: black"));
-        label_4->setAlignment(Qt::AlignCenter);
+        num2->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_4->addWidget(label_4);
+        horizontalLayout_4->addWidget(num2);
 
 
         verticalLayout_3->addWidget(widget_8);
@@ -258,10 +260,10 @@ public:
         horizontalLayout_5->setSpacing(0);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        label_5 = new QLabel(widget_9);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setFont(font);
-        label_5->setStyleSheet(QString::fromUtf8("min-width:     70px;     \n"
+        num3 = new QLabel(widget_9);
+        num3->setObjectName(QString::fromUtf8("num3"));
+        num3->setFont(font);
+        num3->setStyleSheet(QString::fromUtf8("min-width:     70px;     \n"
 "min-height:    70px;     \n"
 "max-width:     70px;    \n"
 "max-height:    70px;    \n"
@@ -269,9 +271,9 @@ public:
 "border:1px solid black;  \n"
 "background: white;\n"
 "color: black"));
-        label_5->setAlignment(Qt::AlignCenter);
+        num3->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_5->addWidget(label_5);
+        horizontalLayout_5->addWidget(num3);
 
 
         verticalLayout_4->addWidget(widget_9);
@@ -320,10 +322,10 @@ public:
         horizontalLayout_6->setSpacing(0);
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-        label_7 = new QLabel(widget_10);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setFont(font);
-        label_7->setStyleSheet(QString::fromUtf8("min-width:     70px;     \n"
+        num4 = new QLabel(widget_10);
+        num4->setObjectName(QString::fromUtf8("num4"));
+        num4->setFont(font);
+        num4->setStyleSheet(QString::fromUtf8("min-width:     70px;     \n"
 "min-height:    70px;     \n"
 "max-width:     70px;    \n"
 "max-height:    70px;    \n"
@@ -331,9 +333,9 @@ public:
 "border:1px solid black;  \n"
 "background: white;\n"
 "color: black"));
-        label_7->setAlignment(Qt::AlignCenter);
+        num4->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_6->addWidget(label_7);
+        horizontalLayout_6->addWidget(num4);
 
 
         verticalLayout_5->addWidget(widget_10);
@@ -369,16 +371,16 @@ public:
     {
         store_page->setWindowTitle(QCoreApplication::translate("store_page", "Form", nullptr));
         back_main_page->setText(QCoreApplication::translate("store_page", "\350\277\224\345\233\236\351\246\226\351\241\265", nullptr));
-        label->setText(QCoreApplication::translate("store_page", "1", nullptr));
+        num1->setText(QCoreApplication::translate("store_page", "1", nullptr));
         label_2->setText(QCoreApplication::translate("store_page", "\346\211\253\346\217\217\346\235\241\345\275\242\347\240\201", nullptr));
         label_9->setText(QCoreApplication::translate("store_page", "\342\236\234", nullptr));
-        label_4->setText(QCoreApplication::translate("store_page", "2", nullptr));
+        num2->setText(QCoreApplication::translate("store_page", "2", nullptr));
         label_3->setText(QCoreApplication::translate("store_page", "\346\224\276\345\205\245\350\215\257\345\223\201", nullptr));
         label_10->setText(QCoreApplication::translate("store_page", "\342\236\234", nullptr));
-        label_5->setText(QCoreApplication::translate("store_page", "3", nullptr));
+        num3->setText(QCoreApplication::translate("store_page", "3", nullptr));
         label_6->setText(QCoreApplication::translate("store_page", "\350\256\276\347\275\256\346\234\215\350\215\257\350\256\241\345\210\222", nullptr));
         label_11->setText(QCoreApplication::translate("store_page", "\342\236\234", nullptr));
-        label_7->setText(QCoreApplication::translate("store_page", "4", nullptr));
+        num4->setText(QCoreApplication::translate("store_page", "4", nullptr));
         label_8->setText(QCoreApplication::translate("store_page", "\345\233\236\346\224\266\350\215\257\347\233\222", nullptr));
     } // retranslateUi
 

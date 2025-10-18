@@ -54,5 +54,6 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     else if(pageName == "store_page")
     {
         ui->stackedWidget->setCurrentWidget(StorePage);
+        StorePage->change_page1();
     }
 }

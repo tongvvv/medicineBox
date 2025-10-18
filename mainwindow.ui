@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>智能药箱系统</string>
   </property>
   <property name="styleSheet">
    <string notr="true">#MainWindow{border-image: url(:/images/main_background.png);}</string>

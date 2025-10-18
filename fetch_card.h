@@ -4,8 +4,9 @@
 #include <QWidget>
 #include <QPainter>
 #include "signal_route.h"
+#include "dialog_fetch_med.h"
 
-//这里的卡片最小设置成了442*320， 注意一下。在不同分辨率下可能要修改。
+//这里的卡片设置了最小宽度，高度（ui文件中），是为了美观考虑。 注意一下。在不同分辨率下可能要修改，以便达到最佳显示效果。
 
 namespace Ui {
 class fetch_card;
@@ -28,7 +29,17 @@ private slots:
 
     void on_med_info_clicked();
 
+    void on_card_get_med_clicked();
+
 private:
+    void handleNormalReturn();
+
+    void handleNoReturn();
+
+    void handleWrongReturn();
+
+    void handleRecognitionError();
+
     Ui::fetch_card *ui;
     signal_route *m_router;
     bool m_state;

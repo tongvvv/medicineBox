@@ -10,6 +10,7 @@
 #define UI_FETCH_CARD_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -44,9 +45,9 @@ public:
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton_2;
+    QPushButton *card_get_med;
     QSpacerItem *horizontalSpacer_3;
-    QPushButton *pushButton_3;
+    QPushButton *card_plan;
     QSpacerItem *horizontalSpacer_4;
 
     void setupUi(QWidget *fetch_card)
@@ -59,7 +60,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(fetch_card->sizePolicy().hasHeightForWidth());
         fetch_card->setSizePolicy(sizePolicy);
-        fetch_card->setMinimumSize(QSize(442, 320));
+        fetch_card->setMinimumSize(QSize(340, 300));
         fetch_card->setAutoFillBackground(false);
         fetch_card->setStyleSheet(QString::fromUtf8("#fetch_card{\n"
 "	\n"
@@ -69,7 +70,7 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        verticalLayout->setContentsMargins(8, 8, 8, 8);
+        verticalLayout->setContentsMargins(10, 10, 10, 10);
         widget = new QWidget(fetch_card);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setMinimumSize(QSize(0, 0));
@@ -167,10 +168,16 @@ public:
         med_info->setObjectName(QString::fromUtf8("med_info"));
         sizePolicy.setHeightForWidth(med_info->sizePolicy().hasHeightForWidth());
         med_info->setSizePolicy(sizePolicy);
-        med_info->setStyleSheet(QString::fromUtf8("QToolButton#med_info\n"
+        QFont font4;
+        font4.setBold(false);
+        med_info->setFont(font4);
+        med_info->setStyleSheet(QString::fromUtf8("#med_info\n"
 "{\n"
-"border-image: url(:/images/eye.png);\n"
+"	background-color: transparent;\n"
 "}"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/eye.png"), QSize(), QIcon::Normal, QIcon::Off);
+        med_info->setIcon(icon);
         med_info->setIconSize(QSize(50, 50));
 
         horizontalLayout_2->addWidget(med_info);
@@ -216,6 +223,11 @@ public:
 
         widget_3 = new QWidget(fetch_card);
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(widget_3->sizePolicy().hasHeightForWidth());
+        widget_3->setSizePolicy(sizePolicy1);
         widget_3->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout_4 = new QHBoxLayout(widget_3);
         horizontalLayout_4->setSpacing(0);
@@ -225,18 +237,22 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_2);
 
-        pushButton_2 = new QPushButton(widget_3);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy1);
-        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        card_get_med = new QPushButton(widget_3);
+        card_get_med->setObjectName(QString::fromUtf8("card_get_med"));
+        QSizePolicy sizePolicy2(QSizePolicy::Ignored, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(card_get_med->sizePolicy().hasHeightForWidth());
+        card_get_med->setSizePolicy(sizePolicy2);
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font5.setPointSize(16);
+        font5.setBold(false);
+        card_get_med->setFont(font5);
+        card_get_med->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #0078d7;\n"
 "    color: white;\n"
 "    border-radius: 10px;\n"
-"    font-size: 16px;\n"
 "    border: none;\n"
 "    padding: 4px 8px;\n"
 "}\n"
@@ -249,22 +265,22 @@ public:
 "    background-color: #005a9e;\n"
 "}"));
 
-        horizontalLayout_4->addWidget(pushButton_2);
+        horizontalLayout_4->addWidget(card_get_med);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_4->addItem(horizontalSpacer_3);
 
-        pushButton_3 = new QPushButton(widget_3);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        sizePolicy1.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy1);
-        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        card_plan = new QPushButton(widget_3);
+        card_plan->setObjectName(QString::fromUtf8("card_plan"));
+        sizePolicy2.setHeightForWidth(card_plan->sizePolicy().hasHeightForWidth());
+        card_plan->setSizePolicy(sizePolicy2);
+        card_plan->setFont(font5);
+        card_plan->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    color: #0078d7;\n"
 "    border: 1px solid #0078d7;\n"
 "    border-radius: 8px;\n"
-"    padding: 3px 8px;\n"
-"    font-size: 16px;\n"
+"    padding: 4px 8px;\n"
 "    background-color: white;\n"
 "}\n"
 "\n"
@@ -276,7 +292,7 @@ public:
 "    background-color: #e1f0ff;\n"
 "}"));
 
-        horizontalLayout_4->addWidget(pushButton_3);
+        horizontalLayout_4->addWidget(card_plan);
 
         horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -310,8 +326,8 @@ public:
         med_info->setText(QString());
         label_4->setText(QCoreApplication::translate("fetch_card", "\346\225\260\351\207\217 ", nullptr));
         label_5->setText(QCoreApplication::translate("fetch_card", "20", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("fetch_card", "\345\217\226\350\215\257", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("fetch_card", "\346\234\215\350\215\257\350\256\241\345\210\222", nullptr));
+        card_get_med->setText(QCoreApplication::translate("fetch_card", "\345\217\226\350\215\257", nullptr));
+        card_plan->setText(QCoreApplication::translate("fetch_card", "\346\234\215\350\215\257\350\256\241\345\210\222", nullptr));
     } // retranslateUi
 
 };

@@ -35,7 +35,7 @@
          <font>
           <family>微软雅黑</family>
           <pointsize>14</pointsize>
-          <bold>true</bold>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -43,6 +43,9 @@
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
         </property>
         <property name="indent">
          <number>10</number>

@@ -6,5 +6,7 @@
         <file alias="eye.png">images/u151.png</file>
         <file alias="med_pic.png">images/u698.png</file>
         <file alias="store_page1.png">images/u1388.png</file>
+        <file alias="store_page2.png">images/u1395.png</file>
+        <file alias="clock.png">images/u340.png</file>
     </qresource>
 </RCC>

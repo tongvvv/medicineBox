@@ -9,7 +9,7 @@ med_list::med_list(QWidget *parent)
     ui->setupUi(this);
 
     int row=0,col=0;
-    for(int ii=0; ii<16; ii++)
+    for(int ii=0; ii<8; ii++)
     {
         fetch_card *card = new fetch_card(this, ii+1);
         cards.append(card);

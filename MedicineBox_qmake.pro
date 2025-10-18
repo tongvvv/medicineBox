@@ -10,37 +10,55 @@ CONFIG += c++17
 
 SOURCES += \
     data_structs.cpp \
+    dialog_fetch_med.cpp \
+    dialog_store_success.cpp \
     fetch_card.cpp \
     main.cpp \
     main_page.cpp \
     mainwindow.cpp \
     med_list.cpp \
     medcine_information.cpp \
+    mytimeedit.cpp \
     signal_route.cpp \
     store_page.cpp \
     store_page1.cpp \
+    store_page2.cpp \
+    store_page3.cpp \
+    store_page4.cpp \
     switchcontrol.cpp
 
 HEADERS += \
     data_structs.h \
+    dialog_fetch_med.h \
+    dialog_store_success.h \
     fetch_card.h \
     main_page.h \
     mainwindow.h \
     med_list.h \
     medcine_information.h \
+    mytimeedit.h \
     signal_route.h \
     store_page.h \
     store_page1.h \
-    switchcontrol.h
+    store_page2.h \
+    store_page3.h \
+    store_page4.h \
+    switchcontrol.h \
+    utils.h
 
 FORMS += \
+    dialog_fetch_med.ui \
+    dialog_store_success.ui \
     fetch_card.ui \
     main_page.ui \
     mainwindow.ui \
     med_list.ui \
     medcine_information.ui \
     store_page.ui \
-    store_page1.ui
+    store_page1.ui \
+    store_page2.ui \
+    store_page3.ui \
+    store_page4.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

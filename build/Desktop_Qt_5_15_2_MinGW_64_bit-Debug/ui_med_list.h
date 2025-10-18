@@ -87,7 +87,7 @@ public:
         QFont font1;
         font1.setPointSize(15);
         back_mainpage->setFont(font1);
-        back_mainpage->setStyleSheet(QString::fromUtf8(""));
+        back_mainpage->setStyleSheet(QString::fromUtf8("padding: 6px 12px;"));
 
         horizontalLayout->addWidget(back_mainpage);
 
@@ -194,9 +194,10 @@ public:
 "	background: transparent;\n"
 "}"));
         med_card_gridLayout = new QGridLayout(scrollAreaWidgetContents);
-        med_card_gridLayout->setSpacing(50);
         med_card_gridLayout->setObjectName(QString::fromUtf8("med_card_gridLayout"));
         med_card_gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        med_card_gridLayout->setHorizontalSpacing(30);
+        med_card_gridLayout->setVerticalSpacing(50);
         med_card_gridLayout->setContentsMargins(20, 20, 20, 20);
         scrollArea->setWidget(scrollAreaWidgetContents);
 

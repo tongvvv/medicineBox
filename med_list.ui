@@ -78,7 +78,7 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">padding: 6px 12px;</string>
         </property>
         <property name="text">
          <string>返回首页</string>
@@ -294,7 +294,10 @@
        <property name="bottomMargin">
         <number>20</number>
        </property>
-       <property name="spacing">
+       <property name="horizontalSpacing">
+        <number>30</number>
+       </property>
+       <property name="verticalSpacing">
         <number>50</number>
        </property>
       </layout>

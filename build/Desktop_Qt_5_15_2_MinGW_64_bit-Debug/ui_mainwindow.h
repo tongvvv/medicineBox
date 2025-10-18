@@ -55,7 +55,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\346\231\272\350\203\275\350\215\257\347\256\261\347\263\273\347\273\237", nullptr));
     } // retranslateUi
 
 };
