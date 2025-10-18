@@ -45,7 +45,7 @@ public:
     {
         if (dialog_store_success->objectName().isEmpty())
             dialog_store_success->setObjectName(QString::fromUtf8("dialog_store_success"));
-        dialog_store_success->resize(544, 429);
+        dialog_store_success->resize(474, 291);
         dialog_store_success->setStyleSheet(QString::fromUtf8(""));
         verticalLayout = new QVBoxLayout(dialog_store_success);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -134,6 +134,7 @@ public:
         font1.setPointSize(14);
         label_3->setFont(font1);
         label_3->setAlignment(Qt::AlignCenter);
+        label_3->setWordWrap(true);
 
         horizontalLayout_2->addWidget(label_3);
 

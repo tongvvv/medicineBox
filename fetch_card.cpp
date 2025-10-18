@@ -2,6 +2,9 @@
 #include "qdebug.h"
 #include "ui_fetch_card.h"
 #include "utils.h"
+#include "dialog_fetch_nomed.h"
+#include "dialog_fetch_wrong_med.h"
+#include "dialog_fetch_force_store.h"
 
 fetch_card::fetch_card(QWidget *parent, unsigned short num)
     : QWidget(parent)
@@ -74,21 +77,29 @@ void fetch_card::card_is_fetch(bool state)
     }
 }
 
-//取药按钮
-void fetch_card::on_card_get_med_clicked()
+//不同类型对话框的创建函数，模板参数是对话框的类型。  为了简化代码。
+template <typename DialogType>
+DialogType* fetch_card::createDialog(double widthRatio, double heightRatio)
 {
     QSize parentSize = this->parentWidget()->size();
 
     qDebug() << parentSize.width();
     qDebug() << parentSize.height();
 
-        QSize dialogSize(
-        static_cast<int>(parentSize.width() * 0.75),
-        static_cast<int>(parentSize.height() * 0.6)
+    QSize dialogSize(
+        static_cast<int>(parentSize.width() * widthRatio),
+        static_cast<int>(parentSize.height() * heightRatio)
         );
 
-    dialog_fetch_med *dialog = new dialog_fetch_med(this);
+    DialogType *dialog = new DialogType(this);
     dialog->resize(dialogSize);
+    return dialog;
+}
+
+//工具函数
+template <typename DialogType>
+void fetch_card::handle_menu(DialogType *dialog)
+{
     dialog->exec();
 
     switch(dialog->get_ret())
@@ -107,24 +118,73 @@ void fetch_card::on_card_get_med_clicked()
         handleRecognitionError();
         break;
     default:
-        qDebug()<<dialog->get_ret();
+        qDebug() << dialog->get_ret();
         break;
     }
+}
+
+//取药按钮
+void fetch_card::on_card_get_med_clicked()
+{
+    auto *dialog = createDialog<dialog_fetch_med>();
+
+    handle_menu(dialog);
+
     dialog->deleteLater(); //调用完要删除对话框
 }
 
 void fetch_card::handleNormalReturn()
 {
-
+    auto *dialog = createDialog<dialog_fetch_med>();
+    dialog->set_content("药物回收","本次放回药物XXXX药品XXXX粒!","确定",false);
+    dialog->exec();
+    dialog->deleteLater();
 }
+
 void fetch_card::handleNoReturn()
 {
+    auto *dialog = createDialog<dialog_fetch_nomed>();
+    int ret = dialog->exec();
 
+    //点了确定，或者叉掉了对话框，就是Rejected
+    if(ret == QDialog::Rejected) {}
+
+    //说明需要重新放入， 用Accepted代表。
+    //如果有更多的逻辑，需要像上面的handle_menu函数一样来处理，这里偷了点懒
+    if(ret == QDialog::Accepted)
+    {
+        //这里有函数嵌套，得注意一下。主要是业务逻辑这么要求了，我也没办法。
+        //得注意要删除对话框。
+        auto *dialog_menu = createDialog<dialog_fetch_med>();
+        dialog_menu->set_content("药物回收","请放入药物YYYYY ！","回收药盒",true);
+        handle_menu(dialog_menu);
+        dialog_menu->deleteLater();
+    }
+
+    dialog->deleteLater();
 }
+
 void fetch_card::handleWrongReturn()
 {
+    auto *dialog = createDialog<dialog_fetch_wrong_med>();
+    int ret = dialog->exec();
+    //说明点了弹出药盒，重新放
+    if(ret == QDialog::Rejected)
+    {
+        auto *dialog_menu = createDialog<dialog_fetch_med>();
+        dialog_menu->set_content("药物回收","请取出药物XXXX，放入药物YYYYY","回收药盒",true);
+        handle_menu(dialog_menu);
+        dialog_menu->deleteLater(); //调用完要删除对话框
+    }
+    //点了继续存入
+    if(ret == QDialog::Accepted)
+    {
+        //处理代码在对话框内部
+    }
 
+    dialog->deleteLater();
 }
+
 void fetch_card::handleRecognitionError()
 {
 

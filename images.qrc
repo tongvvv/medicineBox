@@ -8,5 +8,6 @@
         <file alias="store_page1.png">images/u1388.png</file>
         <file alias="store_page2.png">images/u1395.png</file>
         <file alias="clock.png">images/u340.png</file>
+        <file alias="warning.png">images/u395.png</file>
     </qresource>
 </RCC>

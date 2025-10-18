@@ -10,7 +10,10 @@ CONFIG += c++17
 
 SOURCES += \
     data_structs.cpp \
+    dialog_fetch_force_store.cpp \
     dialog_fetch_med.cpp \
+    dialog_fetch_nomed.cpp \
+    dialog_fetch_wrong_med.cpp \
     dialog_store_success.cpp \
     fetch_card.cpp \
     main.cpp \
@@ -29,7 +32,10 @@ SOURCES += \
 
 HEADERS += \
     data_structs.h \
+    dialog_fetch_force_store.h \
     dialog_fetch_med.h \
+    dialog_fetch_nomed.h \
+    dialog_fetch_wrong_med.h \
     dialog_store_success.h \
     fetch_card.h \
     main_page.h \
@@ -47,7 +53,10 @@ HEADERS += \
     utils.h
 
 FORMS += \
+    dialog_fetch_force_store.ui \
     dialog_fetch_med.ui \
+    dialog_fetch_nomed.ui \
+    dialog_fetch_wrong_med.ui \
     dialog_store_success.ui \
     fetch_card.ui \
     main_page.ui \

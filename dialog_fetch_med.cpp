@@ -13,7 +13,7 @@ dialog_fetch_med::dialog_fetch_med(QWidget *parent)
 
     QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect;
     shadowEffect->setBlurRadius(15);
-    shadowEffect->setColor(QColor(0, 0, 0, 60));
+    shadowEffect->setColor(palette().shadow().color());
     shadowEffect->setOffset(8, 8);
     ui->widget->setGraphicsEffect(shadowEffect);
 

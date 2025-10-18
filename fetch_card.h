@@ -40,6 +40,12 @@ private:
 
     void handleRecognitionError();
 
+    template <typename DialogType>
+    DialogType* createDialog(double widthRatio = 0.75, double heightRatio = 0.6);
+
+    template <typename DialogType>
+    void handle_menu(DialogType *dialog);
+
     Ui::fetch_card *ui;
     signal_route *m_router;
     bool m_state;

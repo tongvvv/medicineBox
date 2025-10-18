@@ -412,7 +412,7 @@ QPushButton:pressed {
       <item>
        <widget class="QPushButton" name="card_plan">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>

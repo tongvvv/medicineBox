@@ -56,4 +56,8 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
         ui->stackedWidget->setCurrentWidget(StorePage);
         StorePage->change_page1();
     }
+    else if(pageName == "change_plan") //修改用药计划， 这个页面每次都新建
+    {
+
+    }
 }

@@ -273,8 +273,8 @@ public:
 
         card_plan = new QPushButton(widget_3);
         card_plan->setObjectName(QString::fromUtf8("card_plan"));
-        sizePolicy2.setHeightForWidth(card_plan->sizePolicy().hasHeightForWidth());
-        card_plan->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(card_plan->sizePolicy().hasHeightForWidth());
+        card_plan->setSizePolicy(sizePolicy1);
         card_plan->setFont(font5);
         card_plan->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    color: #0078d7;\n"
