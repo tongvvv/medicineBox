@@ -85,7 +85,7 @@
           <number>50</number>
          </property>
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="scaled_pixmap_label" name="label_pic">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
              <horstretch>0</horstretch>
@@ -95,11 +95,8 @@
            <property name="text">
             <string/>
            </property>
-           <property name="pixmap">
-            <pixmap resource="images.qrc">:/images/med_pic.png</pixmap>
-           </property>
            <property name="scaledContents">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -445,7 +442,7 @@
         </property>
         <property name="font">
          <font>
-          <family>Microsoft Tai Le</family>
+          <family>微软雅黑</family>
           <pointsize>-1</pointsize>
          </font>
         </property>
@@ -493,6 +490,12 @@ QPushButton:pressed {
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
     background-color: #0078d7;
@@ -534,8 +537,13 @@ QPushButton:pressed {
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <customwidgets>
+  <customwidget>
+   <class>scaled_pixmap_label</class>
+   <extends>QLabel</extends>
+   <header>scaled_pixmap_label.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
  <connections/>
 </ui>

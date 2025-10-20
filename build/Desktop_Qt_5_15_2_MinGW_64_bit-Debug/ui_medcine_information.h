@@ -17,6 +17,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "scaled_pixmap_label.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -32,7 +33,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QWidget *widget_4;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label;
+    scaled_pixmap_label *label_pic;
     QSpacerItem *verticalSpacer;
     QWidget *widget_5;
     QVBoxLayout *verticalLayout_3;
@@ -111,18 +112,17 @@ public:
         verticalLayout_2 = new QVBoxLayout(widget_4);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(50, -1, 50, -1);
-        label = new QLabel(widget_4);
-        label->setObjectName(QString::fromUtf8("label"));
+        label_pic = new scaled_pixmap_label(widget_4);
+        label_pic->setObjectName(QString::fromUtf8("label_pic"));
         QSizePolicy sizePolicy1(QSizePolicy::Ignored, QSizePolicy::Ignored);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy1);
-        label->setPixmap(QPixmap(QString::fromUtf8(":/images/med_pic.png")));
-        label->setScaledContents(true);
-        label->setAlignment(Qt::AlignCenter);
+        sizePolicy1.setHeightForWidth(label_pic->sizePolicy().hasHeightForWidth());
+        label_pic->setSizePolicy(sizePolicy1);
+        label_pic->setScaledContents(false);
+        label_pic->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(label);
+        verticalLayout_2->addWidget(label_pic);
 
         verticalSpacer = new QSpacerItem(20, 204, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
@@ -306,7 +306,7 @@ public:
         sizePolicy2.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy2);
         QFont font3;
-        font3.setFamily(QString::fromUtf8("Microsoft Tai Le"));
+        font3.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         pushButton_2->setFont(font3);
         pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #0078d7;\n"
@@ -335,6 +335,7 @@ public:
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
         sizePolicy2.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
         pushButton_3->setSizePolicy(sizePolicy2);
+        pushButton_3->setFont(font3);
         pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #0078d7;\n"
 "    color: white;\n"
@@ -379,7 +380,7 @@ public:
     {
         medcine_information->setWindowTitle(QCoreApplication::translate("medcine_information", "Form", nullptr));
         pushButton->setText(QCoreApplication::translate("medcine_information", "\350\277\224\345\233\236", nullptr));
-        label->setText(QString());
+        label_pic->setText(QString());
         label_2->setText(QCoreApplication::translate("medcine_information", "\346\212\227\347\227\205\346\257\222\345\217\243\346\234\215\346\266\262", nullptr));
         label_3->setText(QCoreApplication::translate("medcine_information", "\347\224\250\344\272\216\347\227\205\346\257\222\346\204\237\345\206\222\345\274\225\350\265\267\347\232\204\345\244\264\347\227\233\343\200\201\345\217\221\347\203\255\343\200\202", nullptr));
         label_6->setText(QCoreApplication::translate("medcine_information", "\350\215\257\345\223\201\346\225\260\351\207\217:", nullptr));

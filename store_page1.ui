@@ -74,72 +74,31 @@
        <bold>false</bold>
       </font>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,4,2">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
       <property name="spacing">
        <number>0</number>
       </property>
       <property name="leftMargin">
-       <number>0</number>
+       <number>100</number>
       </property>
       <property name="topMargin">
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>100</number>
       </property>
       <property name="bottomMargin">
        <number>20</number>
       </property>
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="scaled_pixmap_label" name="label_2">
         <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="images.qrc">:/images/store_page1.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
+         <string>TextLabel</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
-        <property name="wordWrap">
-         <bool>false</bool>
-        </property>
        </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </widget>
@@ -284,8 +243,13 @@ QPushButton:pressed {
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <customwidgets>
+  <customwidget>
+   <class>scaled_pixmap_label</class>
+   <extends>QLabel</extends>
+   <header>scaled_pixmap_label.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
  <connections/>
 </ui>

@@ -24,6 +24,7 @@ SOURCES += \
     med_list.cpp \
     medcine_information.cpp \
     mytimeedit.cpp \
+    scaled_pixmap_label.cpp \
     signal_route.cpp \
     store_page.cpp \
     store_page1.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     med_list.h \
     medcine_information.h \
     mytimeedit.h \
+    scaled_pixmap_label.h \
     signal_route.h \
     store_page.h \
     store_page1.h \

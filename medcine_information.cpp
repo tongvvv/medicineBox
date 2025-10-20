@@ -6,6 +6,8 @@ medcine_information::medcine_information(QWidget *parent)
     , ui(new Ui::medcine_information)
 {
     ui->setupUi(this);
+    QImage image(":/images/med_pic.png");
+    ui->label_pic->setPixmap(QPixmap::fromImage(image));
 }
 
 medcine_information::~medcine_information()

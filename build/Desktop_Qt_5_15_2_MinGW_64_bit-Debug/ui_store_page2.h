@@ -16,6 +16,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "scaled_pixmap_label.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -28,7 +29,7 @@ public:
     QLabel *label;
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_2;
+    scaled_pixmap_label *label_2;
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *next;
@@ -69,13 +70,12 @@ public:
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(50, 0, 0, 40);
-        label_2 = new QLabel(widget_2);
+        label_2 = new scaled_pixmap_label(widget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         QFont font1;
         font1.setPointSize(14);
         label_2->setFont(font1);
         label_2->setStyleSheet(QString::fromUtf8(""));
-        label_2->setPixmap(QPixmap(QString::fromUtf8(":/images/store_page2.png")));
         label_2->setScaledContents(false);
         label_2->setAlignment(Qt::AlignCenter);
         label_2->setWordWrap(false);
