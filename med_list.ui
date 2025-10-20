@@ -294,8 +294,11 @@
        <property name="bottomMargin">
         <number>20</number>
        </property>
-       <property name="spacing">
+       <property name="horizontalSpacing">
         <number>50</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>30</number>
        </property>
       </layout>
      </widget>

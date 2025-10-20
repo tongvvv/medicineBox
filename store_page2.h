@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::store_page2 *ui;
+
 };
 
 #endif // STORE_PAGE2_H

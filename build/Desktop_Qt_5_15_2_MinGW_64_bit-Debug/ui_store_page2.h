@@ -37,7 +37,7 @@ public:
     {
         if (store_page2->objectName().isEmpty())
             store_page2->setObjectName(QString::fromUtf8("store_page2"));
-        store_page2->resize(789, 670);
+        store_page2->resize(814, 676);
         verticalLayout = new QVBoxLayout(store_page2);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -52,7 +52,7 @@ public:
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font.setPointSize(13);
+        font.setPointSize(14);
         font.setBold(true);
         label->setFont(font);
         label->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
@@ -68,15 +68,21 @@ public:
         horizontalLayout_2 = new QHBoxLayout(widget_2);
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(50, 10, 50, 40);
+        horizontalLayout_2->setContentsMargins(50, 0, 0, 40);
         label_2 = new QLabel(widget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        QFont font1;
+        font1.setPointSize(14);
+        label_2->setFont(font1);
+        label_2->setStyleSheet(QString::fromUtf8(""));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/images/store_page2.png")));
         label_2->setScaledContents(false);
         label_2->setAlignment(Qt::AlignCenter);
+        label_2->setWordWrap(false);
 
         horizontalLayout_2->addWidget(label_2);
 
+        horizontalLayout_2->setStretch(0, 10);
 
         verticalLayout->addWidget(widget_2);
 
@@ -92,10 +98,10 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(next->sizePolicy().hasHeightForWidth());
         next->setSizePolicy(sizePolicy);
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font1.setPointSize(16);
-        next->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font2.setPointSize(16);
+        next->setFont(font2);
         next->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #0078d7;\n"
 "    color: white;\n"

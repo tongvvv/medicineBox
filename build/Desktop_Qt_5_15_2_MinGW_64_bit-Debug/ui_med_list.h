@@ -194,9 +194,10 @@ public:
 "	background: transparent;\n"
 "}"));
         med_card_gridLayout = new QGridLayout(scrollAreaWidgetContents);
-        med_card_gridLayout->setSpacing(50);
         med_card_gridLayout->setObjectName(QString::fromUtf8("med_card_gridLayout"));
         med_card_gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        med_card_gridLayout->setHorizontalSpacing(50);
+        med_card_gridLayout->setVerticalSpacing(30);
         med_card_gridLayout->setContentsMargins(20, 20, 20, 20);
         scrollArea->setWidget(scrollAreaWidgetContents);
 

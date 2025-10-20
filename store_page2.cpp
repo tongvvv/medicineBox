@@ -12,3 +12,5 @@ store_page2::~store_page2()
 {
     delete ui;
 }
+
+
