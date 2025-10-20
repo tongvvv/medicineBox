@@ -31,6 +31,8 @@ private slots:
 
     void on_card_get_med_clicked();
 
+    void on_card_plan_clicked();
+
 private:
     void handleNormalReturn();
 

@@ -26,6 +26,7 @@ private slots:
     void on_more_freopt_clicked();
     void on_more_timeopt_clicked();
     void onTimeCountClicked(bool checked);
+
 private:
     QPushButton* addFrequencyButton(const QString &text = "");
     Ui::store_page3 *ui;

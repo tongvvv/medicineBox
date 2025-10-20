@@ -54,7 +54,7 @@ public:
         verticalLayout = new QVBoxLayout(med_list);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(25, 17, 25, 17);
+        verticalLayout->setContentsMargins(40, 17, 40, 17);
         widget = new QWidget(med_list);
         widget->setObjectName(QString::fromUtf8("widget"));
         horizontalLayout = new QHBoxLayout(widget);
@@ -187,17 +187,16 @@ public:
         scrollArea->setAlignment(Qt::AlignCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 950, 430));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 920, 430));
         scrollAreaWidgetContents->setAutoFillBackground(false);
         scrollAreaWidgetContents->setStyleSheet(QString::fromUtf8("QWidget#scrollAreaWidgetContents\n"
 "{\n"
 "	background: transparent;\n"
 "}"));
         med_card_gridLayout = new QGridLayout(scrollAreaWidgetContents);
+        med_card_gridLayout->setSpacing(50);
         med_card_gridLayout->setObjectName(QString::fromUtf8("med_card_gridLayout"));
         med_card_gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
-        med_card_gridLayout->setHorizontalSpacing(30);
-        med_card_gridLayout->setVerticalSpacing(50);
         med_card_gridLayout->setContentsMargins(20, 20, 20, 20);
         scrollArea->setWidget(scrollAreaWidgetContents);
 

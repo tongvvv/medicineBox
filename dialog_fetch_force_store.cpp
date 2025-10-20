@@ -34,6 +34,7 @@ void dialog_fetch_force_store::on_change_plan_clicked()
 //不修改，直接存入
 void dialog_fetch_force_store::on_force_store_clicked()
 {
+    emit signal_route::instance()->switchToPage("force_store");
     this->accept();
 }
 

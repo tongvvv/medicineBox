@@ -69,7 +69,7 @@ public:
     {
         if (medcine_information->objectName().isEmpty())
             medcine_information->setObjectName(QString::fromUtf8("medcine_information"));
-        medcine_information->resize(1000, 625);
+        medcine_information->resize(833, 663);
         verticalLayout = new QVBoxLayout(medcine_information);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));

@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "change_plan.h"
+#include "change_plan_confirm.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     StorePage = new store_page(this);
     ui->stackedWidget->addWidget(StorePage);
+
+    qDebug() << size();
 }
 
 MainWindow::~MainWindow()
@@ -56,8 +60,73 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
         ui->stackedWidget->setCurrentWidget(StorePage);
         StorePage->change_page1();
     }
-    else if(pageName == "change_plan") //修改用药计划， 这个页面每次都新建
+    else if(pageName == "change_plan") //放错药物或识别错误时的修改用药计划界面， 这个页面每次都新建, 但是得记得释放内存
     {
+        auto *widget = new change_plan(this);
+        ui->stackedWidget->addWidget(widget);
+        ui->stackedWidget->setCurrentWidget(widget);
+
+        connect(widget->findChild<QPushButton*>("next"), &QPushButton::clicked, [=](){
+            auto *wt = new change_plan_confirm(this);
+            wt->set_change(true);
+            ui->stackedWidget->addWidget(wt);
+            ui->stackedWidget->setCurrentWidget(wt);
+            connect(wt->findChild<QPushButton*>("confirm_store"), &QPushButton::clicked, [=](){
+                ui->stackedWidget->removeWidget(widget);
+                ui->stackedWidget->removeWidget(wt);
+                widget->deleteLater();
+                wt->deleteLater();
+            });
+        });
+
+        connect(widget->findChild<QPushButton*>("skip"), &QPushButton::clicked, [=](){
+            auto *wt = new change_plan_confirm(this);
+            wt->set_change(true);
+            ui->stackedWidget->addWidget(wt);
+            ui->stackedWidget->setCurrentWidget(wt);
+            connect(wt->findChild<QPushButton*>("confirm_store"), &QPushButton::clicked, [=](){
+                ui->stackedWidget->removeWidget(widget);
+                ui->stackedWidget->removeWidget(wt);
+                widget->deleteLater();
+                wt->deleteLater();
+            });
+        });
+    }
+    else if(pageName == "force_store")
+    {
+        auto *wt = new change_plan_confirm(this);
+        wt->set_change(true);
+        ui->stackedWidget->addWidget(wt);
+        ui->stackedWidget->setCurrentWidget(wt);
+        connect(wt->findChild<QPushButton*>("confirm_store"), &QPushButton::clicked, [=](){
+            ui->stackedWidget->removeWidget(wt);
+            wt->deleteLater();
+        });
+    }
+    else if(pageName == "set_plan")  //这里是卡片的服药计划按钮按下去后的界面
+    {
+        auto *widget = new change_plan(this);
+        widget->findChild<QPushButton*>("next")->setText("确定");
+        widget->findChild<QPushButton*>("skip")->setText("返回");
+        ui->stackedWidget->addWidget(widget);
+        ui->stackedWidget->setCurrentWidget(widget);
+
+        //确定修改计划
+        connect(widget->findChild<QPushButton*>("next"), &QPushButton::clicked, [=](){
+            /*
+                这里应该添加数据处理的代码。
+            */
+            ui->stackedWidget->removeWidget(widget);
+            widget->deleteLater();
+            emit signal_route::instance()->switchToPage("med_list");
+        });
+
+        //返回
+        connect(widget->findChild<QPushButton*>("skip"), &QPushButton::clicked, [=](){
+            ui->stackedWidget->removeWidget(widget);
+            widget->deleteLater();
+            emit signal_route::instance()->switchToPage("med_list");
+        });
 
     }
 }

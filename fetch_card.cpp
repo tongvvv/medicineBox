@@ -4,7 +4,6 @@
 #include "utils.h"
 #include "dialog_fetch_nomed.h"
 #include "dialog_fetch_wrong_med.h"
-#include "dialog_fetch_force_store.h"
 
 fetch_card::fetch_card(QWidget *parent, unsigned short num)
     : QWidget(parent)
@@ -179,7 +178,7 @@ void fetch_card::handleWrongReturn()
     //点了继续存入
     if(ret == QDialog::Accepted)
     {
-        //处理代码在对话框内部
+        //处理代码在对话框内部，这里不用管
     }
 
     dialog->deleteLater();
@@ -187,5 +186,28 @@ void fetch_card::handleWrongReturn()
 
 void fetch_card::handleRecognitionError()
 {
+    auto *dialog = createDialog<dialog_fetch_wrong_med>();
+    dialog->set_content("提醒！","本次放回药物名无法识别！");
+    int ret = dialog->exec();
+    //说明点了弹出药盒，重新放
+    if(ret == QDialog::Rejected)
+    {
+        auto *dialog_menu = createDialog<dialog_fetch_med>();
+        dialog_menu->set_content("取药提醒","请取出无法识别的药物，放入药物YYYYY","回收药盒",true);
+        handle_menu(dialog_menu);
+        dialog_menu->deleteLater(); //调用完要删除对话框
+    }
+    //点了继续存入
+    if(ret == QDialog::Accepted)
+    {
+        //处理代码在对话框内部，这里不用管
+    }
 
+    dialog->deleteLater();
 }
+
+void fetch_card::on_card_plan_clicked()
+{
+    emit signal_route::instance()->switchToPage("set_plan");
+}
+

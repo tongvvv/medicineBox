@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>871</width>
     <height>433</height>
    </rect>
   </property>
@@ -176,7 +176,7 @@
       <item>
        <widget class="QPushButton" name="next">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -232,7 +232,7 @@ QPushButton:pressed {
       <item>
        <widget class="QPushButton" name="skip">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -250,7 +250,7 @@ QPushButton:pressed {
     color: white;
     border-radius: 10px;
     border: none;
-    padding: 4px 8px;
+    padding: 8px 16px;
 }
 
 QPushButton:hover {

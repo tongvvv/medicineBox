@@ -45,7 +45,7 @@ public:
     {
         if (dialog_store_success->objectName().isEmpty())
             dialog_store_success->setObjectName(QString::fromUtf8("dialog_store_success"));
-        dialog_store_success->resize(474, 291);
+        dialog_store_success->resize(494, 303);
         dialog_store_success->setStyleSheet(QString::fromUtf8(""));
         verticalLayout = new QVBoxLayout(dialog_store_success);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -157,7 +157,7 @@ public:
 
         pushButton = new QPushButton(widget_3);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());

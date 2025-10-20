@@ -16,11 +16,14 @@ public:
     explicit store_page4(QWidget *parent = nullptr);
     ~store_page4();
 
+    void setChange(bool change);
+
 private slots:
     void on_confirm_store_clicked();
 
 private:
     Ui::store_page4 *ui;
+    bool m_change;
 };
 
 #endif // STORE_PAGE4_H

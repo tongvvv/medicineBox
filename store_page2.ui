@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1229</width>
-    <height>537</height>
+    <width>789</width>
+    <height>670</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,13 +18,13 @@
     <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>350</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
     <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>350</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
     <number>26</number>
@@ -97,7 +97,10 @@
          <pixmap resource="images.qrc">:/images/store_page2.png</pixmap>
         </property>
         <property name="scaledContents">
-         <bool>true</bool>
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -108,13 +111,13 @@
     <widget class="QWidget" name="widget_3" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <property name="leftMargin">
-       <number>50</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>50</number>
+       <number>0</number>
       </property>
       <property name="bottomMargin">
        <number>30</number>
@@ -122,7 +125,7 @@
       <item>
        <widget class="QPushButton" name="next">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -139,7 +142,7 @@
     color: white;
     border-radius: 10px;
     border: none;
-    padding: 8px 16px;
+    padding: 8px 40px;
 }
 
 QPushButton:hover {

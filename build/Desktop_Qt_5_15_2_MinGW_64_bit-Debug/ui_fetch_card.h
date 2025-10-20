@@ -54,13 +54,13 @@ public:
     {
         if (fetch_card->objectName().isEmpty())
             fetch_card->setObjectName(QString::fromUtf8("fetch_card"));
-        fetch_card->resize(442, 320);
+        fetch_card->resize(424, 277);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(fetch_card->sizePolicy().hasHeightForWidth());
         fetch_card->setSizePolicy(sizePolicy);
-        fetch_card->setMinimumSize(QSize(340, 300));
+        fetch_card->setMinimumSize(QSize(300, 246));
         fetch_card->setAutoFillBackground(false);
         fetch_card->setStyleSheet(QString::fromUtf8("#fetch_card{\n"
 "	\n"

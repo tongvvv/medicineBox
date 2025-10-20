@@ -40,7 +40,6 @@ public:
     QWidget *widget_11;
     QVBoxLayout *verticalLayout_6;
     QLabel *label_9;
-    QSpacerItem *verticalSpacer;
     QWidget *widget_4;
     QVBoxLayout *verticalLayout_3;
     QWidget *widget_8;
@@ -50,7 +49,6 @@ public:
     QWidget *widget_12;
     QVBoxLayout *verticalLayout_7;
     QLabel *label_10;
-    QSpacerItem *verticalSpacer_2;
     QWidget *widget_5;
     QVBoxLayout *verticalLayout_4;
     QWidget *widget_9;
@@ -60,7 +58,6 @@ public:
     QWidget *widget_13;
     QVBoxLayout *verticalLayout_8;
     QLabel *label_11;
-    QSpacerItem *verticalSpacer_3;
     QWidget *widget_6;
     QVBoxLayout *verticalLayout_5;
     QWidget *widget_10;
@@ -73,7 +70,7 @@ public:
     {
         if (store_page->objectName().isEmpty())
             store_page->setObjectName(QString::fromUtf8("store_page"));
-        store_page->resize(1000, 625);
+        store_page->resize(862, 603);
         verticalLayout = new QVBoxLayout(store_page);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -108,7 +105,7 @@ public:
         horizontalLayout_2 = new QHBoxLayout(widget_2);
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(30, 0, 30, 0);
+        horizontalLayout_2->setContentsMargins(30, 0, 30, -1);
         widget_3 = new QWidget(widget_2);
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
         verticalLayout_2 = new QVBoxLayout(widget_3);
@@ -171,12 +168,7 @@ public:
 
         verticalLayout_6->addWidget(label_9);
 
-        verticalSpacer = new QSpacerItem(20, 54, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_6->addItem(verticalSpacer);
-
         verticalLayout_6->setStretch(0, 5);
-        verticalLayout_6->setStretch(1, 4);
 
         horizontalLayout_2->addWidget(widget_11);
 
@@ -236,12 +228,7 @@ public:
 
         verticalLayout_7->addWidget(label_10);
 
-        verticalSpacer_2 = new QSpacerItem(20, 54, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_7->addItem(verticalSpacer_2);
-
         verticalLayout_7->setStretch(0, 5);
-        verticalLayout_7->setStretch(1, 4);
 
         horizontalLayout_2->addWidget(widget_12);
 
@@ -301,12 +288,7 @@ public:
 
         verticalLayout_8->addWidget(label_11);
 
-        verticalSpacer_3 = new QSpacerItem(20, 54, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_8->addItem(verticalSpacer_3);
-
         verticalLayout_8->setStretch(0, 5);
-        verticalLayout_8->setStretch(1, 4);
 
         horizontalLayout_2->addWidget(widget_13);
 
@@ -359,7 +341,7 @@ public:
         verticalLayout->addWidget(stackedWidget);
 
         verticalLayout->setStretch(0, 2);
-        verticalLayout->setStretch(1, 6);
+        verticalLayout->setStretch(1, 4);
         verticalLayout->setStretch(2, 18);
 
         retranslateUi(store_page);

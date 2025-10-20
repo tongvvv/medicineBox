@@ -37,11 +37,11 @@ public:
     {
         if (store_page2->objectName().isEmpty())
             store_page2->setObjectName(QString::fromUtf8("store_page2"));
-        store_page2->resize(1229, 537);
+        store_page2->resize(789, 670);
         verticalLayout = new QVBoxLayout(store_page2);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(350, 0, 350, 26);
+        verticalLayout->setContentsMargins(0, 0, 0, 26);
         widget = new QWidget(store_page2);
         widget->setObjectName(QString::fromUtf8("widget"));
         horizontalLayout = new QHBoxLayout(widget);
@@ -72,7 +72,8 @@ public:
         label_2 = new QLabel(widget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/images/store_page2.png")));
-        label_2->setScaledContents(true);
+        label_2->setScaledContents(false);
+        label_2->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_2->addWidget(label_2);
 
@@ -83,10 +84,10 @@ public:
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
         horizontalLayout_3 = new QHBoxLayout(widget_3);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(50, 0, 50, 30);
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 30);
         next = new QPushButton(widget_3);
         next->setObjectName(QString::fromUtf8("next"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(next->sizePolicy().hasHeightForWidth());
@@ -100,7 +101,7 @@ public:
 "    color: white;\n"
 "    border-radius: 10px;\n"
 "    border: none;\n"
-"    padding: 8px 16px;\n"
+"    padding: 8px 40px;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"

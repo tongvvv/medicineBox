@@ -15,6 +15,9 @@ public:
     explicit dialog_fetch_wrong_med(QWidget *parent = nullptr);
     ~dialog_fetch_wrong_med();
 
+
+
+    void set_content(const QString& title, const QString& content);
 private slots:
     void on_again_clicked();
 

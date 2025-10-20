@@ -42,7 +42,7 @@ public:
     {
         if (store_page1->objectName().isEmpty())
             store_page1->setObjectName(QString::fromUtf8("store_page1"));
-        store_page1->resize(1000, 433);
+        store_page1->resize(871, 433);
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font.setPointSize(14);
@@ -125,7 +125,7 @@ public:
 
         next = new QPushButton(widget);
         next->setObjectName(QString::fromUtf8("next"));
-        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(next->sizePolicy().hasHeightForWidth());
@@ -168,7 +168,7 @@ public:
 "    color: white;\n"
 "    border-radius: 10px;\n"
 "    border: none;\n"
-"    padding: 4px 8px;\n"
+"    padding: 8px 16px;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"

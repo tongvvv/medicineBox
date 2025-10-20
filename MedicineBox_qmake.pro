@@ -9,6 +9,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    change_plan.cpp \
+    change_plan_confirm.cpp \
     data_structs.cpp \
     dialog_fetch_force_store.cpp \
     dialog_fetch_med.cpp \
@@ -31,6 +33,8 @@ SOURCES += \
     switchcontrol.cpp
 
 HEADERS += \
+    change_plan.h \
+    change_plan_confirm.h \
     data_structs.h \
     dialog_fetch_force_store.h \
     dialog_fetch_med.h \
@@ -53,6 +57,8 @@ HEADERS += \
     utils.h
 
 FORMS += \
+    change_plan.ui \
+    change_plan_confirm.ui \
     dialog_fetch_force_store.ui \
     dialog_fetch_med.ui \
     dialog_fetch_nomed.ui \

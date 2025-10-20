@@ -195,3 +195,5 @@ void store_page3::onTimeCountClicked(bool checked)
 
     ui->layout_eat_time->update();
 }
+
+

@@ -48,7 +48,7 @@ public:
     {
         if (dialog_fetch_wrong_med->objectName().isEmpty())
             dialog_fetch_wrong_med->setObjectName(QString::fromUtf8("dialog_fetch_wrong_med"));
-        dialog_fetch_wrong_med->resize(400, 300);
+        dialog_fetch_wrong_med->resize(387, 289);
         verticalLayout = new QVBoxLayout(dialog_fetch_wrong_med);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 10, 10);

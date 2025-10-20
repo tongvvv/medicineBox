@@ -35,10 +35,10 @@ void dialog_fetch_med::setupMenu(void)
         "    padding: 0px;"
         "}"
         "QMenu::item {"
-        "    color: #666666;"
-        "    padding: 4px 4px;"
+        "    padding:11px 32px;"
+        "    color:rgba(51,51,51,1);"
+        "    font-size:16px;"
         "    border-bottom: 1px solid #f0f0f0;"
-        "    font-size: 14px;"
         "}"
         "QMenu::item:last {"
         "    border-bottom: none;" // 最后一项无边框

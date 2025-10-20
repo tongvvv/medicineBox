@@ -53,4 +53,9 @@ void dialog_fetch_wrong_med::on_force_store_clicked()
     dialog->deleteLater(); //调用完要删除对话框
 }
 
+void dialog_fetch_wrong_med::set_content(const QString& title, const QString& content)
+{
+    ui->title->setText(title);
+    ui->content->setText(content);
+}
 

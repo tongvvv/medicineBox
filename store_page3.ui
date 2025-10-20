@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>433</height>
+    <width>915</width>
+    <height>564</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="2,2,2,2,3,2">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="2,2,2,2,2,3,2">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -30,6 +30,76 @@
     <number>50</number>
    </property>
    <item>
+    <widget class="QWidget" name="widget_10" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,2,6">
+      <property name="spacing">
+       <number>7</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>14</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>药品名称</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_2">
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">padding: 4px,8px;
+border-radius: 8px;
+
+</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_9">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QWidget" name="widget" native="true">
      <property name="font">
       <font>
@@ -38,6 +108,9 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2,6">
       <property name="spacing">
+       <number>7</number>
+      </property>
+      <property name="leftMargin">
        <number>0</number>
       </property>
       <property name="topMargin">
@@ -51,6 +124,12 @@
       </property>
       <item>
        <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <family>微软雅黑</family>
@@ -136,6 +215,9 @@ border-radius: 8px;
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -438,6 +520,9 @@ background-color: rgb(200, 255, 255);
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -546,6 +631,9 @@ QCalendarWidget QToolButton {
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -567,8 +655,8 @@ QCalendarWidget QToolButton {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>533</width>
-           <height>58</height>
+           <width>458</width>
+           <height>69</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -858,8 +946,8 @@ background-color: rgb(200, 255, 255);
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>533</width>
-           <height>86</height>
+           <width>458</width>
+           <height>102</height>
           </rect>
          </property>
          <property name="styleSheet">

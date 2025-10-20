@@ -18,13 +18,13 @@
     <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>25</number>
+    <number>40</number>
    </property>
    <property name="topMargin">
     <number>17</number>
    </property>
    <property name="rightMargin">
-    <number>25</number>
+    <number>40</number>
    </property>
    <property name="bottomMargin">
     <number>17</number>
@@ -265,7 +265,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>950</width>
+        <width>920</width>
         <height>430</height>
        </rect>
       </property>
@@ -294,10 +294,7 @@
        <property name="bottomMargin">
         <number>20</number>
        </property>
-       <property name="horizontalSpacing">
-        <number>30</number>
-       </property>
-       <property name="verticalSpacing">
+       <property name="spacing">
         <number>50</number>
        </property>
       </layout>

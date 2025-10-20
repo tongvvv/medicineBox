@@ -44,7 +44,7 @@ public:
     {
         if (store_page4->objectName().isEmpty())
             store_page4->setObjectName(QString::fromUtf8("store_page4"));
-        store_page4->resize(1000, 433);
+        store_page4->resize(838, 518);
         verticalLayout = new QVBoxLayout(store_page4);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
