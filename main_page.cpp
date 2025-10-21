@@ -32,3 +32,9 @@ void main_page::on_main_store_clicked()
     emit signal_route::instance()->switchToPage("store_page");
 }
 
+
+void main_page::on_special_med_clicked()
+{
+    emit signal_route::instance()->switchToPage("special_med_inform");
+}
+

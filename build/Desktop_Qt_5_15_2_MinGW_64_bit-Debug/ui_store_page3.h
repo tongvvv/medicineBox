@@ -83,8 +83,8 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QPushButton *skip;
     QSpacerItem *horizontalSpacer_6;
-    QButtonGroup *button;
     QButtonGroup *button_fre;
+    QButtonGroup *button;
 
     void setupUi(QWidget *store_page3)
     {

@@ -53,7 +53,7 @@ public:
     {
         if (main_page->objectName().isEmpty())
             main_page->setObjectName(QString::fromUtf8("main_page"));
-        main_page->resize(1000, 625);
+        main_page->resize(903, 665);
         verticalLayout = new QVBoxLayout(main_page);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         widget = new QWidget(main_page);
@@ -63,6 +63,11 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         main_time = new QLabel(widget);
         main_time->setObjectName(QString::fromUtf8("main_time"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(main_time->sizePolicy().hasHeightForWidth());
+        main_time->setSizePolicy(sizePolicy);
         QFont font;
         font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font.setPointSize(14);
@@ -80,11 +85,11 @@ public:
 
         med_list = new QPushButton(widget);
         med_list->setObjectName(QString::fromUtf8("med_list"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(med_list->sizePolicy().hasHeightForWidth());
-        med_list->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(med_list->sizePolicy().hasHeightForWidth());
+        med_list->setSizePolicy(sizePolicy1);
         QFont font1;
         font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font1.setPointSize(15);
@@ -95,8 +100,8 @@ public:
 
         use_record = new QPushButton(widget);
         use_record->setObjectName(QString::fromUtf8("use_record"));
-        sizePolicy.setHeightForWidth(use_record->sizePolicy().hasHeightForWidth());
-        use_record->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(use_record->sizePolicy().hasHeightForWidth());
+        use_record->setSizePolicy(sizePolicy1);
         QFont font2;
         font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font2.setPointSize(15);
@@ -106,24 +111,24 @@ public:
 
         med_plan = new QPushButton(widget);
         med_plan->setObjectName(QString::fromUtf8("med_plan"));
-        sizePolicy.setHeightForWidth(med_plan->sizePolicy().hasHeightForWidth());
-        med_plan->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(med_plan->sizePolicy().hasHeightForWidth());
+        med_plan->setSizePolicy(sizePolicy1);
         med_plan->setFont(font2);
 
         horizontalLayout->addWidget(med_plan);
 
         settings = new QPushButton(widget);
         settings->setObjectName(QString::fromUtf8("settings"));
-        sizePolicy.setHeightForWidth(settings->sizePolicy().hasHeightForWidth());
-        settings->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(settings->sizePolicy().hasHeightForWidth());
+        settings->setSizePolicy(sizePolicy1);
         settings->setFont(font2);
 
         horizontalLayout->addWidget(settings);
 
         special_med = new QPushButton(widget);
         special_med->setObjectName(QString::fromUtf8("special_med"));
-        sizePolicy.setHeightForWidth(special_med->sizePolicy().hasHeightForWidth());
-        special_med->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(special_med->sizePolicy().hasHeightForWidth());
+        special_med->setSizePolicy(sizePolicy1);
         special_med->setFont(font2);
 
         horizontalLayout->addWidget(special_med);
@@ -157,11 +162,11 @@ public:
 
         main_store = new QPushButton(widget_3);
         main_store->setObjectName(QString::fromUtf8("main_store"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(main_store->sizePolicy().hasHeightForWidth());
-        main_store->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(main_store->sizePolicy().hasHeightForWidth());
+        main_store->setSizePolicy(sizePolicy2);
         main_store->setAutoFillBackground(false);
         main_store->setStyleSheet(QString::fromUtf8("QPushButton#main_store\n"
 "{\n"
@@ -199,8 +204,8 @@ public:
 
         main_fetch = new QPushButton(widget_4);
         main_fetch->setObjectName(QString::fromUtf8("main_fetch"));
-        sizePolicy1.setHeightForWidth(main_fetch->sizePolicy().hasHeightForWidth());
-        main_fetch->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(main_fetch->sizePolicy().hasHeightForWidth());
+        main_fetch->setSizePolicy(sizePolicy2);
         main_fetch->setStyleSheet(QString::fromUtf8("#main_fetch\n"
 "{\n"
 "    border-radius: 50%;  \n"

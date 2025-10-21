@@ -1120,7 +1120,7 @@ QPushButton:pressed {
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="button"/>
   <buttongroup name="button_fre"/>
+  <buttongroup name="button"/>
  </buttongroups>
 </ui>

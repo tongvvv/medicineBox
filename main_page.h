@@ -23,6 +23,8 @@ private slots:
 
     void on_main_store_clicked();
 
+    void on_special_med_clicked();
+
 private:
     Ui::main_page *ui;
     signal_route *m_router;

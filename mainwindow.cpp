@@ -129,4 +129,30 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
         });
 
     }
+    else if(pageName == "special_med_inform")
+    {
+        auto *widget = new change_plan(this);
+        widget->findChild<QPushButton*>("next")->setText("确定");
+        widget->findChild<QPushButton*>("skip")->setText("返回");
+        widget->findChild<QLabel*>("label")->setText("特殊药品提醒");
+        ui->stackedWidget->addWidget(widget);
+        ui->stackedWidget->setCurrentWidget(widget);
+
+        //确定修改计划
+        connect(widget->findChild<QPushButton*>("next"), &QPushButton::clicked, [=](){
+            /*
+                这里应该添加数据处理的代码。
+            */
+            ui->stackedWidget->removeWidget(widget);
+            widget->deleteLater();
+            emit signal_route::instance()->switchToPage("main_page");
+        });
+
+        //返回
+        connect(widget->findChild<QPushButton*>("skip"), &QPushButton::clicked, [=](){
+            ui->stackedWidget->removeWidget(widget);
+            widget->deleteLater();
+            emit signal_route::instance()->switchToPage("main_page");
+        });
+    }
 }
