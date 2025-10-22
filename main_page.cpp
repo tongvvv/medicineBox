@@ -38,3 +38,9 @@ void main_page::on_special_med_clicked()
     emit signal_route::instance()->switchToPage("special_med_inform");
 }
 
+
+void main_page::on_use_record_clicked()
+{
+    emit signal_route::instance()->switchToPage("usage_record");
+}
+

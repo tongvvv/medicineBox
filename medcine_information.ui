@@ -49,6 +49,9 @@
           <pointsize>15</pointsize>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true">padding: 6px 12px;</string>
+        </property>
         <property name="text">
          <string>返回</string>
         </property>

@@ -27,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
     StorePage = new store_page(this);
     ui->stackedWidget->addWidget(StorePage);
 
+    record = new usage_record(this);
+    ui->stackedWidget->addWidget(record);
+
     qDebug() << size();
 }
 
@@ -154,5 +157,9 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
             widget->deleteLater();
             emit signal_route::instance()->switchToPage("main_page");
         });
+    }
+    else if(pageName == "usage_record")
+    {
+        ui->stackedWidget->setCurrentWidget(record);
     }
 }

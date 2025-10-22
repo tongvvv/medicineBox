@@ -31,7 +31,8 @@ SOURCES += \
     store_page2.cpp \
     store_page3.cpp \
     store_page4.cpp \
-    switchcontrol.cpp
+    switchcontrol.cpp \
+    usage_record.cpp
 
 HEADERS += \
     change_plan.h \
@@ -56,6 +57,7 @@ HEADERS += \
     store_page3.h \
     store_page4.h \
     switchcontrol.h \
+    usage_record.h \
     utils.h
 
 FORMS += \
@@ -75,7 +77,8 @@ FORMS += \
     store_page1.ui \
     store_page2.ui \
     store_page3.ui \
-    store_page4.ui
+    store_page4.ui \
+    usage_record.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

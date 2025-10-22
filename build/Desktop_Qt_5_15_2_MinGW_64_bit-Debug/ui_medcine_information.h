@@ -92,6 +92,7 @@ public:
         QFont font;
         font.setPointSize(15);
         pushButton->setFont(font);
+        pushButton->setStyleSheet(QString::fromUtf8("padding: 6px 12px;"));
         pushButton->setIconSize(QSize(18, 12));
 
         horizontalLayout->addWidget(pushButton);

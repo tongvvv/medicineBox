@@ -110,8 +110,7 @@ dialog_fetch_med::~dialog_fetch_med()
 
 void dialog_fetch_med::on_toolButton_2_clicked()
 {
-    ret = 0;
-    this->close();
+
 }
 
 //这里是回收药盒的按钮， 应该要跳出一个菜单,  如果没有menu_flag标志，说明其他模块通过set_content用到了这个类。
@@ -135,3 +134,5 @@ void dialog_fetch_med::set_content(const QString& title, const QString& content,
     ui->recover_box->setText(button);
     menu_flag = ismenu;
 }
+
+
