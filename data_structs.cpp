@@ -10,3 +10,9 @@ data_manager* data_manager::instance()
 
     return &data;
 }
+
+void data_manager::setFontSize(GlobalFontSize size)
+{
+    fontSize = size;
+    emit fontSize_changed(fontSize);
+}

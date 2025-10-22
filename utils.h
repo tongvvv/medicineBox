@@ -35,4 +35,6 @@ struct table_content
     int        box;
 };
 
+enum class GlobalFontSize {SMALL, MEDIUM, BIG};
+
 #endif // UTILS_H
