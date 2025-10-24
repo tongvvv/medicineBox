@@ -24,7 +24,9 @@ SOURCES += \
     med_list.cpp \
     medcine_information.cpp \
     mytimeedit.cpp \
+    plan_card.cpp \
     scaled_pixmap_label.cpp \
+    settings.cpp \
     signal_route.cpp \
     store_page.cpp \
     store_page1.cpp \
@@ -32,6 +34,7 @@ SOURCES += \
     store_page3.cpp \
     store_page4.cpp \
     switchcontrol.cpp \
+    usage_plan.cpp \
     usage_record.cpp
 
 HEADERS += \
@@ -49,7 +52,9 @@ HEADERS += \
     med_list.h \
     medcine_information.h \
     mytimeedit.h \
+    plan_card.h \
     scaled_pixmap_label.h \
+    settings.h \
     signal_route.h \
     store_page.h \
     store_page1.h \
@@ -57,6 +62,7 @@ HEADERS += \
     store_page3.h \
     store_page4.h \
     switchcontrol.h \
+    usage_plan.h \
     usage_record.h \
     utils.h
 
@@ -73,11 +79,14 @@ FORMS += \
     mainwindow.ui \
     med_list.ui \
     medcine_information.ui \
+    plan_card.ui \
+    settings.ui \
     store_page.ui \
     store_page1.ui \
     store_page2.ui \
     store_page3.ui \
     store_page4.ui \
+    usage_plan.ui \
     usage_record.ui
 
 # Default rules for deployment.

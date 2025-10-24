@@ -27,6 +27,10 @@ private slots:
 
     void on_use_record_clicked();
 
+    void on_med_plan_clicked();
+
+    void on_settings_clicked();
+
 private:
     Ui::main_page *ui;
     signal_route *m_router;

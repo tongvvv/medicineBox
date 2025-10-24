@@ -29,6 +29,10 @@ private:
     signal_route *m_router;
     QList<fetch_card*> cards;
     bool m_state; //控制卡片显示不显示下面两个按钮
+
+    // QWidget interface
+protected:
+
 };
 
 #endif // MED_LIST_H

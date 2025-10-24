@@ -54,3 +54,4 @@ void med_list::on_back_mainpage_clicked()
     emit signal_route::instance()->switchToPage("main_page");
 }
 
+

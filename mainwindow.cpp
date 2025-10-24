@@ -30,6 +30,12 @@ MainWindow::MainWindow(QWidget *parent)
     record = new usage_record(this);
     ui->stackedWidget->addWidget(record);
 
+    useplan = new usage_plan(this);
+    ui->stackedWidget->addWidget(useplan);
+
+    sets = new settings(this);
+    ui->stackedWidget->addWidget(sets);
+
     qDebug() << size();
 }
 
@@ -161,5 +167,13 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     else if(pageName == "usage_record")
     {
         ui->stackedWidget->setCurrentWidget(record);
+    }
+    else if(pageName == "usage_plan")
+    {
+        ui->stackedWidget->setCurrentWidget(useplan);
+    }
+    else if(pageName == "settings")
+    {
+        ui->stackedWidget->setCurrentWidget(sets);
     }
 }

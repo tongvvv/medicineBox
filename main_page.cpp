@@ -44,3 +44,15 @@ void main_page::on_use_record_clicked()
     emit signal_route::instance()->switchToPage("usage_record");
 }
 
+
+void main_page::on_med_plan_clicked()
+{
+    emit signal_route::instance()->switchToPage("usage_plan");
+}
+
+
+void main_page::on_settings_clicked()
+{
+    emit signal_route::instance()->switchToPage("settings");
+}
+
