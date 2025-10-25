@@ -22,6 +22,11 @@ private:
 
     QPixmap m_pixmap;
 
+signals:
+    void PicClicked(QString sender);
+    // QWidget interface
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
 };
 
 #endif // SCALED_PIXMAP_LABEL_H

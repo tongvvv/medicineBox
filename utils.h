@@ -1,6 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include "qlocale.h"
 #include <QString>
 #include <QDateTime>
 
@@ -36,5 +37,7 @@ struct table_content
 };
 
 enum class GlobalFontSize {SMALL, MEDIUM, BIG};
+
+QString getFormattedDateTime();
 
 #endif // UTILS_H

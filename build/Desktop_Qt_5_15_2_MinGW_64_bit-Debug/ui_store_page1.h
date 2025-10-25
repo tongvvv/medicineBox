@@ -17,7 +17,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "scaled_pixmap_label.h"
+#include <scaled_pixmap_label.h>
 
 QT_BEGIN_NAMESPACE
 

@@ -177,3 +177,9 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
         ui->stackedWidget->setCurrentWidget(sets);
     }
 }
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    QMainWindow::resizeEvent(event);
+    qDebug() << size();
+}

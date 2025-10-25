@@ -6,6 +6,8 @@ main_page::main_page(QWidget *parent)
     , ui(new Ui::main_page)
 {
     ui->setupUi(this);
+
+    ui->main_time->setText(getFormattedDateTime());
 }
 
 main_page::~main_page()

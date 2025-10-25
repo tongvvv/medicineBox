@@ -63,6 +63,7 @@ public:
         widget->setObjectName(QString::fromUtf8("widget"));
         horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(-1, -1, -1, 0);
         label = new QLabel(widget);
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
@@ -88,12 +89,16 @@ public:
 
         widget_2 = new QWidget(settings);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        widget_2->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout_2 = new QHBoxLayout(widget_2);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(20, -1, 40, 10);
         widget_3 = new QWidget(widget_2);
         widget_3->setObjectName(QString::fromUtf8("widget_3"));
         verticalLayout_2 = new QVBoxLayout(widget_3);
+        verticalLayout_2->setSpacing(0);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, -1, 0);
         widget_5 = new QWidget(widget_3);
         widget_5->setObjectName(QString::fromUtf8("widget_5"));
         widget_5->setStyleSheet(QString::fromUtf8("#widget_5{\n"
@@ -198,6 +203,10 @@ public:
 
         stackedWidget = new QStackedWidget(widget_2);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
+        stackedWidget->setStyleSheet(QString::fromUtf8("QStackedWidget#stackedWidget{\n"
+"background-color: white;\n"
+"border: 	1px solid  rgb(86, 86, 86);\n"
+"}"));
 
         horizontalLayout_2->addWidget(stackedWidget);
 

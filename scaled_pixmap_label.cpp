@@ -31,3 +31,9 @@ void scaled_pixmap_label::updatePixmap()
         QLabel::setPixmap(scaled);
     }
 }
+
+void scaled_pixmap_label::mousePressEvent(QMouseEvent *event)
+{
+    QLabel::mousePressEvent(event);
+    emit PicClicked(this->objectName());
+}

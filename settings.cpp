@@ -15,6 +15,19 @@ settings::settings(QWidget *parent)
     connect(ui->emergency, &QPushButton::toggled, this, &settings::setting_selector);
 
     ui->wifi->setChecked(true);
+
+    m_wifi = new wifi_page(this);
+    ui->stackedWidget->addWidget(m_wifi);
+    ui->stackedWidget->setCurrentWidget(m_wifi);
+
+    m_basic = new basic_settings_page(this);
+    ui->stackedWidget->addWidget(m_basic);
+
+    m_inform = new inform_settings_page(this);
+    ui->stackedWidget->addWidget(m_inform);
+
+    m_emerg = new emergency_page(this);
+    ui->stackedWidget->addWidget(m_emerg);
 }
 
 settings::~settings()
@@ -24,6 +37,7 @@ settings::~settings()
 
 void settings::on_back_clicked()
 {
+    ui->wifi->setChecked(true);
     emit signal_route::instance()->switchToPage("main_page");
 }
 
@@ -36,18 +50,18 @@ void settings::setting_selector(bool checked)
 
     if(button->objectName() == "wifi")
     {
-        qDebug() << "wifi";
+        ui->stackedWidget->setCurrentWidget(m_wifi);
     }
     else if(button->objectName() == "basic")
     {
-        qDebug() << "basic";
+        ui->stackedWidget->setCurrentWidget(m_basic);
     }
     else if(button->objectName() == "inform")
     {
-        qDebug() << "inform";
+        ui->stackedWidget->setCurrentWidget(m_inform);
     }
     else if(button->objectName() == "emergency")
     {
-        qDebug() << "emergency";
+        ui->stackedWidget->setCurrentWidget(m_emerg);
     }
 }

@@ -39,5 +39,9 @@ private:
 private slots:
     void handleSwitchToPage(const QString &pageName);
 
+
+    // QWidget interface
+protected:
+    void resizeEvent(QResizeEvent *event);
 };
 #endif // MAINWINDOW_H

@@ -247,7 +247,7 @@ QPushButton:pressed {
   <customwidget>
    <class>scaled_pixmap_label</class>
    <extends>QLabel</extends>
-   <header>scaled_pixmap_label.h</header>
+   <header location="global">scaled_pixmap_label.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

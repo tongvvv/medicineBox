@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    basic_settings_page.cpp \
     change_plan.cpp \
     change_plan_confirm.cpp \
     data_structs.cpp \
@@ -17,7 +18,9 @@ SOURCES += \
     dialog_fetch_nomed.cpp \
     dialog_fetch_wrong_med.cpp \
     dialog_store_success.cpp \
+    emergency_page.cpp \
     fetch_card.cpp \
+    inform_settings_page.cpp \
     main.cpp \
     main_page.cpp \
     mainwindow.cpp \
@@ -35,9 +38,13 @@ SOURCES += \
     store_page4.cpp \
     switchcontrol.cpp \
     usage_plan.cpp \
-    usage_record.cpp
+    usage_record.cpp \
+    utils.cpp \
+    wifi_item.cpp \
+    wifi_page.cpp
 
 HEADERS += \
+    basic_settings_page.h \
     change_plan.h \
     change_plan_confirm.h \
     data_structs.h \
@@ -46,7 +53,9 @@ HEADERS += \
     dialog_fetch_nomed.h \
     dialog_fetch_wrong_med.h \
     dialog_store_success.h \
+    emergency_page.h \
     fetch_card.h \
+    inform_settings_page.h \
     main_page.h \
     mainwindow.h \
     med_list.h \
@@ -64,9 +73,12 @@ HEADERS += \
     switchcontrol.h \
     usage_plan.h \
     usage_record.h \
-    utils.h
+    utils.h \
+    wifi_item.h \
+    wifi_page.h
 
 FORMS += \
+    basic_settings_page.ui \
     change_plan.ui \
     change_plan_confirm.ui \
     dialog_fetch_force_store.ui \
@@ -74,7 +86,9 @@ FORMS += \
     dialog_fetch_nomed.ui \
     dialog_fetch_wrong_med.ui \
     dialog_store_success.ui \
+    emergency_page.ui \
     fetch_card.ui \
+    inform_settings_page.ui \
     main_page.ui \
     mainwindow.ui \
     med_list.ui \
@@ -87,7 +101,9 @@ FORMS += \
     store_page3.ui \
     store_page4.ui \
     usage_plan.ui \
-    usage_record.ui
+    usage_record.ui \
+    wifi_item.ui \
+    wifi_page.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

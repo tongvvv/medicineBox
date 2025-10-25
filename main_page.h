@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "signal_route.h"
+#include "utils.h"
 
 namespace Ui {
 class main_page;

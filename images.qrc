@@ -9,5 +9,9 @@
         <file alias="store_page2.png">images/u1395.png</file>
         <file alias="clock.png">images/u340.png</file>
         <file alias="warning.png">images/u395.png</file>
+        <file alias="voice.png">images/voice.png</file>
+        <file alias="music.png">images/music.png</file>
+        <file alias="ad.png">images/ad.png</file>
+        <file alias="sound.png">images/sound.png</file>
     </qresource>
 </RCC>
