@@ -58,13 +58,6 @@ public:
     QLabel *label_12;
     QLabel *label_13;
     QLabel *label_5;
-    QWidget *widget_3;
-    QHBoxLayout *horizontalLayout_7;
-    QSpacerItem *horizontalSpacer_3;
-    QPushButton *pushButton_2;
-    QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton_3;
-    QSpacerItem *horizontalSpacer_4;
 
     void setupUi(QWidget *medcine_information)
     {
@@ -74,6 +67,7 @@ public:
         verticalLayout = new QVBoxLayout(medcine_information);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(-1, -1, -1, 30);
         widget = new QWidget(medcine_information);
         widget->setObjectName(QString::fromUtf8("widget"));
         horizontalLayout = new QHBoxLayout(widget);
@@ -292,85 +286,8 @@ public:
 
         verticalLayout->addWidget(widget_2);
 
-        widget_3 = new QWidget(medcine_information);
-        widget_3->setObjectName(QString::fromUtf8("widget_3"));
-        horizontalLayout_7 = new QHBoxLayout(widget_3);
-        horizontalLayout_7->setSpacing(0);
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        horizontalLayout_7->setContentsMargins(0, 0, 0, 15);
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer_3);
-
-        pushButton_2 = new QPushButton(widget_3);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        sizePolicy2.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy2);
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        pushButton_2->setFont(font3);
-        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #0078d7;\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    font-size: 20px;\n"
-"    border: none;\n"
-"    padding: 4px 8px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #106ebe;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #005a9e;\n"
-"}"));
-
-        horizontalLayout_7->addWidget(pushButton_2);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer_2);
-
-        pushButton_3 = new QPushButton(widget_3);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        sizePolicy2.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy2);
-        pushButton_3->setFont(font3);
-        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #0078d7;\n"
-"    color: white;\n"
-"    border-radius: 10px;\n"
-"    font-size: 20px;\n"
-"    border: none;\n"
-"    padding: 4px 8px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #106ebe;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #005a9e;\n"
-"}"));
-
-        horizontalLayout_7->addWidget(pushButton_3);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer_4);
-
-        horizontalLayout_7->setStretch(0, 3);
-        horizontalLayout_7->setStretch(1, 1);
-        horizontalLayout_7->setStretch(2, 1);
-        horizontalLayout_7->setStretch(3, 1);
-        horizontalLayout_7->setStretch(4, 3);
-
-        verticalLayout->addWidget(widget_3);
-
         verticalLayout->setStretch(0, 1);
         verticalLayout->setStretch(1, 10);
-        verticalLayout->setStretch(2, 1);
 
         retranslateUi(medcine_information);
 
@@ -394,8 +311,6 @@ public:
         label_12->setText(QCoreApplication::translate("medcine_information", "\346\234\215\350\215\257\346\227\266\351\227\264:", nullptr));
         label_13->setText(QCoreApplication::translate("medcine_information", "2024-06-28", nullptr));
         label_5->setText(QCoreApplication::translate("medcine_information", "08:00     1\347\223\266 ;  12:00        1\347\223\266", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("medcine_information", "\344\277\256\346\224\271\344\277\241\346\201\257", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("medcine_information", "\344\277\256\346\224\271\350\256\241\345\210\222", nullptr));
     } // retranslateUi
 
 };

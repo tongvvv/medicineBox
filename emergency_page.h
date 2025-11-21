@@ -15,6 +15,8 @@ public:
     explicit emergency_page(QWidget *parent = nullptr);
     ~emergency_page();
 
+protected:
+
 private:
     Ui::emergency_page *ui;
 };

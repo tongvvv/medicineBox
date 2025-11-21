@@ -30,11 +30,6 @@ class Ui_store_page3
 {
 public:
     QVBoxLayout *verticalLayout;
-    QWidget *widget_10;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *label_6;
-    QLineEdit *lineEdit_2;
-    QSpacerItem *horizontalSpacer_9;
     QWidget *widget;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
@@ -83,8 +78,8 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QPushButton *skip;
     QSpacerItem *horizontalSpacer_6;
-    QButtonGroup *button_fre;
     QButtonGroup *button;
+    QButtonGroup *button_fre;
 
     void setupUi(QWidget *store_page3)
     {
@@ -95,52 +90,11 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(200, 0, 200, 50);
-        widget_10 = new QWidget(store_page3);
-        widget_10->setObjectName(QString::fromUtf8("widget_10"));
-        horizontalLayout_6 = new QHBoxLayout(widget_10);
-        horizontalLayout_6->setSpacing(7);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
-        label_6 = new QLabel(widget_10);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        QFont font;
-        font.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font.setPointSize(14);
-        font.setBold(true);
-        label_6->setFont(font);
-        label_6->setAlignment(Qt::AlignCenter);
-        label_6->setWordWrap(true);
-
-        horizontalLayout_6->addWidget(label_6);
-
-        lineEdit_2 = new QLineEdit(widget_10);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font1.setPointSize(12);
-        lineEdit_2->setFont(font1);
-        lineEdit_2->setStyleSheet(QString::fromUtf8("padding: 4px,8px;\n"
-"border-radius: 8px;\n"
-"\n"
-""));
-
-        horizontalLayout_6->addWidget(lineEdit_2);
-
-        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer_9);
-
-        horizontalLayout_6->setStretch(0, 1);
-        horizontalLayout_6->setStretch(1, 2);
-        horizontalLayout_6->setStretch(2, 6);
-
-        verticalLayout->addWidget(widget_10);
-
         widget = new QWidget(store_page3);
         widget->setObjectName(QString::fromUtf8("widget"));
-        QFont font2;
-        font2.setPointSize(11);
-        widget->setFont(font2);
+        QFont font;
+        font.setPointSize(11);
+        widget->setFont(font);
         horizontalLayout_2 = new QHBoxLayout(widget);
         horizontalLayout_2->setSpacing(7);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
@@ -152,7 +106,11 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy);
-        label->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font1.setPointSize(14);
+        font1.setBold(true);
+        label->setFont(font1);
         label->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_2->addWidget(label);
@@ -164,7 +122,10 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
         lineEdit->setSizePolicy(sizePolicy1);
-        lineEdit->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font2.setPointSize(12);
+        lineEdit->setFont(font2);
         lineEdit->setStyleSheet(QString::fromUtf8("padding: 4px,8px;\n"
 "border-radius: 8px;\n"
 "\n"
@@ -190,7 +151,7 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         label_2 = new QLabel(widget_2);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setFont(font);
+        label_2->setFont(font1);
         label_2->setAlignment(Qt::AlignCenter);
         label_2->setWordWrap(true);
 
@@ -367,7 +328,7 @@ public:
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         label_3 = new QLabel(widget_3);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setFont(font);
+        label_3->setFont(font1);
         label_3->setAlignment(Qt::AlignCenter);
         label_3->setWordWrap(true);
 
@@ -421,7 +382,7 @@ public:
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
         label_4 = new QLabel(widget_4);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setFont(font);
+        label_4->setFont(font1);
         label_4->setAlignment(Qt::AlignCenter);
         label_4->setWordWrap(true);
 
@@ -437,7 +398,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         widget_8 = new QWidget();
         widget_8->setObjectName(QString::fromUtf8("widget_8"));
-        widget_8->setGeometry(QRect(0, 0, 458, 69));
+        widget_8->setGeometry(QRect(0, 0, 458, 79));
         widget_8->setStyleSheet(QString::fromUtf8("#widget_8\n"
 "{\n"
 "	background: transparent;\n"
@@ -544,7 +505,7 @@ public:
         more_timeopt->setSizePolicy(sizePolicy2);
         more_timeopt->setMinimumSize(QSize(30, 30));
         more_timeopt->setMaximumSize(QSize(30, 30));
-        more_timeopt->setFont(font);
+        more_timeopt->setFont(font1);
         more_timeopt->setStyleSheet(QString::fromUtf8("min-width:     30px;     \n"
 "min-height:    30px;     \n"
 "max-width:     30px;    \n"
@@ -600,7 +561,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 458, 102));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 458, 119));
         scrollAreaWidgetContents->setStyleSheet(QString::fromUtf8("#scrollAreaWidgetContents\n"
 "{\n"
 "	background: transparent;\n"
@@ -701,9 +662,8 @@ public:
         verticalLayout->setStretch(1, 2);
         verticalLayout->setStretch(2, 2);
         verticalLayout->setStretch(3, 2);
-        verticalLayout->setStretch(4, 2);
-        verticalLayout->setStretch(5, 3);
-        verticalLayout->setStretch(6, 2);
+        verticalLayout->setStretch(4, 3);
+        verticalLayout->setStretch(5, 2);
 
         retranslateUi(store_page3);
 
@@ -719,7 +679,6 @@ public:
     void retranslateUi(QWidget *store_page3)
     {
         store_page3->setWindowTitle(QCoreApplication::translate("store_page3", "Form", nullptr));
-        label_6->setText(QCoreApplication::translate("store_page3", "\350\215\257\345\223\201\345\220\215\347\247\260", nullptr));
         label->setText(QCoreApplication::translate("store_page3", "\346\234\215\347\224\250\344\272\272", nullptr));
         label_2->setText(QCoreApplication::translate("store_page3", "\346\234\215\350\215\257\351\242\221\347\216\207", nullptr));
         everyday->setText(QCoreApplication::translate("store_page3", "\346\257\217\345\244\251", nullptr));

@@ -112,6 +112,8 @@ public:
         sizePolicy.setHeightForWidth(phone_num->sizePolicy().hasHeightForWidth());
         phone_num->setSizePolicy(sizePolicy);
         phone_num->setFont(font);
+        phone_num->setCursor(QCursor(Qt::IBeamCursor));
+        phone_num->setMouseTracking(true);
         phone_num->setStyleSheet(QString::fromUtf8("border-radius: 4px;\n"
 "padding: 3px"));
 

@@ -43,5 +43,5 @@ void store_page4::on_confirm_store_clicked()
     dialog->resize(dialogSize);
     dialog->exec();
     dialog->deleteLater(); //调用完要删除对话框
-    emit signal_route::instance()->switchToPage("med_list");
+    emit signal_route::instance()->switchToPage("main_page");
 }

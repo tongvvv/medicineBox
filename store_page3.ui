@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="2,2,2,2,2,3,2">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="2,2,2,2,3,2">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -29,76 +29,6 @@
    <property name="bottomMargin">
     <number>50</number>
    </property>
-   <item>
-    <widget class="QWidget" name="widget_10" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,2,6">
-      <property name="spacing">
-       <number>7</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="label_6">
-        <property name="font">
-         <font>
-          <family>微软雅黑</family>
-          <pointsize>14</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>药品名称</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_2">
-        <property name="font">
-         <font>
-          <family>微软雅黑</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">padding: 4px,8px;
-border-radius: 8px;
-
-</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_9">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item>
     <widget class="QWidget" name="widget" native="true">
      <property name="font">
@@ -656,7 +586,7 @@ QCalendarWidget QToolButton {
            <x>0</x>
            <y>0</y>
            <width>458</width>
-           <height>69</height>
+           <height>79</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -947,7 +877,7 @@ background-color: rgb(200, 255, 255);
            <x>0</x>
            <y>0</y>
            <width>458</width>
-           <height>102</height>
+           <height>119</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -1120,7 +1050,7 @@ QPushButton:pressed {
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="button_fre"/>
   <buttongroup name="button"/>
+  <buttongroup name="button_fre"/>
  </buttongroups>
 </ui>

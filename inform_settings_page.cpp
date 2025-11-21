@@ -23,8 +23,13 @@ inform_settings_page::inform_settings_page(QWidget *parent)
 
     change_inform_action("music");
 
-    ui->lineEdit->setInputMask("99");
-    ui->lineEdit_4->setInputMask("99");
+    ui->lineEdit->setAttribute(Qt::WA_InputMethodEnabled, false);  // 设置禁止中文输入
+    ui->lineEdit_4->setAttribute(Qt::WA_InputMethodEnabled, false);
+
+    QRegExp rx("[0-9]{1,2}"); // 正则表达式：数字, 2位
+    QRegExpValidator *validator = new QRegExpValidator(rx, this);
+    ui->lineEdit->setValidator(validator);
+    ui->lineEdit_4->setValidator(validator);
 }
 
 inform_settings_page::~inform_settings_page()
