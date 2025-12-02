@@ -33,7 +33,7 @@ public:
     QWidget *widget;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *user;
     QSpacerItem *horizontalSpacer;
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout;
@@ -115,23 +115,23 @@ public:
 
         horizontalLayout_2->addWidget(label);
 
-        lineEdit = new QLineEdit(widget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        user = new QLineEdit(widget);
+        user->setObjectName(QString::fromUtf8("user"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(user->sizePolicy().hasHeightForWidth());
+        user->setSizePolicy(sizePolicy1);
         QFont font2;
         font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font2.setPointSize(12);
-        lineEdit->setFont(font2);
-        lineEdit->setStyleSheet(QString::fromUtf8("padding: 4px,8px;\n"
+        user->setFont(font2);
+        user->setStyleSheet(QString::fromUtf8("padding: 4px,8px;\n"
 "border-radius: 8px;\n"
 "\n"
 ""));
 
-        horizontalLayout_2->addWidget(lineEdit);
+        horizontalLayout_2->addWidget(user);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 

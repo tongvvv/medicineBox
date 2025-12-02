@@ -39,12 +39,15 @@ private:
     void label2white(QLabel *label);
     void label2blue(QLabel *label);
     void all_label_white(void);
+    void handle_OCR(QString str);
+    void handle_yolo(int num);
 
     Ui::store_page *ui;
     store_page1 *page1;
     store_page2 *page2;
     store_page3 *page3;
     store_page4 *page4;
+
 };
 
 #endif // STORE_PAGE_H

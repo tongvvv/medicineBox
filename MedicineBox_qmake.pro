@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,9 +24,11 @@ SOURCES += \
     main.cpp \
     main_page.cpp \
     mainwindow.cpp \
+    med_detailed_info.cpp \
     med_list.cpp \
     medcine_information.cpp \
     mytimeedit.cpp \
+    ocrmanager.cpp \
     plan_card.cpp \
     scaled_pixmap_label.cpp \
     settings.cpp \
@@ -41,7 +43,8 @@ SOURCES += \
     usage_record.cpp \
     utils.cpp \
     wifi_item.cpp \
-    wifi_page.cpp
+    wifi_page.cpp \
+    yolomanager.cpp
 
 HEADERS += \
     basic_settings_page.h \
@@ -58,9 +61,11 @@ HEADERS += \
     inform_settings_page.h \
     main_page.h \
     mainwindow.h \
+    med_detailed_info.h \
     med_list.h \
     medcine_information.h \
     mytimeedit.h \
+    ocrmanager.h \
     plan_card.h \
     scaled_pixmap_label.h \
     settings.h \
@@ -75,7 +80,8 @@ HEADERS += \
     usage_record.h \
     utils.h \
     wifi_item.h \
-    wifi_page.h
+    wifi_page.h \
+    yolomanager.h
 
 FORMS += \
     basic_settings_page.ui \

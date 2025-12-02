@@ -22,6 +22,7 @@ public:
     explicit store_page3(QWidget *parent = nullptr);
     ~store_page3();
 
+    bool isset();  //检查这个页面设置有没有弄完全。
 private slots:
     void on_more_freopt_clicked();
     void on_more_timeopt_clicked();

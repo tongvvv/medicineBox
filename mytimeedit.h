@@ -41,17 +41,26 @@ public:
         }
         combo2->setStyleSheet("QComboBox { padding: 5px; min-width: 45px;}");
 
+        combo3 = new QComboBox(this);
+        for(int ii=0; ii<10; ii++)
+        {
+            combo3->addItem(QString::asprintf("%d粒", ii+1));
+        }
+        combo3->setStyleSheet("QComboBox { padding: 5px; min-width: 45px;}");
+
         // 添加确认按钮
         confirmButton = new QPushButton("确认", this);
         confirmButton->setStyleSheet("QPushButton { padding: 5px; background-color: #e6f7ff; color: black; }");
 
         layout->addWidget(combo1);
         layout->addWidget(combo2);
+        layout->addWidget(combo3);
         layout->addWidget(confirmButton);
 
         layout->setStretch(0,1);
         layout->setStretch(1,1);
         layout->setStretch(2,1);
+        layout->setStretch(3,1);
 
         connect(confirmButton, &QPushButton::clicked, this, &ComboPopup::onConfirmClicked);
     }
@@ -74,7 +83,7 @@ public:
 
     QString getValue() const
     {
-        return combo1->currentText() + combo2->currentText();
+        return combo1->currentText() + combo2->currentText() + combo3->currentText();
     }
 
 protected:
@@ -91,8 +100,8 @@ private slots:
 private:
     QComboBox *combo1;
     QComboBox *combo2;
+    QComboBox *combo3;
     QPushButton *confirmButton;
-
 };
 
 class ComboLineEdit : public QLineEdit
@@ -100,7 +109,7 @@ class ComboLineEdit : public QLineEdit
     Q_OBJECT
 public:
     ComboLineEdit(QWidget *parent = nullptr)
-        : QLineEdit(parent), popup(new ComboPopup(this))
+        : QLineEdit(parent), popup(new ComboPopup(this)), isset(false)
     {
         setReadOnly(true);
         setPlaceholderText("点击选择...");
@@ -108,6 +117,7 @@ public:
 
         connect(popup, &ComboPopup::valueSelected, this, [this](const QString &value) {
             setText(value);
+            isset = true;
             qDebug() << value;
         });
     }
@@ -137,8 +147,9 @@ protected:
         }
     }
 
-private:
+public:
     ComboPopup *popup;
+    bool isset;  //标记到底有没有被选过
 };
 
 

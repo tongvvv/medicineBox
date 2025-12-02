@@ -53,7 +53,7 @@ public:
     {
         if (main_page->objectName().isEmpty())
             main_page->setObjectName(QString::fromUtf8("main_page"));
-        main_page->resize(903, 665);
+        main_page->resize(774, 589);
         verticalLayout = new QVBoxLayout(main_page);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         widget = new QWidget(main_page);
@@ -79,7 +79,7 @@ public:
 
         horizontalLayout->addWidget(main_time);
 
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_4);
 

@@ -112,7 +112,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
             wt->deleteLater();
         });
     }
-    else if(pageName == "set_plan")  //这里是卡片的服药计划按钮按下去后的界面
+    else if(pageName == "set_plan")  //这里是卡片的修改服药计划按钮按下去后的界面
     {
         auto *widget = new change_plan(this);
         widget->findChild<QPushButton*>("next")->setText("确定");

@@ -28,6 +28,7 @@ store_page3::store_page3(QWidget *parent)
 
     ui->dateEdit->setCalendarPopup(true); //设置日历弹出
 
+
 }
 
 store_page3::~store_page3()
@@ -196,4 +197,13 @@ void store_page3::onTimeCountClicked(bool checked)
     ui->layout_eat_time->update();
 }
 
+bool store_page3::isset()
+{
+    if(ui->user->text().trimmed().isEmpty()) { return false;}
+    for(auto& it : eat_time)
+    {
+        if(it->isset == false) {return false;}
+    }
+    return true;
+}
 

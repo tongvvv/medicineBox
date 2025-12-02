@@ -38,6 +38,8 @@ struct table_content
 
 enum class GlobalFontSize {SMALL, MEDIUM, BIG};
 
-QString getFormattedDateTime();
+QString getFormattedDateTime(); //为了得到主界面的格式化后的时间
+
+enum class info_state {SAME, NEW, MOD}; //数据一致，新的数据，数据不一致
 
 #endif // UTILS_H

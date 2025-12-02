@@ -60,7 +60,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(fetch_card->sizePolicy().hasHeightForWidth());
         fetch_card->setSizePolicy(sizePolicy);
-        fetch_card->setMinimumSize(QSize(300, 270));
+        fetch_card->setMinimumSize(QSize(300, 240));
         fetch_card->setAutoFillBackground(false);
         fetch_card->setStyleSheet(QString::fromUtf8("#fetch_card{\n"
 "	border-radius: 8px;\n"
@@ -239,11 +239,8 @@ public:
 
         card_get_med = new QPushButton(widget_3);
         card_get_med->setObjectName(QString::fromUtf8("card_get_med"));
-        QSizePolicy sizePolicy2(QSizePolicy::Ignored, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(card_get_med->sizePolicy().hasHeightForWidth());
-        card_get_med->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(card_get_med->sizePolicy().hasHeightForWidth());
+        card_get_med->setSizePolicy(sizePolicy1);
         QFont font5;
         font5.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font5.setPointSize(16);

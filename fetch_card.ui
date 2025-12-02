@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>300</width>
-    <height>270</height>
+    <height>240</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -362,7 +362,7 @@ color: white</string>
       <item>
        <widget class="QPushButton" name="card_get_med">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
