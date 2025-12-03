@@ -40,7 +40,7 @@ public:
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
-    QComboBox *medcine_name;
+    QComboBox *medcine_list;
     QSpacerItem *horizontalSpacer;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -115,8 +115,6 @@ public:
         horizontalLayout_2->addWidget(label_2);
 
         patient_list = new QComboBox(widget_2);
-        patient_list->addItem(QString());
-        patient_list->addItem(QString());
         patient_list->setObjectName(QString::fromUtf8("patient_list"));
         QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
@@ -134,7 +132,7 @@ public:
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
         horizontalLayout_2->setStretch(0, 1);
-        horizontalLayout_2->setStretch(1, 2);
+        horizontalLayout_2->setStretch(1, 5);
         horizontalLayout_2->setStretch(2, 18);
 
         verticalLayout->addWidget(widget_2);
@@ -154,23 +152,20 @@ public:
 
         horizontalLayout_3->addWidget(label_3);
 
-        medcine_name = new QComboBox(widget_3);
-        medcine_name->addItem(QString());
-        medcine_name->addItem(QString());
-        medcine_name->addItem(QString());
-        medcine_name->setObjectName(QString::fromUtf8("medcine_name"));
-        sizePolicy4.setHeightForWidth(medcine_name->sizePolicy().hasHeightForWidth());
-        medcine_name->setSizePolicy(sizePolicy4);
-        medcine_name->setFont(font2);
+        medcine_list = new QComboBox(widget_3);
+        medcine_list->setObjectName(QString::fromUtf8("medcine_list"));
+        sizePolicy4.setHeightForWidth(medcine_list->sizePolicy().hasHeightForWidth());
+        medcine_list->setSizePolicy(sizePolicy4);
+        medcine_list->setFont(font2);
 
-        horizontalLayout_3->addWidget(medcine_name);
+        horizontalLayout_3->addWidget(medcine_list);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Ignored, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer);
 
         horizontalLayout_3->setStretch(0, 1);
-        horizontalLayout_3->setStretch(1, 2);
+        horizontalLayout_3->setStretch(1, 5);
         horizontalLayout_3->setStretch(2, 18);
 
         verticalLayout->addWidget(widget_3);
@@ -219,14 +214,7 @@ public:
         label->setText(QCoreApplication::translate("med_list", "\350\215\257\347\233\222\345\210\227\350\241\250", nullptr));
         back_mainpage->setText(QCoreApplication::translate("med_list", "\350\277\224\345\233\236\351\246\226\351\241\265", nullptr));
         label_2->setText(QCoreApplication::translate("med_list", "\347\224\250\350\215\257\344\272\272", nullptr));
-        patient_list->setItemText(0, QCoreApplication::translate("med_list", "\347\210\270\347\210\270", nullptr));
-        patient_list->setItemText(1, QCoreApplication::translate("med_list", "\345\256\235\345\256\235", nullptr));
-
         label_3->setText(QCoreApplication::translate("med_list", "\350\215\257\345\223\201\345\220\215", nullptr));
-        medcine_name->setItemText(0, QCoreApplication::translate("med_list", "\350\216\262\350\212\261\346\270\205\347\230\237", nullptr));
-        medcine_name->setItemText(1, QCoreApplication::translate("med_list", "\345\256\232\345\226\230\346\255\242\345\222\263\344\270\270", nullptr));
-        medcine_name->setItemText(2, QCoreApplication::translate("med_list", "\345\260\217\345\204\277\346\255\242\345\222\263\347\263\226\346\265\206", nullptr));
-
     } // retranslateUi
 
 };

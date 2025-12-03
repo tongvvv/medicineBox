@@ -23,6 +23,11 @@ public:
     ~store_page3();
 
     bool isset();  //检查这个页面设置有没有弄完全。
+    QString getuser();
+    int getfreq();//间隔天数
+    QDateTime getstarttime();
+    QString geteattime(); //服药时间
+    QString getnums();
 private slots:
     void on_more_freopt_clicked();
     void on_more_timeopt_clicked();

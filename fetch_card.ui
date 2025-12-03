@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>270</height>
+    <height>240</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,6 +20,12 @@
    <size>
     <width>300</width>
     <height>240</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>345</width>
+    <height>270</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -193,7 +199,7 @@ color: white</string>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="name">
         <property name="font">
          <font>
           <family>微软雅黑</family>
@@ -208,6 +214,9 @@ color: white</string>
         </property>
         <property name="text">
          <string>抗病毒感冒颗粒</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
         </property>
         <property name="indent">
          <number>20</number>
@@ -292,7 +301,7 @@ color: white</string>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="num">
         <property name="font">
          <font>
           <family>微软雅黑</family>

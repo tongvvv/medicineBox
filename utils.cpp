@@ -17,3 +17,10 @@ QString getFormattedDateTime() {
     // 组合所有部分
     return datePart + " " + dayOfWeek + " " + timePart;
 }
+
+//ocr结果和药名匹配
+//暂时还没有完善，只是留个接口
+QString ocr_name_match(QString str)
+{
+    return str;
+}

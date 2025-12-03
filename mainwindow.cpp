@@ -50,6 +50,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     {
         medlist->card_is_fetch(true);
         ui->stackedWidget->setCurrentWidget(medlist);
+        medlist->getAllinfo();
     }
     else if(pageName == "main_page")
     {
@@ -63,6 +64,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     {
         medlist->card_is_fetch(false);
         ui->stackedWidget->setCurrentWidget(medlist);
+        medlist->getAllinfo();
     }
     else if(pageName == "store_page")
     {

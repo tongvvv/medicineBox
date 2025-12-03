@@ -26,6 +26,7 @@ public:
     // 使用合适的容器存放服药时间和数量
     QVector<QTime> eattimes;    // 服药时间列表
     QVector<unsigned short> eatcounts; // 每次服药数量列表
+    QDateTime lasteat;  //上次吃的时间
 };
 
 #endif // MED_DETAILED_INFO_H

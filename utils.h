@@ -42,4 +42,6 @@ QString getFormattedDateTime(); //为了得到主界面的格式化后的时间
 
 enum class info_state {SAME, NEW, MOD}; //数据一致，新的数据，数据不一致
 
+QString ocr_name_match(QString str); //ocr结果和药名匹配
+
 #endif // UTILS_H

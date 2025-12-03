@@ -5,6 +5,7 @@
 #include "signal_route.h"
 #include "fetch_card.h"
 #include <QList>
+#include "med_detailed_info.h"
 
 namespace Ui {
 class med_list;
@@ -17,22 +18,32 @@ class med_list : public QWidget
 public:
     explicit med_list(QWidget *parent = nullptr);
 
-    void card_is_fetch(bool state);
+    void card_is_fetch(bool state); //用来控制卡片下面两个按钮是否显示的
 
     ~med_list();
 
+    void getAllinfo();
+
+
 private slots:
     void on_back_mainpage_clicked();
+    void onPatientSelected(int index);
+    void onMedicineSelected(int index);
 
-private:
+public:
     Ui::med_list *ui;
-    signal_route *m_router;
     QList<fetch_card*> cards;
+    QVector<med_detailed_info*> detailedInfoList;
     bool m_state; //控制卡片显示不显示下面两个按钮
 
-    // QWidget interface
 protected:
 
+private:
+
+    void addUniquePatients();
+    void addPatientMedicines(const QString &patientName);
+    void rearrangeVisibleCards();
+    void filterCards();
 };
 
 #endif // MED_LIST_H

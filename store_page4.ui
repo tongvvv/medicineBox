@@ -88,7 +88,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="name">
         <property name="font">
          <font>
           <family>微软雅黑</family>
@@ -152,7 +152,7 @@ border-radius: 8px;
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="num">
         <property name="font">
          <font>
           <family>微软雅黑</family>

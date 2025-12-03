@@ -21,6 +21,10 @@ fetch_card::fetch_card(QWidget *parent, unsigned short num)
         因为我们这个类仅仅继承了QWidget，而QWidget并没有在实现中定义这个属性。
     */
     this->setAttribute(Qt::WA_StyledBackground, true);
+
+
+
+
 }
 
 fetch_card::~fetch_card()
@@ -39,6 +43,15 @@ void fetch_card::set_num(unsigned short num)
 unsigned short fetch_card::get_num() const
 {
     return m_num;
+}
+
+void fetch_card::set_detailedinfo(med_detailed_info* info)
+{
+    m_detailedinfo = *info;
+    m_num = m_detailedinfo.no;
+    ui->name->setText(m_detailedinfo.m_name);
+    ui->num->setText(QString::number(m_detailedinfo.number));
+    ui->number->setText(QString::number(m_detailedinfo.no));
 }
 
 void fetch_card::on_med_info_clicked()

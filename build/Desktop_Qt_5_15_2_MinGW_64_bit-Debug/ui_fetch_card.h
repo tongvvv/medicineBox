@@ -36,12 +36,12 @@ public:
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
-    QLabel *label_3;
+    QLabel *name;
     QToolButton *med_info;
     QWidget *widget_4;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_4;
-    QLabel *label_5;
+    QLabel *num;
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_2;
@@ -54,13 +54,14 @@ public:
     {
         if (fetch_card->objectName().isEmpty())
             fetch_card->setObjectName(QString::fromUtf8("fetch_card"));
-        fetch_card->resize(300, 270);
+        fetch_card->resize(300, 240);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(fetch_card->sizePolicy().hasHeightForWidth());
         fetch_card->setSizePolicy(sizePolicy);
         fetch_card->setMinimumSize(QSize(300, 240));
+        fetch_card->setMaximumSize(QSize(345, 270));
         fetch_card->setAutoFillBackground(false);
         fetch_card->setStyleSheet(QString::fromUtf8("#fetch_card{\n"
 "	border-radius: 8px;\n"
@@ -150,19 +151,20 @@ public:
 
         horizontalLayout_2->addWidget(label);
 
-        label_3 = new QLabel(widget_2);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        name = new QLabel(widget_2);
+        name->setObjectName(QString::fromUtf8("name"));
         QFont font3;
         font3.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font3.setPointSize(12);
-        label_3->setFont(font3);
-        label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
+        name->setFont(font3);
+        name->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #333333; /* \346\267\261\347\201\260\350\211\262\346\226\207\345\255\227\357\274\214\347\241\256\344\277\235\345\217\257\350\257\273\346\200\247 */\n"
 "    background: transparent; /* \351\200\217\346\230\216\350\203\214\346\231\257\357\274\214\344\270\215\347\273\247\346\211\277\347\210\266\346\216\247\344\273\266\350\203\214\346\231\257\350\211\262 */\n"
 "}"));
-        label_3->setIndent(20);
+        name->setWordWrap(true);
+        name->setIndent(20);
 
-        horizontalLayout_2->addWidget(label_3);
+        horizontalLayout_2->addWidget(name);
 
         med_info = new QToolButton(widget_2);
         med_info->setObjectName(QString::fromUtf8("med_info"));
@@ -204,17 +206,17 @@ public:
 
         horizontalLayout_3->addWidget(label_4);
 
-        label_5 = new QLabel(widget_4);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setFont(font3);
-        label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
+        num = new QLabel(widget_4);
+        num->setObjectName(QString::fromUtf8("num"));
+        num->setFont(font3);
+        num->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #333333; /* \346\267\261\347\201\260\350\211\262\346\226\207\345\255\227\357\274\214\347\241\256\344\277\235\345\217\257\350\257\273\346\200\247 */\n"
 "    background: transparent; /* \351\200\217\346\230\216\350\203\214\346\231\257\357\274\214\344\270\215\347\273\247\346\211\277\347\210\266\346\216\247\344\273\266\350\203\214\346\231\257\350\211\262 */\n"
 "}"));
-        label_5->setMargin(0);
-        label_5->setIndent(20);
+        num->setMargin(0);
+        num->setIndent(20);
 
-        horizontalLayout_3->addWidget(label_5);
+        horizontalLayout_3->addWidget(num);
 
         horizontalLayout_3->setStretch(0, 1);
         horizontalLayout_3->setStretch(1, 5);
@@ -319,10 +321,10 @@ public:
         number->setText(QCoreApplication::translate("fetch_card", "1", nullptr));
         label_2->setText(QCoreApplication::translate("fetch_card", "\346\230\257\345\220\246\346\217\220\351\206\222    ", nullptr));
         label->setText(QCoreApplication::translate("fetch_card", "\350\215\257\345\220\215 ", nullptr));
-        label_3->setText(QCoreApplication::translate("fetch_card", "\346\212\227\347\227\205\346\257\222\346\204\237\345\206\222\351\242\227\347\262\222", nullptr));
+        name->setText(QCoreApplication::translate("fetch_card", "\346\212\227\347\227\205\346\257\222\346\204\237\345\206\222\351\242\227\347\262\222", nullptr));
         med_info->setText(QString());
         label_4->setText(QCoreApplication::translate("fetch_card", "\346\225\260\351\207\217 ", nullptr));
-        label_5->setText(QCoreApplication::translate("fetch_card", "20", nullptr));
+        num->setText(QCoreApplication::translate("fetch_card", "20", nullptr));
         card_get_med->setText(QCoreApplication::translate("fetch_card", "\345\217\226\350\215\257", nullptr));
         card_plan->setText(QCoreApplication::translate("fetch_card", "\346\234\215\350\215\257\350\256\241\345\210\222", nullptr));
     } // retranslateUi

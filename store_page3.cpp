@@ -11,6 +11,10 @@ store_page3::store_page3(QWidget *parent)
     eat_fre.append(ui->two_day);
     eat_fre.append(ui->three_day);
     eat_fre.append(ui->everyweek);
+    ui->everyday->setProperty("count",1);
+    ui->two_day->setProperty("count",2);
+    ui->three_day->setProperty("count",3);
+    ui->everyweek->setProperty("count",7);
 
     eat_count.append(ui->once_a_day);
     eat_count.append(ui->twice_a_day);
@@ -27,8 +31,6 @@ store_page3::store_page3(QWidget *parent)
     QTimer::singleShot(50,this,[this](){emit this->ui->once_a_day->toggled(true);});
 
     ui->dateEdit->setCalendarPopup(true); //设置日历弹出
-
-
 }
 
 store_page3::~store_page3()
@@ -43,11 +45,13 @@ void store_page3::on_more_freopt_clicked()
         // 添加两个新按钮
         QPushButton *half_month = addFrequencyButton("半月一次");
         eat_fre.append(half_month);
+        half_month->setProperty("count",15);
         ui->hlayout_fre->insertWidget(ui->hlayout_fre->count()-2, half_month);
         ui->hlayout_fre->setStretch(ui->hlayout_fre->count()-2, 1);
         ui->button_fre->addButton(half_month);
 
         QPushButton *full_month = addFrequencyButton("每月一次");
+        full_month->setProperty("count",30);
         eat_fre.append(full_month);
         ui->hlayout_fre->insertWidget(ui->hlayout_fre->count()-2, full_month);
         ui->hlayout_fre->setStretch(ui->hlayout_fre->count()-2, 1);
@@ -199,11 +203,56 @@ void store_page3::onTimeCountClicked(bool checked)
 
 bool store_page3::isset()
 {
+    QSet<QString> timeSet;
+
     if(ui->user->text().trimmed().isEmpty()) { return false;}
     for(auto& it : eat_time)
     {
         if(it->isset == false) {return false;}
+        QString timeKey = QString("%1:%2").arg(it->hour).arg(it->min);
+        if (timeSet.contains(timeKey)) {
+            return false; // 发现重复
+        }
+        timeSet.insert(timeKey);
     }
     return true;
+}
+
+QString store_page3::getuser()
+{
+    return ui->user->text();
+}
+
+int store_page3::getfreq()
+{
+    auto* button = ui->button_fre->checkedButton();
+    return button->property("count").toInt();
+}
+
+QDateTime store_page3::getstarttime()
+{
+    return ui->dateEdit->dateTime();
+}
+
+QString store_page3::geteattime()
+{
+    QStringList timeList;
+    for(auto& it : eat_time)
+    {
+        timeList << QString::asprintf("%d:%d", it->hour, it->min);
+    }
+    QString ret = timeList.join(",");
+    return ret;
+}
+
+QString store_page3::getnums()
+{
+    QStringList numsList;
+    for(auto& it : eat_time)
+    {
+        numsList << QString::asprintf("%d", it->nums);
+    }
+    QString ret = numsList.join(",");
+    return ret;
 }
 

@@ -13,6 +13,7 @@ SOURCES += \
     change_plan.cpp \
     change_plan_confirm.cpp \
     data_structs.cpp \
+    dialog_common_inform.cpp \
     dialog_fetch_force_store.cpp \
     dialog_fetch_med.cpp \
     dialog_fetch_nomed.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
     change_plan.h \
     change_plan_confirm.h \
     data_structs.h \
+    dialog_common_inform.h \
     dialog_fetch_force_store.h \
     dialog_fetch_med.h \
     dialog_fetch_nomed.h \
@@ -87,6 +89,7 @@ FORMS += \
     basic_settings_page.ui \
     change_plan.ui \
     change_plan_confirm.ui \
+    dialog_common_inform.ui \
     dialog_fetch_force_store.ui \
     dialog_fetch_med.ui \
     dialog_fetch_nomed.ui \

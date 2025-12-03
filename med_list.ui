@@ -96,7 +96,7 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2,18">
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,5,18">
       <item>
        <widget class="QLabel" name="label_2">
         <property name="sizePolicy">
@@ -129,16 +129,6 @@
           <pointsize>13</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>爸爸</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>宝宝</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item>
@@ -168,7 +158,7 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,2,18">
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,5,18">
       <item>
        <widget class="QLabel" name="label_3">
         <property name="sizePolicy">
@@ -192,7 +182,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="medcine_name">
+       <widget class="QComboBox" name="medcine_list">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -204,21 +194,6 @@
           <pointsize>13</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>莲花清瘟</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>定喘止咳丸</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>小儿止咳糖浆</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item>

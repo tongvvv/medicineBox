@@ -17,6 +17,7 @@ public:
     ~store_page4();
 
     void setChange(bool change);
+    void update_name_nums();
 
 private slots:
     void on_confirm_store_clicked();

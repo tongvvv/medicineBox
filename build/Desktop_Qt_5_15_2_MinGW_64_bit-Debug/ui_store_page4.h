@@ -29,12 +29,12 @@ public:
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QLabel *label_2;
-    QLineEdit *lineEdit;
+    QLineEdit *name;
     QSpacerItem *horizontalSpacer;
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_3;
-    QLineEdit *lineEdit_2;
+    QLineEdit *num;
     QSpacerItem *horizontalSpacer_2;
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_3;
@@ -84,18 +84,18 @@ public:
 
         horizontalLayout->addWidget(label_2);
 
-        lineEdit = new QLineEdit(widget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        name = new QLineEdit(widget);
+        name->setObjectName(QString::fromUtf8("name"));
         QFont font2;
         font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font2.setPointSize(14);
-        lineEdit->setFont(font2);
-        lineEdit->setStyleSheet(QString::fromUtf8("padding: 4px,8px;\n"
+        name->setFont(font2);
+        name->setStyleSheet(QString::fromUtf8("padding: 4px,8px;\n"
 "border-radius: 8px;\n"
 "\n"
 ""));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(name);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -115,15 +115,15 @@ public:
 
         horizontalLayout_2->addWidget(label_3);
 
-        lineEdit_2 = new QLineEdit(widget_2);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setFont(font2);
-        lineEdit_2->setStyleSheet(QString::fromUtf8("padding: 4px,8px;\n"
+        num = new QLineEdit(widget_2);
+        num->setObjectName(QString::fromUtf8("num"));
+        num->setFont(font2);
+        num->setStyleSheet(QString::fromUtf8("padding: 4px,8px;\n"
 "border-radius: 8px;\n"
 "\n"
 ""));
 
-        horizontalLayout_2->addWidget(lineEdit_2);
+        horizontalLayout_2->addWidget(num);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -183,9 +183,9 @@ public:
         store_page4->setWindowTitle(QCoreApplication::translate("store_page4", "Form", nullptr));
         label->setText(QCoreApplication::translate("store_page4", "\346\202\250\345\267\262\345\234\250\343\200\22005\343\200\221\345\217\267\350\215\257\347\233\222\345\255\230\345\205\245\343\200\220\346\212\227\347\227\205\346\257\222\345\217\243\346\234\215\346\266\262\343\200\22130\347\223\266\357\274\214\346\204\237\350\260\242\346\202\250\344\275\277\347\224\250\346\231\272\350\203\275\350\215\257\347\233\222\347\263\273\347\273\237\357\274\214\350\256\260\345\276\227\346\214\211\346\227\266\345\220\203\350\215\257\345\223\246~", nullptr));
         label_2->setText(QCoreApplication::translate("store_page4", "\350\215\257\345\223\201\345\220\215\347\247\260\357\274\232", nullptr));
-        lineEdit->setText(QCoreApplication::translate("store_page4", "\346\212\227\346\204\237\345\206\222\347\227\205\346\257\222\345\217\243\346\234\215\346\266\262", nullptr));
+        name->setText(QCoreApplication::translate("store_page4", "\346\212\227\346\204\237\345\206\222\347\227\205\346\257\222\345\217\243\346\234\215\346\266\262", nullptr));
         label_3->setText(QCoreApplication::translate("store_page4", "\350\215\257\345\223\201\346\225\260\351\207\217\357\274\232", nullptr));
-        lineEdit_2->setText(QCoreApplication::translate("store_page4", "30", nullptr));
+        num->setText(QCoreApplication::translate("store_page4", "30", nullptr));
         confirm_store->setText(QCoreApplication::translate("store_page4", "\344\277\241\346\201\257\346\227\240\350\257\257\357\274\214\345\233\236\346\224\266\350\215\257\347\233\222", nullptr));
     } // retranslateUi
 

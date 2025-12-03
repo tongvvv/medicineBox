@@ -37,7 +37,11 @@ public:
     QVariant getData(const QString& key, const QVariant& defaultValue = QVariant()) const;
 
     // 删除数据
-    void remove(const QString& key);
+    void removeData(const QString& key);
+
+    void store_medcine();
+
+    QVector<med_detailed_info*> getAllMed(); //得到所有的已存入的药品
 signals:
     void fontSize_changed(GlobalFontSize size);
 

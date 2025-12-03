@@ -115,10 +115,20 @@ public:
         setPlaceholderText("点击选择...");
         setStyleSheet("QLineEdit { padding: 5px; }");
 
-        connect(popup, &ComboPopup::valueSelected, this, [this](const QString &value) {
-            setText(value);
+        connect(popup, &ComboPopup::valueSelected, this, [this](const QString &str){
+            setText(str);
             isset = true;
-            qDebug() << value;
+            int shiPos = str.indexOf("时");
+            int fenPos = str.indexOf("分");
+            int liPos = str.indexOf("粒");
+            if (shiPos == -1 || fenPos == -1 || liPos == -1) {
+                return false;
+            }
+            // 提取各部分
+            hour = str.mid(0, shiPos).toInt();
+            min = str.mid(shiPos + 1, fenPos - shiPos - 1).toInt();
+            nums = str.mid(fenPos + 1, liPos - fenPos - 1).toInt();
+            qDebug() << hour << min << nums;
         });
     }
 
@@ -150,6 +160,9 @@ protected:
 public:
     ComboPopup *popup;
     bool isset;  //标记到底有没有被选过
+    int hour;
+    int min;
+    int nums;
 };
 
 

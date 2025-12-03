@@ -5,6 +5,7 @@
 #include <QPainter>
 #include "signal_route.h"
 #include "dialog_fetch_med.h"
+#include "med_detailed_info.h"
 
 //这里的卡片设置了最小宽度，高度（ui文件中），是为了美观考虑。 注意一下。在不同分辨率下可能要修改，以便达到最佳显示效果。
 
@@ -25,6 +26,9 @@ public:
 
     unsigned short get_num() const;
 
+    void set_detailedinfo(med_detailed_info* info);
+
+    med_detailed_info m_detailedinfo;
 private slots:
 
     void on_med_info_clicked();
@@ -49,7 +53,6 @@ private:
     void handle_menu(DialogType *dialog);
 
     Ui::fetch_card *ui;
-    signal_route *m_router;
     bool m_state;
     unsigned short m_num;
 };
