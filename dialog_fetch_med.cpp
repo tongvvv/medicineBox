@@ -2,6 +2,7 @@
 #include "qdebug.h"
 #include "ui_dialog_fetch_med.h"
 #include "utils.h"
+#include "data_structs.h"
 
 dialog_fetch_med::dialog_fetch_med(QWidget *parent)
     : QDialog(parent)
@@ -23,7 +24,7 @@ dialog_fetch_med::dialog_fetch_med(QWidget *parent)
 
 void dialog_fetch_med::setupMenu(void)
 {
-    menu_flag = true;
+    menu_flag = false;
 
     menu = new QMenu(this);
 
@@ -114,6 +115,7 @@ void dialog_fetch_med::on_toolButton_2_clicked()
 }
 
 //这里是回收药盒的按钮， 应该要跳出一个菜单,  如果没有menu_flag标志，说明其他模块通过set_content用到了这个类。
+/////////////////2025/12/3日////由于业务变更， 已不主动弹出菜单了，默认就false。但是我们暂时先不删除关于菜单的代码。
 void dialog_fetch_med::on_recover_box_clicked()
 {
     if(menu_flag == true)
@@ -123,6 +125,7 @@ void dialog_fetch_med::on_recover_box_clicked()
     }
     else
     {
+        ///////////这里仅仅只是返回/////////////////
         this->close();
     }
 }

@@ -4,6 +4,10 @@
 #include "utils.h"
 #include "dialog_fetch_nomed.h"
 #include "dialog_fetch_wrong_med.h"
+#include "ocrmanager.h"
+#include "yolomanager.h"
+#include "data_structs.h"
+#include "dialog_common_inform.h"
 
 fetch_card::fetch_card(QWidget *parent, unsigned short num)
     : QWidget(parent)
@@ -108,39 +112,59 @@ DialogType* fetch_card::createDialog(double widthRatio, double heightRatio)
     return dialog;
 }
 
-//工具函数
-template <typename DialogType>
-void fetch_card::handle_menu(DialogType *dialog)
+//这里是点击了取药按钮之后的处理函数
+void fetch_card::handle_menu(QDialog *dialog)
 {
-    dialog->exec();
+    dialog->exec(); //对话框弹出来
 
-    switch(dialog->get_ret())
+    ///////////当用户点击回收药盒之后，进入到这里///////////////
+    /////////这里应该是要关闭仓门吧///////////////////////////
+
+    //这里调用另外两线程的ocr与yolo。 结果通过信号返回到主线程。
+    data_manager::instance()->removeData("fetch_ocr");   //保险起见，删除上一次的结果
+    data_manager::instance()->removeData("fetch_yolo");
+    connect(OcrManager::instance(), &OcrManager::recognitionFinished, this, &fetch_card::handle_OCR);
+    connect(YoloManager::instance(), &YoloManager::detectionFinished, this, &fetch_card::handle_yolo);
+    QMetaObject::invokeMethod(OcrManager::instance(), "recognizeText",
+                              Qt::QueuedConnection);
+    QMetaObject::invokeMethod(YoloManager::instance(), "detectObjects",
+                              Qt::QueuedConnection);
+
+
+    waitforres(); //我们必须等待识别的结果！！！ 结果获取方式如下面所示
+    QString ocrResult = data_manager::instance()->getData("fetch_ocr").toString();
+    int yoloResult = data_manager::instance()->getData("fetch_yolo").toInt();
+
+    /////////ocrResult可能有很多信息，这里我是没有做数据比对的///////////////////
+    if(yoloResult > 0 && yoloResult < m_detailedinfo.number && ocrResult==m_detailedinfo.m_name)
     {
-        //正常放入药盒
-    case NormalReturn:
-        handleNormalReturn();
-        break;
-    case NoReturn:
-        handleNoReturn();
-        break;
-    case WrongReturn:
-        handleWrongReturn();
-        break;
-    case RecognitionError:
-        handleRecognitionError();
-        break;
-    default:
-        qDebug() << dialog->get_ret();
-        break;
+        //正常吃了。这里只要数量减少了，我就认为用户正常吃了。
+        //如果要监控具体吃了几粒，符不符合计划，实现起来太麻烦了。
+    }
+    else if(yoloResult == m_detailedinfo.number && ocrResult==m_detailedinfo.m_name)
+    {
+        //没吃但是放了回来
+    }
+    else if(yoloResult == 0)
+    {
+        //没有放入药品
+    }
+    else if(ocrResult != m_detailedinfo.m_name)
+    {
+        //放错药物 药名不一致
     }
 }
 
-//取药按钮
+/////////////////////点击了取药按钮////////////////////////////
 void fetch_card::on_card_get_med_clicked()
 {
+    /*
+        这里应该要开仓，升起来药盒，应该有串口操作。
+        关于这个卡片所代表的所有信息，均在 m_detailedinfo成员里可找到。
+    */
     auto *dialog = createDialog<dialog_fetch_med>();
-
-    handle_menu(dialog);
+    dialog->set_content("取药提醒", "请取出所需药品后点击回收", "回收药盒", false);
+    handle_menu(dialog);  //这里显示对话框
 
     dialog->deleteLater(); //调用完要删除对话框
 }
@@ -224,3 +248,46 @@ void fetch_card::on_card_plan_clicked()
     emit signal_route::instance()->switchToPage("set_plan");
 }
 
+void fetch_card::handle_OCR(QString str)
+{
+    qDebug() << "得到OCR结果" << str;
+    data_manager::instance()->setData("fetch_ocr", str);
+    disconnect(OcrManager::instance(), &OcrManager::recognitionFinished, this, &fetch_card::handle_OCR);
+}
+
+void fetch_card::handle_yolo(int num)
+{
+    qDebug() << "得到yolo结果" << num;
+    data_manager::instance()->setData("fetch_yolo", num);
+    disconnect(YoloManager::instance(), &YoloManager::detectionFinished, this, &fetch_card::handle_yolo);
+}
+
+void fetch_card::waitforres(void)
+{
+    //我们在这里等待识别的结果
+    //为了简化逻辑，我们每100毫秒轮询一次ocrResult和yoloResult。 如果还没识别出来，那我们弹出等待对话框，阻塞在这里。
+    QVariant ocrResult = data_manager::instance()->getData("fetch_ocr");
+    QVariant yoloResult = data_manager::instance()->getData("fetch_yolo");
+    if(ocrResult.isNull() || yoloResult.isNull())  //只要有结果没出来
+    {
+        qDebug() << "识别结果还没有出来！";
+        dialog_common_inform *dialog = createDialog<dialog_common_inform>();
+        dialog->setState(false);
+        dialog->setContent("正在识别药品信息，请稍候...");
+
+        QTimer *checkTimer = new QTimer(dialog);
+        connect(checkTimer, &QTimer::timeout, dialog, [dialog, checkTimer](){
+            QVariant ocr = data_manager::instance()->getData("fetch_ocr");
+            QVariant yolo = data_manager::instance()->getData("fetch_yolo");
+            if(!ocr.isNull() && !yolo.isNull()) //必须全都有结果
+            {
+                checkTimer->stop();
+                dialog->close();
+            }
+        });
+        checkTimer->start(100); // 每100ms检查一次
+        dialog->exec();
+        dialog->deleteLater();
+        checkTimer->deleteLater();
+    }
+}

@@ -76,10 +76,13 @@ void med_list::getAllinfo()
     ui->patient_list->clear();
     ui->medcine_list->clear();
 
+    // 添加"全部"选项
+    ui->patient_list->addItem("全部");
+
     // 添加所有独特的用药人
     addUniquePatients();
 
-    // 默认选择第一个用药人
+    // 默认选择第一个
     if (ui->patient_list->count() > 0) {
         ui->patient_list->setCurrentIndex(0);
     }
@@ -92,6 +95,7 @@ void med_list::addUniquePatients()
     // 从药品信息中提取独特的用药人
     for (auto& medInfo : detailedInfoList)
     {
+        if(medInfo->p_name == "") {continue;}
         uniquePatients.insert(medInfo->p_name);
     }
 
@@ -113,15 +117,41 @@ void med_list::onPatientSelected(int index)
 
     // 清空药品列表
     ui->medcine_list->clear();
+    ui->medcine_list->addItem("全部");
 
-    // 显示该用药人的所有药品
-    addPatientMedicines(selectedPatient);
+    // 如果选择的是"全部"，显示所有药品；否则显示该用药人的药品
+    if (selectedPatient == "全部")
+    {
+        addAllMedicines();
+    }
+    else
+    {
+        addPatientMedicines(selectedPatient);
+    }
 
     // 解除信号阻塞
     ui->medcine_list->blockSignals(false);
 
     // 根据选择筛选卡片
     filterCards();
+}
+
+void med_list::addAllMedicines()
+{
+    QSet<QString> allMedicines;
+
+    // 获取所有药品名称
+    for (auto& medInfo : detailedInfoList)
+    {
+        qDebug() << medInfo->no;
+        allMedicines.insert(medInfo->m_name);
+    }
+
+    for (const QString& medicine : allMedicines) {
+        ui->medcine_list->addItem(medicine);
+    }
+
+    qDebug() << "所有药品共" << allMedicines.size() << "种";
 }
 
 void med_list::addPatientMedicines(const QString& patientName)
@@ -141,8 +171,9 @@ void med_list::addPatientMedicines(const QString& patientName)
         ui->medcine_list->addItem(medicine);
     }
 
-    // 默认选择第一个药品
-    if (ui->medcine_list->count() > 0) {
+    // 默认选择第一个
+    if (ui->medcine_list->count() > 0)
+    {
         ui->medcine_list->setCurrentIndex(0);
     }
 
@@ -166,8 +197,8 @@ void med_list::filterCards()
 
     for (fetch_card* card : cards)
     {
-        bool patientMatch = (card->m_detailedinfo.p_name == selectedPatient);
-        bool medicineMatch = (card->m_detailedinfo.m_name == selectedMedicine);
+        bool patientMatch = (selectedPatient == "全部") || (card->m_detailedinfo.p_name == selectedPatient);
+        bool medicineMatch = (selectedMedicine == "全部") || (card->m_detailedinfo.m_name == selectedMedicine);
         bool shouldShow = patientMatch && medicineMatch;
         card->setVisible(shouldShow);
 

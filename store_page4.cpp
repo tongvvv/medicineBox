@@ -29,6 +29,7 @@ void store_page4::setChange(bool change)
     m_change = change;
 }
 
+//在显示这个页面之前调用这个函数来调整显示的信息
 void store_page4::update_name_nums()
 {
     int no = data_manager::instance()->getData("store_no").toInt();
@@ -44,6 +45,7 @@ void store_page4::update_name_nums()
                            .arg(no).arg(name).arg(num));
 }
 
+//这是点击了确认
 void store_page4::on_confirm_store_clicked()
 {
     //////////前面要做逻辑判断/////////////////////////////////////

@@ -29,6 +29,10 @@ public:
     void set_detailedinfo(med_detailed_info* info);
 
     med_detailed_info m_detailedinfo;
+    void waitforres();
+public slots:
+    void handle_OCR(QString str);
+    void handle_yolo(int num);
 private slots:
 
     void on_med_info_clicked();
@@ -47,10 +51,9 @@ private:
     void handleRecognitionError();
 
     template <typename DialogType>
-    DialogType* createDialog(double widthRatio = 0.75, double heightRatio = 0.6);
+    DialogType* createDialog(double widthRatio = 0.75, double heightRatio = 0.65);
 
-    template <typename DialogType>
-    void handle_menu(DialogType *dialog);
+    void handle_menu(QDialog *dialog);
 
     Ui::fetch_card *ui;
     bool m_state;

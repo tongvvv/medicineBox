@@ -133,7 +133,7 @@ void store_page::change_page3()
 //这里是用户在第三步设置完成后，点击了下一步。
 void store_page::change_page4()
 {
-    if(page3->isset() == false) //还没有设置好的话，给个提示框！
+    if(page3->isset() == false) //还没有设置好的话，给个提示框！ 然后直接返回。
     {
         QSize dialogSize;
         dialogSize.setWidth(static_cast<int>(width() * 0.75));

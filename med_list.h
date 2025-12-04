@@ -44,6 +44,7 @@ private:
     void addPatientMedicines(const QString &patientName);
     void rearrangeVisibleCards();
     void filterCards();
+    void addAllMedicines();
 };
 
 #endif // MED_LIST_H
