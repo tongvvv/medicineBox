@@ -83,7 +83,8 @@ void med_list::getAllinfo()
     addUniquePatients();
 
     // 默认选择第一个
-    if (ui->patient_list->count() > 0) {
+    if (ui->patient_list->count() > 0)
+    {
         ui->patient_list->setCurrentIndex(0);
     }
 }
@@ -182,6 +183,7 @@ void med_list::addPatientMedicines(const QString& patientName)
 
 void med_list::onMedicineSelected(int index)
 {
+    qDebug() <<"onMedicineSelected";
     if (index < 0) return;
 
     // 根据选择筛选卡片
@@ -217,15 +219,30 @@ void med_list::filterCards()
 
 void med_list::rearrangeVisibleCards()
 {
-    // 从布局中移除所有卡片
-    QLayoutItem* item;
-    while ((item = ui->med_card_gridLayout->takeAt(0)) != nullptr) {
-        // 只处理卡片widget
-        if (item->widget() && item->widget()->inherits("fetch_card")) {
-            // 只是从布局移除，不删除widget
-            ui->med_card_gridLayout->removeItem(item);
+    // 1. 从布局中移除所有卡片（但不删除）
+    for (int i = ui->med_card_gridLayout->count() - 1; i >= 0; --i)
+    {
+        QLayoutItem* item = ui->med_card_gridLayout->itemAt(i);
+        if (item && item->widget())
+        {
+            if (item->widget()->inherits("fetch_card"))
+            {
+                ui->med_card_gridLayout->removeItem(item);
+            }
+            else
+            {
+                // 删除非卡片widget
+                item->widget()->deleteLater();
+                ui->med_card_gridLayout->removeItem(item);
+                delete item;
+            }
         }
-        delete item; // 删除布局项
+        else if (item && !item->widget())
+        {
+            // 处理spacer item
+            ui->med_card_gridLayout->removeItem(item);
+            delete item;
+        }
     }
 
     // 重新添加可见的卡片

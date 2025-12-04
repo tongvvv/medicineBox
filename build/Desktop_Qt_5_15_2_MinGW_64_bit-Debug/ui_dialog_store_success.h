@@ -35,7 +35,7 @@ public:
     QToolButton *toolButton_2;
     QWidget *widget_4;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
+    QLabel *content;
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer;
@@ -128,15 +128,15 @@ public:
         widget_4->setObjectName(QString::fromUtf8("widget_4"));
         horizontalLayout_2 = new QHBoxLayout(widget_4);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(widget_4);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        content = new QLabel(widget_4);
+        content->setObjectName(QString::fromUtf8("content"));
         QFont font1;
         font1.setPointSize(14);
-        label_3->setFont(font1);
-        label_3->setAlignment(Qt::AlignCenter);
-        label_3->setWordWrap(true);
+        content->setFont(font1);
+        content->setAlignment(Qt::AlignCenter);
+        content->setWordWrap(true);
 
-        horizontalLayout_2->addWidget(label_3);
+        horizontalLayout_2->addWidget(content);
 
 
         verticalLayout_2->addWidget(widget_4);
@@ -207,7 +207,7 @@ public:
         label->setText(QString());
         label_2->setText(QCoreApplication::translate("dialog_store_success", "\350\215\257\347\211\251\345\233\236\346\224\266", nullptr));
         toolButton_2->setText(QCoreApplication::translate("dialog_store_success", "\303\227", nullptr));
-        label_3->setText(QCoreApplication::translate("dialog_store_success", "\346\234\254\346\254\241\346\224\276\345\233\236\350\215\257\347\211\251XXXX\350\215\257\345\223\201XXXX\347\262\222\357\274\201", nullptr));
+        content->setText(QCoreApplication::translate("dialog_store_success", "\346\234\254\346\254\241\346\224\276\345\233\236\350\215\257\347\211\251XXXX\350\215\257\345\223\201XXXX\347\262\222\357\274\201", nullptr));
         pushButton->setText(QCoreApplication::translate("dialog_store_success", "\347\241\256\345\256\232", nullptr));
     } // retranslateUi
 

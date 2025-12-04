@@ -200,4 +200,3 @@ void SwitchButton::leaveEvent(QEvent *event){
     Q_UNUSED(event)
     mHover = false;
 }
-

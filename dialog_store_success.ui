@@ -154,7 +154,7 @@ QToolButton:pressed {
        <widget class="QWidget" name="widget_4" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QLabel" name="label_3">
+          <widget class="QLabel" name="content">
            <property name="font">
             <font>
              <pointsize>14</pointsize>

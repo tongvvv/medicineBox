@@ -100,6 +100,7 @@ public:
 
         close = new QToolButton(widget_2);
         close->setObjectName(QString::fromUtf8("close"));
+        close->setEnabled(false);
         close->setStyleSheet(QString::fromUtf8("QToolButton {\n"
 "    background-color: white;\n"
 "    color: #0078d7;\n"

@@ -29,7 +29,9 @@ public:
     void set_detailedinfo(med_detailed_info* info);
 
     med_detailed_info m_detailedinfo;
+
     void waitforres();
+    void handleNotEat();
 public slots:
     void handle_OCR(QString str);
     void handle_yolo(int num);
@@ -56,7 +58,7 @@ private:
     void handle_menu(QDialog *dialog);
 
     Ui::fetch_card *ui;
-    bool m_state;
+    bool m_state;  //是否要隐藏下面的按钮
     unsigned short m_num;
 };
 

@@ -37,27 +37,27 @@ public:
     QSpacerItem *verticalSpacer;
     QWidget *widget_5;
     QVBoxLayout *verticalLayout_3;
-    QLabel *label_2;
-    QLabel *label_3;
+    QLabel *m_name;
+    QLabel *info;
     QWidget *widget_6;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_6;
-    QLabel *label_7;
+    QLabel *num;
     QWidget *widget_7;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_8;
-    QLabel *label_9;
+    QLabel *p_name;
     QSpacerItem *verticalSpacer_2;
     QLabel *label_4;
     QWidget *widget_8;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_10;
-    QLabel *label_11;
+    QLabel *eatfreq;
     QWidget *widget_9;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_12;
-    QLabel *label_13;
-    QLabel *label_5;
+    QLabel *starttime;
+    QLabel *concrete;
 
     void setupUi(QWidget *medcine_information)
     {
@@ -133,22 +133,22 @@ public:
         verticalLayout_3 = new QVBoxLayout(widget_5);
         verticalLayout_3->setSpacing(0);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        label_2 = new QLabel(widget_5);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        m_name = new QLabel(widget_5);
+        m_name->setObjectName(QString::fromUtf8("m_name"));
         QFont font1;
         font1.setPointSize(15);
         font1.setBold(true);
-        label_2->setFont(font1);
+        m_name->setFont(font1);
 
-        verticalLayout_3->addWidget(label_2);
+        verticalLayout_3->addWidget(m_name);
 
-        label_3 = new QLabel(widget_5);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        info = new QLabel(widget_5);
+        info->setObjectName(QString::fromUtf8("info"));
         QFont font2;
         font2.setPointSize(12);
-        label_3->setFont(font2);
+        info->setFont(font2);
 
-        verticalLayout_3->addWidget(label_3);
+        verticalLayout_3->addWidget(info);
 
         widget_6 = new QWidget(widget_5);
         widget_6->setObjectName(QString::fromUtf8("widget_6"));
@@ -167,13 +167,13 @@ public:
 
         horizontalLayout_3->addWidget(label_6);
 
-        label_7 = new QLabel(widget_6);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-        sizePolicy2.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy2);
-        label_7->setFont(font2);
+        num = new QLabel(widget_6);
+        num->setObjectName(QString::fromUtf8("num"));
+        sizePolicy2.setHeightForWidth(num->sizePolicy().hasHeightForWidth());
+        num->setSizePolicy(sizePolicy2);
+        num->setFont(font2);
 
-        horizontalLayout_3->addWidget(label_7);
+        horizontalLayout_3->addWidget(num);
 
         horizontalLayout_3->setStretch(0, 1);
         horizontalLayout_3->setStretch(1, 6);
@@ -194,13 +194,13 @@ public:
 
         horizontalLayout_4->addWidget(label_8);
 
-        label_9 = new QLabel(widget_7);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-        sizePolicy2.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
-        label_9->setSizePolicy(sizePolicy2);
-        label_9->setFont(font2);
+        p_name = new QLabel(widget_7);
+        p_name->setObjectName(QString::fromUtf8("p_name"));
+        sizePolicy2.setHeightForWidth(p_name->sizePolicy().hasHeightForWidth());
+        p_name->setSizePolicy(sizePolicy2);
+        p_name->setFont(font2);
 
-        horizontalLayout_4->addWidget(label_9);
+        horizontalLayout_4->addWidget(p_name);
 
         horizontalLayout_4->setStretch(0, 1);
         horizontalLayout_4->setStretch(1, 6);
@@ -229,11 +229,11 @@ public:
 
         horizontalLayout_5->addWidget(label_10);
 
-        label_11 = new QLabel(widget_8);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setFont(font2);
+        eatfreq = new QLabel(widget_8);
+        eatfreq->setObjectName(QString::fromUtf8("eatfreq"));
+        eatfreq->setFont(font2);
 
-        horizontalLayout_5->addWidget(label_11);
+        horizontalLayout_5->addWidget(eatfreq);
 
         horizontalLayout_5->setStretch(0, 1);
         horizontalLayout_5->setStretch(1, 6);
@@ -252,22 +252,22 @@ public:
 
         horizontalLayout_6->addWidget(label_12);
 
-        label_13 = new QLabel(widget_9);
-        label_13->setObjectName(QString::fromUtf8("label_13"));
-        label_13->setFont(font2);
+        starttime = new QLabel(widget_9);
+        starttime->setObjectName(QString::fromUtf8("starttime"));
+        starttime->setFont(font2);
 
-        horizontalLayout_6->addWidget(label_13);
+        horizontalLayout_6->addWidget(starttime);
 
         horizontalLayout_6->setStretch(0, 1);
         horizontalLayout_6->setStretch(1, 6);
 
         verticalLayout_3->addWidget(widget_9);
 
-        label_5 = new QLabel(widget_5);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setFont(font2);
+        concrete = new QLabel(widget_5);
+        concrete->setObjectName(QString::fromUtf8("concrete"));
+        concrete->setFont(font2);
 
-        verticalLayout_3->addWidget(label_5);
+        verticalLayout_3->addWidget(concrete);
 
         verticalLayout_3->setStretch(0, 1);
         verticalLayout_3->setStretch(1, 1);
@@ -299,18 +299,18 @@ public:
         medcine_information->setWindowTitle(QCoreApplication::translate("medcine_information", "Form", nullptr));
         pushButton->setText(QCoreApplication::translate("medcine_information", "\350\277\224\345\233\236", nullptr));
         label_pic->setText(QString());
-        label_2->setText(QCoreApplication::translate("medcine_information", "\346\212\227\347\227\205\346\257\222\345\217\243\346\234\215\346\266\262", nullptr));
-        label_3->setText(QCoreApplication::translate("medcine_information", "\347\224\250\344\272\216\347\227\205\346\257\222\346\204\237\345\206\222\345\274\225\350\265\267\347\232\204\345\244\264\347\227\233\343\200\201\345\217\221\347\203\255\343\200\202", nullptr));
+        m_name->setText(QCoreApplication::translate("medcine_information", "\346\212\227\347\227\205\346\257\222\345\217\243\346\234\215\346\266\262", nullptr));
+        info->setText(QCoreApplication::translate("medcine_information", "\347\224\250\344\272\216\347\227\205\346\257\222\346\204\237\345\206\222\345\274\225\350\265\267\347\232\204\345\244\264\347\227\233\343\200\201\345\217\221\347\203\255\343\200\202", nullptr));
         label_6->setText(QCoreApplication::translate("medcine_information", "\350\215\257\345\223\201\346\225\260\351\207\217:", nullptr));
-        label_7->setText(QCoreApplication::translate("medcine_information", "30\347\223\266", nullptr));
+        num->setText(QCoreApplication::translate("medcine_information", "30\347\223\266", nullptr));
         label_8->setText(QCoreApplication::translate("medcine_information", "\344\275\277\347\224\250\344\272\272:", nullptr));
-        label_9->setText(QCoreApplication::translate("medcine_information", "\347\216\213\344\272\214", nullptr));
+        p_name->setText(QCoreApplication::translate("medcine_information", "\347\216\213\344\272\214", nullptr));
         label_4->setText(QCoreApplication::translate("medcine_information", "\346\234\215\350\215\257\350\257\246\346\203\205", nullptr));
         label_10->setText(QCoreApplication::translate("medcine_information", "\346\234\215\350\215\257\351\242\221\347\216\207:", nullptr));
-        label_11->setText(QCoreApplication::translate("medcine_information", "\346\257\217\345\244\251", nullptr));
-        label_12->setText(QCoreApplication::translate("medcine_information", "\346\234\215\350\215\257\346\227\266\351\227\264:", nullptr));
-        label_13->setText(QCoreApplication::translate("medcine_information", "2024-06-28", nullptr));
-        label_5->setText(QCoreApplication::translate("medcine_information", "08:00     1\347\223\266 ;  12:00        1\347\223\266", nullptr));
+        eatfreq->setText(QCoreApplication::translate("medcine_information", "\346\257\217\345\244\251", nullptr));
+        label_12->setText(QCoreApplication::translate("medcine_information", "\345\274\200\345\247\213\346\227\266\351\227\264:", nullptr));
+        starttime->setText(QCoreApplication::translate("medcine_information", "2024-06-28", nullptr));
+        concrete->setText(QCoreApplication::translate("medcine_information", "08:00     1\347\223\266 ;  12:00        1\347\223\266", nullptr));
     } // retranslateUi
 
 };

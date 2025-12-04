@@ -28,7 +28,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QSpacerItem *horizontalSpacer;
-    store_page3 *content;
+    store_page3 *page3;
 
     void setupUi(QWidget *change_plan)
     {
@@ -60,10 +60,10 @@ public:
 
         verticalLayout->addWidget(widget);
 
-        content = new store_page3(change_plan);
-        content->setObjectName(QString::fromUtf8("content"));
+        page3 = new store_page3(change_plan);
+        page3->setObjectName(QString::fromUtf8("page3"));
 
-        verticalLayout->addWidget(content);
+        verticalLayout->addWidget(page3);
 
         verticalLayout->setStretch(0, 2);
         verticalLayout->setStretch(1, 8);

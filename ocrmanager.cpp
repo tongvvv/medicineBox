@@ -53,7 +53,7 @@ void OcrManager::recognizeText()
     */
     QThread::sleep(2);  // 睡眠2秒, 模拟识别过程用作测试
 
-    emit recognitionFinished("(测试)定喘止咳丸");
+    emit recognitionFinished("定喘止咳丸");
 }
 
 OcrManager::OcrManager()

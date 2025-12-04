@@ -135,7 +135,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="m_name">
            <property name="font">
             <font>
              <pointsize>15</pointsize>
@@ -148,7 +148,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_3">
+          <widget class="QLabel" name="info">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -196,7 +196,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_7">
+             <widget class="QLabel" name="num">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -253,7 +253,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_9">
+             <widget class="QLabel" name="p_name">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -330,7 +330,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_11">
+             <widget class="QLabel" name="eatfreq">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -370,12 +370,12 @@
                </font>
               </property>
               <property name="text">
-               <string>服药时间:</string>
+               <string>开始时间:</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_13">
+             <widget class="QLabel" name="starttime">
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
@@ -390,7 +390,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="concrete">
            <property name="font">
             <font>
              <pointsize>12</pointsize>

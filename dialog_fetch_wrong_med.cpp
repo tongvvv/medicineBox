@@ -34,11 +34,11 @@ void dialog_fetch_wrong_med::on_again_clicked()
 //点了继续存入
 void dialog_fetch_wrong_med::on_force_store_clicked()
 {
-    QSize parentSize = this->parentWidget()->parentWidget()->size();
+    auto sz = this->parentWidget()->window()->size();
 
     QSize dialogSize(
-        static_cast<int>(parentSize.width() * 0.75),
-        static_cast<int>(parentSize.height() * 0.6)
+        static_cast<int>(sz.width() * 0.75),
+        static_cast<int>(sz.height() * 0.65)
         );
 
     auto *dialog = new dialog_fetch_force_store(this->parentWidget());

@@ -2,6 +2,8 @@
 #include "./ui_mainwindow.h"
 #include "change_plan.h"
 #include "change_plan_confirm.h"
+#include "data_structs.h"
+#include "dialog_common_inform.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -58,6 +60,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     }
     else if(pageName == "medcine_information1")
     {
+        medinfo->setMedicationInfoFromDataManager();
         ui->stackedWidget->setCurrentWidget(medinfo);
     }
     else if(pageName == "med_list_nofetch")
@@ -71,15 +74,39 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
         ui->stackedWidget->setCurrentWidget(StorePage);
         StorePage->change_page1();
     }
-    else if(pageName == "change_plan") //放错药物或识别错误时的修改用药计划界面， 这个页面每次都新建, 但是得记得释放内存
+    else if(pageName == "change_plan") //放错药物时的修改用药计划界面， 这个页面每次都新建, 但是得记得释放内存
     {
         auto *widget = new change_plan(this);
         ui->stackedWidget->addWidget(widget);
         ui->stackedWidget->setCurrentWidget(widget);
 
+        //这里是设置里面的store_page3子页面点击了下一步按钮之后的回调函数。
         connect(widget->findChild<QPushButton*>("next"), &QPushButton::clicked, [=](){
+            if(widget->getpage()->isset() == false) //还没有设置好的话，给个提示框！ 然后直接返回。
+            {
+                QSize dialogSize;
+                dialogSize.setWidth(static_cast<int>(width() * 0.75));
+                dialogSize.setHeight(static_cast<int>(height() * 0.6));
+                dialog_common_inform *dialog = new dialog_common_inform(this);
+                dialog->resize(dialogSize);
+                dialog->setContent("服用人不能为空，服用时间不能为空且不能重复");
+                dialog->exec();
+                dialog->deleteLater(); //调用完要删除对话框
+                return;
+            }
+            ////////////////////////////////////////////////////////////
+            //到了这一步我们已经确定服用计划都设置过了，没有空的或者错误的数据了。
+            ///////////////////////////////////////////////////////////
+
+            //这里必须把用户的服药计划，药品名称，药品数量等东西提交到我们的全局数据管理中心，以便后面的界面使用
+            data_manager::instance()->setData("store_user", widget->getpage()->getuser());
+            data_manager::instance()->setData("store_freq", widget->getpage()->getfreq());
+            data_manager::instance()->setData("store_starttime", widget->getpage()->getstarttime());
+            data_manager::instance()->setData("store_eattime", widget->getpage()->geteattime());
+            data_manager::instance()->setData("store_nums", widget->getpage()->getnums());
+
             auto *wt = new change_plan_confirm(this);
-            wt->set_change(true);
+            wt->getpage4()->update_name_nums();
             ui->stackedWidget->addWidget(wt);
             ui->stackedWidget->setCurrentWidget(wt);
             connect(wt->findChild<QPushButton*>("confirm_store"), &QPushButton::clicked, [=](){
@@ -92,7 +119,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
 
         connect(widget->findChild<QPushButton*>("skip"), &QPushButton::clicked, [=](){
             auto *wt = new change_plan_confirm(this);
-            wt->set_change(true);
+            wt->getpage4()->update_name_nums();
             ui->stackedWidget->addWidget(wt);
             ui->stackedWidget->setCurrentWidget(wt);
             connect(wt->findChild<QPushButton*>("confirm_store"), &QPushButton::clicked, [=](){
@@ -105,8 +132,9 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     }
     else if(pageName == "force_store")
     {
+        //放错药物时的选择了不修改用药计划， 这里会抛弃原本的用药计划，因为要不同，计划肯定不同，沿用之前的计划可能会造成安全问题
         auto *wt = new change_plan_confirm(this);
-        wt->set_change(true);
+        wt->getpage4()->update_name_nums();
         ui->stackedWidget->addWidget(wt);
         ui->stackedWidget->setCurrentWidget(wt);
         connect(wt->findChild<QPushButton*>("confirm_store"), &QPushButton::clicked, [=](){
@@ -124,9 +152,30 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
 
         //确定修改计划
         connect(widget->findChild<QPushButton*>("next"), &QPushButton::clicked, [=](){
-            /*
-                这里应该添加数据处理的代码。
-            */
+            if(widget->getpage()->isset() == false) //还没有设置好的话，给个提示框！ 然后直接返回。
+            {
+                qDebug()<<"set_plan点击了确定";
+                QSize dialogSize;
+                dialogSize.setWidth(static_cast<int>(width() * 0.75));
+                dialogSize.setHeight(static_cast<int>(height() * 0.6));
+                dialog_common_inform *dialog = new dialog_common_inform(this);
+                dialog->resize(dialogSize);
+                dialog->setContent("服用人不能为空，服用时间不能为空且不能重复");
+                dialog->exec();
+                dialog->deleteLater(); //调用完要删除对话框
+                return;
+            }
+            ////////////////////////////////////////////////////////////
+            //到了这一步我们已经确定服用计划都设置过了，没有空的或者错误的数据了。
+            ///////////////////////////////////////////////////////////
+
+            //这里必须把用户的服药计划，药品名称，药品数量等东西提交到我们的全局数据管理中心
+            data_manager::instance()->setData("setplan_user", widget->getpage()->getuser());
+            data_manager::instance()->setData("setplan_freq", widget->getpage()->getfreq());
+            data_manager::instance()->setData("setplan_starttime", widget->getpage()->getstarttime());
+            data_manager::instance()->setData("setplan_eattime", widget->getpage()->geteattime());
+            data_manager::instance()->setData("setplan_nums", widget->getpage()->getnums());
+            data_manager::instance()->setplan();
             ui->stackedWidget->removeWidget(widget);
             widget->deleteLater();
             emit signal_route::instance()->switchToPage("med_list");
@@ -134,6 +183,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
 
         //返回
         connect(widget->findChild<QPushButton*>("skip"), &QPushButton::clicked, [=](){
+            data_manager::instance()->removeData("setplan_no");
             ui->stackedWidget->removeWidget(widget);
             widget->deleteLater();
             emit signal_route::instance()->switchToPage("med_list");

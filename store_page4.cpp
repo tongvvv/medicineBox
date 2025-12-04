@@ -9,7 +9,6 @@
 store_page4::store_page4(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::store_page4)
-    , m_change(false)
 {
     ui->setupUi(this);
 
@@ -24,17 +23,13 @@ store_page4::~store_page4()
     delete ui;
 }
 
-void store_page4::setChange(bool change)
-{
-    m_change = change;
-}
-
-//在显示这个页面之前调用这个函数来调整显示的信息
+//在显示这个页面之前调用这个函数来调整显示的信息，存药的时候
 void store_page4::update_name_nums()
 {
     int no = data_manager::instance()->getData("store_no").toInt();
     QString name = data_manager::instance()->getData("store_ocr").toString();
     int num = data_manager::instance()->getData("store_yolo").toInt();
+
 
     name = ocr_name_match(name);
 
@@ -48,22 +43,17 @@ void store_page4::update_name_nums()
 //这是点击了确认
 void store_page4::on_confirm_store_clicked()
 {
+    auto sz = this->parentWidget()->window()->size();
+
+    QSize dialogSize(
+        static_cast<int>(sz.width() * 0.75),
+        static_cast<int>(sz.height() * 0.65)
+        );
+
     //////////前面要做逻辑判断/////////////////////////////////////
     QSize parentSize = this->parentWidget()->size();
     if(ui->num->text().toInt() < 1 || ui->name->text().isEmpty())
     {
-
-        QSize dialogSize;
-        if(m_change == false) //不同场景下对话框大小会不一样
-        {
-            dialogSize.setWidth(static_cast<int>(parentSize.width() * 0.7));
-            dialogSize.setHeight(static_cast<int>(parentSize.height() * 0.85));
-        }
-        else
-        {
-            dialogSize.setWidth(static_cast<int>(parentSize.width() * 0.75));
-            dialogSize.setHeight(static_cast<int>(parentSize.height() * 0.6));
-        }
         dialog_common_inform *dialog = new dialog_common_inform(this);
         dialog->resize(dialogSize);
         dialog->setContent("药名不能为空，药品数量要大于1");
@@ -77,19 +67,9 @@ void store_page4::on_confirm_store_clicked()
     //////////这里是成功了////////////////////////////////////////
     qDebug() << parentSize.width();
     qDebug() << parentSize.height();
-    QSize dialogSize;
-    if(m_change == false)
-    {
-        dialogSize.setWidth(static_cast<int>(parentSize.width() * 0.7));
-        dialogSize.setHeight(static_cast<int>(parentSize.height() * 0.85));
-    }
-    else
-    {
-        dialogSize.setWidth(static_cast<int>(parentSize.width() * 0.75));
-        dialogSize.setHeight(static_cast<int>(parentSize.height() * 0.6));
-    }
 
     dialog_store_success *dialog = new dialog_store_success(this);
+    dialog->setContent(QString("本次存入药品%1,共%2粒").arg(ui->name->text()).arg(ui->num->text().toInt()));
     dialog->resize(dialogSize);
     dialog->exec();
     dialog->deleteLater(); //调用完要删除对话框
@@ -104,3 +84,4 @@ void store_page4::on_confirm_store_clicked()
     ///////////////切换到主界面/////////////////
     emit signal_route::instance()->switchToPage("main_page");
 }
+

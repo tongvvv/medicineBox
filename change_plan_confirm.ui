@@ -21,7 +21,7 @@
     <widget class="QWidget" name="widget" native="true"/>
    </item>
    <item>
-    <widget class="store_page4" name="widget_2" native="true"/>
+    <widget class="store_page4" name="store4" native="true"/>
    </item>
   </layout>
  </widget>

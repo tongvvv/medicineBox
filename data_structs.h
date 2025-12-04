@@ -39,9 +39,15 @@ public:
     // 删除数据
     void removeData(const QString& key);
 
-    void store_medcine();
+    void store_medcine(); //存药步骤里面最后会调用这个
+
+    void setplan();
 
     QVector<med_detailed_info*> getAllMed(); //得到所有的已存入的药品
+
+    void update_medicine(const med_detailed_info& info); //取药的时候更新药品信息用这个
+
+    void delete_medicine(const med_detailed_info& info);
 signals:
     void fontSize_changed(GlobalFontSize size);
 

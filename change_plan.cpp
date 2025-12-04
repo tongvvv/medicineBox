@@ -12,3 +12,8 @@ change_plan::~change_plan()
 {
     delete ui;
 }
+
+store_page3 *change_plan::getpage()
+{
+    return ui->page3;
+}

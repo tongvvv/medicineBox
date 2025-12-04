@@ -24,7 +24,6 @@ private slots:
 
 private:
     Ui::store_page4 *ui;
-    bool m_change;
 };
 
 #endif // STORE_PAGE4_H

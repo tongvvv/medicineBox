@@ -17,6 +17,7 @@ public:
     explicit dialog_store_success(QWidget *parent = nullptr);
     ~dialog_store_success();
 
+    void setContent(const QString &str);
 private slots:
     void on_pushButton_clicked();
 

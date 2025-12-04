@@ -11,7 +11,7 @@ void med_detailed_info::parseEatInfo(const QString& timeStr, const QString& coun
     // 解析服药时间 "08:00,12:00,20:00" -> QTime列表
     QStringList timeList = timeStr.split(',');
     for (const QString& time : timeList) {
-        eattimes.append(QTime::fromString(time.trimmed(), "hh:mm"));
+        eattimes.append(QTime::fromString(time.trimmed(), "h:m"));
     }
 
     // 解析服药数量 "1,2,1" -> unsigned short列表
@@ -31,7 +31,7 @@ QString med_detailed_info::eattimesToDbString() const
 {
     QStringList timeStrs;
     for (const QTime& time : eattimes) {
-        timeStrs.append(time.toString("hh:mm"));
+        timeStrs.append(time.toString("h:m"));
     }
     return timeStrs.join(",");
 }

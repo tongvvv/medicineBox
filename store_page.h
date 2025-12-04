@@ -23,6 +23,7 @@ public:
 
     void change_page1();
     void waitforres();
+
 private slots:
     void on_back_main_page_clicked();
 

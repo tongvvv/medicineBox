@@ -2,6 +2,7 @@
 #define CHANGE_PLAN_H
 
 #include <QWidget>
+#include "store_page3.h"
 
 namespace Ui {
 class change_plan;
@@ -15,7 +16,8 @@ public:
     explicit change_plan(QWidget *parent = nullptr);
     ~change_plan();
 
-private:
+    store_page3* getpage(void);
+public:
     Ui::change_plan *ui;
 };
 

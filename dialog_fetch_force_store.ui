@@ -119,6 +119,9 @@ max-height:    70px;   </string>
          </item>
          <item>
           <widget class="QToolButton" name="close">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">QToolButton {
     background-color: white;

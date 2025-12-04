@@ -22,7 +22,7 @@ class Ui_change_plan_confirm
 public:
     QVBoxLayout *verticalLayout;
     QWidget *widget;
-    store_page4 *widget_2;
+    store_page4 *store4;
 
     void setupUi(QWidget *change_plan_confirm)
     {
@@ -37,10 +37,10 @@ public:
 
         verticalLayout->addWidget(widget);
 
-        widget_2 = new store_page4(change_plan_confirm);
-        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        store4 = new store_page4(change_plan_confirm);
+        store4->setObjectName(QString::fromUtf8("store4"));
 
-        verticalLayout->addWidget(widget_2);
+        verticalLayout->addWidget(store4);
 
         verticalLayout->setStretch(0, 2);
         verticalLayout->setStretch(1, 6);

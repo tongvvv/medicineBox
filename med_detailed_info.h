@@ -27,6 +27,7 @@ public:
     QVector<QTime> eattimes;    // 服药时间列表
     QVector<unsigned short> eatcounts; // 每次服药数量列表
     QDateTime lasteat;  //上次吃的时间
+    int inform; //是否提醒， 0不提醒，，，1提醒
 };
 
 #endif // MED_DETAILED_INFO_H

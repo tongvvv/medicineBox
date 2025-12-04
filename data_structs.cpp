@@ -108,8 +108,8 @@ void data_manager::store_medcine()
 
     // 插入新数据
     QSqlQuery insertQuery;
-    insertQuery.prepare("INSERT INTO med_box (no, m_name, m_number, p_name, eatfreq, starttime, eattime, eatcount) "
-                        "VALUES (:no, :name, :num, :user, :freq, :startTime, :eatTime, :nums)");
+    insertQuery.prepare("INSERT INTO med_box (no, m_name, m_number, p_name, eatfreq, starttime, eattime, eatcount, lasteat, inform) "
+                        "VALUES (:no, :name, :num, :user, :freq, :startTime, :eatTime, :nums, :lasteat, :inform)");
 
     insertQuery.bindValue(":no", no);
     insertQuery.bindValue(":name", name);
@@ -119,6 +119,8 @@ void data_manager::store_medcine()
     insertQuery.bindValue(":startTime", startTime);
     insertQuery.bindValue(":eatTime", eatTime);
     insertQuery.bindValue(":nums", nums);
+    insertQuery.bindValue(":lasteat", QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss"));
+    insertQuery.bindValue(":inform", 0); //inform默认0
 
     if (!insertQuery.exec()) {
         qDebug() << "药品存储失败:" << insertQuery.lastError().text();
@@ -148,25 +150,79 @@ void data_manager::store_medcine()
     qDebug() << "=============================";
 }
 
+void data_manager::setplan()
+{
+    QSqlQuery query;
+
+    // 获取数据
+    int no = getData("setplan_no").toInt();
+    QString user = getData("setplan_user").toString();
+    int freq = getData("setplan_freq").toInt();
+    QDateTime startTime = getData("setplan_starttime").toDateTime();
+    QString eatTime = getData("setplan_eattime").toString();
+    QString eatNums = getData("setplan_nums").toString();
+    QDateTime currentTime = QDateTime::currentDateTime();
+
+    // 准备SQL更新语句
+    query.prepare(R"(
+        UPDATE med_box
+        SET p_name = :user,
+            eatfreq = :freq,
+            starttime = :starttime,
+            eattime = :eattime,
+            eatcount = :eatcount,
+            lasteat = :lasteat
+        WHERE no = :no
+    )");
+
+    // 绑定参数
+    query.bindValue(":no", no);
+    query.bindValue(":user", user);
+    query.bindValue(":freq", freq);
+    query.bindValue(":starttime", startTime.toString("yyyy-MM-dd HH:mm:ss"));
+    query.bindValue(":eattime", eatTime);
+    query.bindValue(":eatcount", eatNums);
+    query.bindValue(":lasteat", currentTime.toString("yyyy-MM-dd HH:mm:ss"));
+
+    if (!query.exec()) {
+        qCritical() << "更新用药计划失败:" << query.lastError().text();
+        qDebug() << "SQL错误:" << query.lastQuery();
+        qDebug() << "参数 - no:" << no << "user:" << user << "freq:" << freq;
+        return;
+    }
+
+    qDebug() << "成功更新用药计划，药盒编号:" << no;
+
+    // 清理临时数据
+    removeData("setplan_no");
+    removeData("setplan_user");
+    removeData("setplan_freq");
+    removeData("setplan_starttime");
+    removeData("setplan_eattime");
+    removeData("setplan_nums");
+}
+
 QVector<med_detailed_info *> data_manager::getAllMed()
 {
     QVector<med_detailed_info *> detailedInfoList;
     // 从数据库获取所有药品信息
     QSqlQuery query;
     QString sql = R"(
-        SELECT no, m_name, m_info, m_number, m_picpath, p_name, eatfreq, starttime, eattime, eatcount, lasteat
+        SELECT no, m_name, m_info, m_number, m_picpath, p_name, eatfreq, starttime, eattime, eatcount, lasteat, inform
         FROM med_box
         WHERE no BETWEEN 0 AND 23
         ORDER BY no ASC
     )";
 
-    if (!query.exec(sql)) {
+    if (!query.exec(sql))
+    {
         qCritical() << "查询所有药品信息失败:" << query.lastError().text();
         return QVector<med_detailed_info *>();
     }
 
     // 处理查询结果
-    while (query.next()) {
+    while (query.next())
+    {
         med_detailed_info* medInfo = new med_detailed_info();
 
         // 填充基本信息
@@ -179,6 +235,7 @@ QVector<med_detailed_info *> data_manager::getAllMed()
         medInfo->eatfreq = query.value("eatfreq").toUInt();
         medInfo->starttime = query.value("starttime").toDateTime();
         medInfo->lasteat = query.value("lasteat").toDateTime();
+        medInfo->inform = query.value("inform").toInt();
 
         // 解析服药时间和数量
         QString eatTimeStr = query.value("eattime").toString();
@@ -190,6 +247,58 @@ QVector<med_detailed_info *> data_manager::getAllMed()
 
     qDebug() << "成功获取" << detailedInfoList.size() << "条药品信息";
     return detailedInfoList;
+}
+
+void data_manager::update_medicine(const med_detailed_info& info)
+{
+    // 1. 先删除原有数据
+    QSqlQuery deleteQuery;
+    deleteQuery.prepare("DELETE FROM med_box WHERE no = ?");
+    deleteQuery.addBindValue(info.no);
+
+    if (!deleteQuery.exec()) {
+        qDebug() << "删除药品数据失败:" << deleteQuery.lastError().text();
+        return;
+    }
+
+    // 2. 插入新数据
+    QSqlQuery insertQuery;
+    insertQuery.prepare("INSERT INTO med_box (no, m_name, m_info, m_number, m_picpath, p_name, eatfreq, starttime, eattime, eatcount, lasteat, inform) "
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    insertQuery.addBindValue(info.no);
+    insertQuery.addBindValue(info.m_name);
+    insertQuery.addBindValue(info.m_info);
+    insertQuery.addBindValue(info.number);
+    insertQuery.addBindValue(info.m_picpath);
+    insertQuery.addBindValue(info.p_name);
+    insertQuery.addBindValue(info.eatfreq);
+    insertQuery.addBindValue(info.starttime.toString("yyyy-MM-dd HH:mm:ss"));
+    insertQuery.addBindValue(info.eattimesToDbString());
+    insertQuery.addBindValue(info.eatcountsToDbString());
+    insertQuery.addBindValue(info.lasteat.toString("yyyy-MM-dd HH:mm:ss"));
+    insertQuery.addBindValue(info.inform);
+
+    if (!insertQuery.exec()) {
+        qDebug() << "插入药品数据失败:" << insertQuery.lastError().text();
+        return;
+    }
+
+    qDebug() << "药品信息更新成功 - 药盒编号:" << info.no;
+}
+
+void data_manager::delete_medicine(const med_detailed_info &info)
+{
+    QSqlQuery deleteQuery;
+    deleteQuery.prepare("DELETE FROM med_box WHERE no = ?");
+    deleteQuery.addBindValue(info.no);
+
+    if (!deleteQuery.exec()) {
+        qDebug() << "删除药品数据失败:" << deleteQuery.lastError().text();
+        return;
+    }
+
+    qDebug() << "药品信息删除成功 - 药盒编号:" << info.no;
 }
 
 bool data_manager::isFirstRun()
@@ -224,7 +333,8 @@ bool data_manager::createTables()
             starttime DATETIME,
             eattime VARCHAR(255),
             eatcount VARCHAR(255),
-            lasteat DATETIME default CURRENT_TIMESTAMP
+            lasteat DATETIME,
+            inform INTEGER
         );
     )";
 

@@ -54,7 +54,7 @@
     </widget>
    </item>
    <item>
-    <widget class="store_page3" name="content" native="true"/>
+    <widget class="store_page3" name="page3" native="true"/>
    </item>
   </layout>
  </widget>

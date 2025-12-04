@@ -13,7 +13,8 @@ change_plan_confirm::~change_plan_confirm()
     delete ui;
 }
 
-void change_plan_confirm::set_change(bool change)
+store_page4 *change_plan_confirm::getpage4()
 {
-    ui->widget_2->setChange(change);
+    return ui->store4;
 }
+

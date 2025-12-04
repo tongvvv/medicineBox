@@ -16,6 +16,11 @@ dialog_store_success::dialog_store_success(QWidget *parent)
     ui->widget->setGraphicsEffect(shadowEffect);
 }
 
+void dialog_store_success::setContent(const QString& str)
+{
+    ui->content->setText(str);
+}
+
 dialog_store_success::~dialog_store_success()
 {
     delete ui;
