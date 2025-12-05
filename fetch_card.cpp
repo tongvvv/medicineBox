@@ -160,6 +160,18 @@ void fetch_card::handle_menu(QDialog *dialog)
     {
         //正常吃了。这里只要数量减少了，我就认为用户正常吃了。
         //如果要监控具体吃了几粒，符不符合计划，实现起来太麻烦了。
+
+        // 保存使用记录到数据库
+        QVariantMap recordData;
+        recordData["use_time"] = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+        recordData["use_pname"] = m_detailedinfo.p_name;
+        recordData["use_action"] = 2; //2代表取药
+        recordData["use_mname"] = m_detailedinfo.m_name; //药名
+        recordData["use_num"] = m_detailedinfo.number-yoloResult; //吃了多少
+        recordData["use_no"] = m_detailedinfo.no;
+        data_manager::instance()->addrecord(recordData);
+
+        //这里是更新吃药时间，药品数量， 给提示框
         m_detailedinfo.number = yoloResult;
         m_detailedinfo.lasteat = QDateTime::currentDateTime();
         handleNormalReturn();
@@ -173,18 +185,37 @@ void fetch_card::handle_menu(QDialog *dialog)
     {
         //如果还是原来的药，但是数量变多了，那么我认为他正常吃了，放了新的药进来。
         //这里其实和正常吃药处理一样， 只不过咱们的数量变多了而已，最后一次吃的时间变了
+        // 保存使用记录到数据库
+        QVariantMap recordData;
+        recordData["use_time"] = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+        recordData["use_pname"] = m_detailedinfo.p_name;
+        recordData["use_action"] = 2; //2代表取药
+        recordData["use_mname"] = m_detailedinfo.m_name; //药名
+        recordData["use_num"] = m_detailedinfo.number; //吃了多少，这里取之前那板药剩余的数量！
+        recordData["use_no"] = m_detailedinfo.no;
+        data_manager::instance()->addrecord(recordData);
+
+        recordData["use_time"] = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+        recordData["use_pname"] = m_detailedinfo.p_name;
+        recordData["use_action"] = 1; //1代表存药了
+        recordData["use_mname"] = m_detailedinfo.m_name; //药名
+        recordData["use_num"] = yoloResult; //存了识别的数量
+        recordData["use_no"] = m_detailedinfo.no;
+        data_manager::instance()->addrecord(recordData);
+
         m_detailedinfo.number = yoloResult;
         m_detailedinfo.lasteat = QDateTime::currentDateTime();
         handleNormalReturn();
     }
     else if(yoloResult == 0)
     {
-        //没有放入药品
+        //没有放入药品，相关数据会清空， 这里我认为他把这板药吃完了
         handleNoReturn();
     }
     else if(ocrResult != m_detailedinfo.m_name)
     {
         //放错药物 药名不一致
+        data_manager::instance()->setData("store_no", m_detailedinfo.no);
         handleWrongReturn();
     }
 }
@@ -225,7 +256,7 @@ void fetch_card::handleNormalReturn()
 void fetch_card::handleNotEat()
 {
     auto *dialog = createDialog<dialog_fetch_med>();
-    QString str = QString("本次您没有吃药").arg(m_detailedinfo.m_name).arg(m_detailedinfo.number);
+    QString str = QString("本次您没有吃药");
     dialog->set_content("药物回收",str ,"确定",false);
     dialog->exec();
     dialog->deleteLater();
@@ -233,8 +264,6 @@ void fetch_card::handleNotEat()
     //删掉上次的识别结果
     data_manager::instance()->removeData("fetch_ocr");
     data_manager::instance()->removeData("fetch_yolo");
-    //更新数据
-    data_manager::instance()->update_medicine(m_detailedinfo);
     emit signal_route::instance()->switchToPage("med_list");
     //应该还需要串口控制药盒下降吧/////
 }
@@ -249,6 +278,16 @@ void fetch_card::handleNoReturn()
     {
         //到这里就说明用户没有放药而且点了确认
         //那这个药仓的数据就清空了呗
+        //没有放入药品，相关数据会清空， 这里我认为他把这板药吃完了
+        QVariantMap recordData;
+        recordData["use_time"] = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+        recordData["use_pname"] = m_detailedinfo.p_name;
+        recordData["use_action"] = 2; //2代表取药
+        recordData["use_mname"] = m_detailedinfo.m_name; //药名
+        recordData["use_num"] = m_detailedinfo.number; //吃了多少，这里取之前那板药剩余的数量！
+        recordData["use_no"] = m_detailedinfo.no;
+        data_manager::instance()->addrecord(recordData);
+
         data_manager::instance()->delete_medicine(m_detailedinfo);
         emit signal_route::instance()->switchToPage("med_list");
         //应该还需要串口控制药盒下降吧/////
@@ -294,8 +333,6 @@ void fetch_card::handleWrongReturn()
     if(ret == QDialog::Accepted)
     {
         //处理代码在对话框内部
-        data_manager::instance()->setData("store_no", m_detailedinfo.no);
-
         QString ocrResult = data_manager::instance()->getData("fetch_ocr").toString();
         int yoloResult = data_manager::instance()->getData("fetch_yolo").toInt();
 

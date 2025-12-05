@@ -117,7 +117,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="name">
+       <widget class="QComboBox" name="p_name">
         <property name="font">
          <font>
           <family>微软雅黑</family>
@@ -179,7 +179,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="medicine">
+       <widget class="QComboBox" name="m_name">
         <property name="font">
          <font>
           <family>微软雅黑</family>

@@ -89,6 +89,7 @@ void data_manager::removeData(const QString &key)
     m_dataMap.remove(key);
 }
 
+///////////正常存药流程最后会调用这个函数////取药时，如果放回错误的药，选择强制存入，最后也会到这个函数的。
 void data_manager::store_medcine()
 {
     int no = getData("store_no").toInt();
@@ -125,6 +126,25 @@ void data_manager::store_medcine()
     if (!insertQuery.exec()) {
         qDebug() << "药品存储失败:" << insertQuery.lastError().text();
         return;
+    }
+
+    QSqlQuery query;
+
+    query.prepare(
+        "INSERT INTO use_record (use_time, use_pname, use_action, use_mname, use_num, use_no) "
+        " values( :time, :pname, :action, :mname, :num, :no )"
+        );
+
+    query.bindValue(":time", QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss"));
+    query.bindValue(":pname", user);
+    query.bindValue(":action", 1);
+    query.bindValue(":mname", name);
+    query.bindValue(":num", num);
+    query.bindValue(":no", no);
+
+    if (!query.exec())
+    {
+        qDebug() << "插入使用记录失败:" << query.lastError().text();
     }
 
     removeData("store_no");
@@ -355,7 +375,66 @@ bool data_manager::createTables()
         return false;
     }
 
+    // SQLite建表语句
+    createTableSQL =
+        "CREATE TABLE use_record ("
+        "   id INTEGER PRIMARY KEY AUTOINCREMENT,"
+        "   use_time    DATETIME ,"
+        "   use_pname  TEXT,"
+        "   use_action INTEGER NOT NULL,"
+        "   use_mname  TEXT,"
+        "   use_num    INTEGER DEFAULT 0,"
+        "   use_no     INTEGER"
+        ")";
+
+    if (!query.exec(createTableSQL)) {
+        qDebug() << "创建use_record表失败:" << query.lastError().text();
+        return false;
+    }
+
+    // 创建索引
+    QString indexSQL =
+        "CREATE INDEX idx_use_record_search ON use_record ("
+        "   use_pname ,"
+        "   use_mname ,"
+        "   use_time DESC"
+        ")";
+
+    if (!query.exec(indexSQL)) {
+        qDebug() << "创建索引失败:" << query.lastError().text();
+    }
+
     qDebug() << "数据库表创建成功";
 
+    return true;
+}
+
+bool data_manager::addrecord(const QVariantMap& recordData)
+{
+    // 构建SQL插入语句
+    QString sql = QString(
+        "INSERT INTO use_record "
+        "(use_time, use_pname, use_action, use_mname, use_num, use_no) "
+        "VALUES (:use_time, :use_pname, :use_action, :use_mname, :use_num, :use_no)"
+        );
+
+    QSqlQuery query;
+    query.prepare(sql);
+
+    // 绑定参数
+    query.bindValue(":use_time", recordData["use_time"]);
+    query.bindValue(":use_pname", recordData["use_pname"]);
+    query.bindValue(":use_action", recordData["use_action"]);
+    query.bindValue(":use_mname", recordData["use_mname"]);
+    query.bindValue(":use_num", recordData["use_num"]);
+    query.bindValue(":use_no", recordData["use_no"]);
+
+    if (!query.exec()) {
+        qWarning() << "插入记录失败:" << query.lastError().text();
+        qWarning() << "SQL:" << query.lastQuery();
+        return false;
+    }
+
+    qDebug() << "成功添加取药记录";
     return true;
 }

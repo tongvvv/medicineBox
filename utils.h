@@ -10,7 +10,7 @@
 #define  WrongReturn      3  //放错药物
 #define  RecognitionError 4  //识别错误和无法识别
 
-enum class Action{STORE, FETCH};
+enum class Action{STORE=1, FETCH=2};
 
 #define ACTION_TO_STRING(action) \
     [](Action a) -> QString  \
@@ -29,11 +29,9 @@ struct table_content
     QDateTime  datetime;
     QString    person_name;
     Action     action;
-    int        med_number; //药品唯一编号
     QString    med_name;
     int        num;  //取走的药品数量
-    QString    unit; //这个是数量的单位
-    int        box;
+    int        box; //药盒编号
 };
 
 enum class GlobalFontSize {SMALL, MEDIUM, BIG};

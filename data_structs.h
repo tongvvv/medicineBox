@@ -48,6 +48,7 @@ public:
     void update_medicine(const med_detailed_info& info); //取药的时候更新药品信息用这个
 
     void delete_medicine(const med_detailed_info& info);
+    bool addrecord(const QVariantMap &recordData);
 signals:
     void fontSize_changed(GlobalFontSize size);
 

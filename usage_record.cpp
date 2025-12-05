@@ -62,7 +62,7 @@ void usage_record::addContent(unsigned int row, table_content content)
     addItem(row, 1, content.person_name);
     addItem(row, 2, ACTION_TO_STRING(content.action));
     addItem(row, 3, content.med_name);
-    addItem(row, 4, content.num + content.unit);
+    addItem(row, 4, QString::number(content.num));
     addItem(row, 5, QString::asprintf("%02d号盒",content.box));
 }
 

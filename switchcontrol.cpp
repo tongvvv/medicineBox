@@ -4,7 +4,7 @@
 SwitchButton::SwitchButton(QWidget *parent)
     : QWidget{parent}
 {
-
+    mBackColor = mBackOffColor;
 }
 
 bool SwitchButton::getSwitch() const
@@ -119,6 +119,10 @@ void SwitchButton::paintEvent(QPaintEvent *event){
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setPen(Qt::NoPen);
 
+    /// 绘制背景颜色
+    painter.setBrush(mOnOff ? mBackOnColor : mBackOffColor);
+    painter.drawRoundedRect(this->rect(),mRadius,mRadius);
+
     /// 绘制边缘颜色
     QPainterPath path;
     path.addRect(this->rect());
@@ -126,14 +130,6 @@ void SwitchButton::paintEvent(QPaintEvent *event){
     path.setFillRule(Qt::OddEvenFill);
     painter.setBrush(mEdgeColor);
     painter.drawPath(path);
-
-    /// 绘制背景颜色
-    painter.setBrush(mBackColor);
-    painter.drawRoundedRect(this->rect(),mRadius,mRadius);
-
-    /// 绘制圆形按钮
-    painter.setBrush(mButtonColor);
-    painter.drawEllipse(mButtonRect);
 
     /// 绘制按钮阴影
     painter.setBrush(Qt::NoBrush);
@@ -146,11 +142,14 @@ void SwitchButton::paintEvent(QPaintEvent *event){
         painter.drawEllipse(mButtonRect.center(),i,i);
     }
 
+    /// 绘制圆形按钮
+    painter.setBrush(mButtonColor);
+    painter.drawEllipse(mButtonRect);
+
     /// 失能显示，添加一层蒙层
     if(!mEnable){
-        QColor disable(Qt::black);
-        disable.setAlphaF(0.5);
-        painter.setBrush(disable);
+        QColor disableColor(0, 0, 0, 128); // 50%透明度
+        painter.setBrush(disableColor);
         painter.drawRoundedRect(this->rect(),mRadius,mRadius);
     }
 }
