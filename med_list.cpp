@@ -40,6 +40,7 @@ med_list::~med_list()
 void med_list::getAllinfo()
 {
     // 清空现有数据
+    qDeleteAll(detailedInfoList);  // 删除所有对象
     detailedInfoList.clear();
 
     for (fetch_card* card : cards)

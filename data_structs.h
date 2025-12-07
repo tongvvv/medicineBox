@@ -41,14 +41,19 @@ public:
 
     void store_medcine(); //存药步骤里面最后会调用这个
 
-    void setplan();
+    void setplan();   //用于卡片的修改用药计划按钮
 
     QVector<med_detailed_info*> getAllMed(); //得到所有的已存入的药品
+
+    med_detailed_info* getOneMed(int no); //得到一个已存入的药品信息，no 代表药盒编号
 
     void update_medicine(const med_detailed_info& info); //取药的时候更新药品信息用这个
 
     void delete_medicine(const med_detailed_info& info);
     bool addrecord(const QVariantMap &recordData);
+
+    QVector<med_detailed_info*> getInformedMed();
+    med_detailed_info* getOneInformedMed(int no);
 signals:
     void fontSize_changed(GlobalFontSize size);
 

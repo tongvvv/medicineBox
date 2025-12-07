@@ -218,6 +218,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     }
     else if(pageName == "usage_record")
     {
+        record->update_data();
         ui->stackedWidget->setCurrentWidget(record);
     }
     else if(pageName == "usage_plan")

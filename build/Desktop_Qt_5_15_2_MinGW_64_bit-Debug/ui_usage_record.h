@@ -37,12 +37,12 @@ public:
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
-    QComboBox *name;
+    QComboBox *p_name;
     QSpacerItem *horizontalSpacer_2;
     QWidget *widget_3;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
-    QComboBox *medicine;
+    QComboBox *m_name;
     QSpacerItem *horizontalSpacer_3;
     QWidget *widget_5;
     QHBoxLayout *horizontalLayout_4;
@@ -121,16 +121,14 @@ public:
 
         horizontalLayout_2->addWidget(label_2);
 
-        name = new QComboBox(widget_2);
-        name->addItem(QString());
-        name->addItem(QString());
-        name->setObjectName(QString::fromUtf8("name"));
+        p_name = new QComboBox(widget_2);
+        p_name->setObjectName(QString::fromUtf8("p_name"));
         QFont font3;
         font3.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         font3.setPointSize(14);
-        name->setFont(font3);
+        p_name->setFont(font3);
 
-        horizontalLayout_2->addWidget(name);
+        horizontalLayout_2->addWidget(p_name);
 
         horizontalSpacer_2 = new QSpacerItem(559, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -155,13 +153,11 @@ public:
 
         horizontalLayout_3->addWidget(label_3);
 
-        medicine = new QComboBox(widget_3);
-        medicine->addItem(QString());
-        medicine->addItem(QString());
-        medicine->setObjectName(QString::fromUtf8("medicine"));
-        medicine->setFont(font3);
+        m_name = new QComboBox(widget_3);
+        m_name->setObjectName(QString::fromUtf8("m_name"));
+        m_name->setFont(font3);
 
-        horizontalLayout_3->addWidget(medicine);
+        horizontalLayout_3->addWidget(m_name);
 
         horizontalSpacer_3 = new QSpacerItem(559, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -386,7 +382,6 @@ public:
         verticalLayout->setStretch(0, 1);
         verticalLayout->setStretch(1, 1);
         verticalLayout->setStretch(2, 1);
-        verticalLayout->setStretch(3, 1);
         verticalLayout->setStretch(4, 6);
         verticalLayout->setStretch(5, 1);
 
@@ -401,13 +396,7 @@ public:
         label->setText(QCoreApplication::translate("usage_record", "\350\215\257\347\233\222\344\275\277\347\224\250\350\256\260\345\275\225", nullptr));
         back->setText(QCoreApplication::translate("usage_record", "\350\277\224\345\233\236\351\246\226\351\241\265", nullptr));
         label_2->setText(QCoreApplication::translate("usage_record", "\347\224\250\350\215\257\344\272\272", nullptr));
-        name->setItemText(0, QCoreApplication::translate("usage_record", "\347\210\270\347\210\270", nullptr));
-        name->setItemText(1, QCoreApplication::translate("usage_record", "\345\246\210\345\246\210", nullptr));
-
         label_3->setText(QCoreApplication::translate("usage_record", "\350\215\257\345\223\201", nullptr));
-        medicine->setItemText(0, QCoreApplication::translate("usage_record", "\345\256\232\345\226\230\346\255\242\345\222\263\344\270\270", nullptr));
-        medicine->setItemText(1, QCoreApplication::translate("usage_record", "\346\212\227\347\227\205\346\257\222\351\242\227\347\262\222", nullptr));
-
         label_4->setText(QCoreApplication::translate("usage_record", "\346\227\266\351\227\264", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("usage_record", "\346\227\266\351\227\264", nullptr));
@@ -424,18 +413,6 @@ public:
 
         const bool __sortingEnabled = tableWidget->isSortingEnabled();
         tableWidget->setSortingEnabled(false);
-        QTableWidgetItem *___qtablewidgetitem6 = tableWidget->item(0, 0);
-        ___qtablewidgetitem6->setText(QCoreApplication::translate("usage_record", "2026-06-30 8\357\274\23230", nullptr));
-        QTableWidgetItem *___qtablewidgetitem7 = tableWidget->item(0, 1);
-        ___qtablewidgetitem7->setText(QCoreApplication::translate("usage_record", "\347\210\270\347\210\270", nullptr));
-        QTableWidgetItem *___qtablewidgetitem8 = tableWidget->item(0, 2);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("usage_record", "\345\217\226\350\215\257", nullptr));
-        QTableWidgetItem *___qtablewidgetitem9 = tableWidget->item(0, 3);
-        ___qtablewidgetitem9->setText(QCoreApplication::translate("usage_record", "\346\212\227\347\227\205\346\257\222\351\242\227\347\262\222", nullptr));
-        QTableWidgetItem *___qtablewidgetitem10 = tableWidget->item(0, 4);
-        ___qtablewidgetitem10->setText(QCoreApplication::translate("usage_record", "2\347\262\222", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = tableWidget->item(0, 5);
-        ___qtablewidgetitem11->setText(QCoreApplication::translate("usage_record", "05\345\217\267\347\233\222", nullptr));
         tableWidget->setSortingEnabled(__sortingEnabled);
 
         Last->setText(QCoreApplication::translate("usage_record", "\344\270\212\344\270\200\351\241\265", nullptr));
