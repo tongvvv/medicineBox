@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QDir>
 #include <QPluginLoader>
+#include "medreminder.h"
 
 data_manager::data_manager(QObject *parent)
     : QObject(parent)
@@ -159,6 +160,8 @@ void data_manager::store_medcine()
         qDebug() << "插入pname_mname表失败:" << pnameMnameQuery.lastError().text();
     }
 
+    //手动重新加载当日所有提醒任务
+    MedReminderManager::instance()->reloadDailyReminderTasks();
     //////////////////////////////////////////////////////////////////
     removeData("store_no");
     removeData("store_medname");
@@ -225,6 +228,9 @@ void data_manager::setplan()
     }
 
     qDebug() << "成功更新用药计划，药盒编号:" << no;
+
+    //手动重新加载当日所有提醒任务
+    MedReminderManager::instance()->reloadDailyReminderTasks();
 
     // 清理临时数据
     removeData("setplan_no");
@@ -326,6 +332,10 @@ med_detailed_info* data_manager::getOneMed(int no)
     return medInfo;
 }
 
+//正常吃了会调用这个函数， 点击了是否提醒开关时也会调用这个函数
+//这里没有手动重新加载当日所有提醒任务
+//MedReminderManager::instance()->reloadDailyReminderTasks();
+//是因为正常吃了不需要重新加载提醒任务，而点击了提醒开关的话需要重新加载提醒任务。
 void data_manager::update_medicine(const med_detailed_info& info)
 {
     // 1. 先删除原有数据
@@ -374,6 +384,9 @@ void data_manager::delete_medicine(const med_detailed_info &info)
         qDebug() << "删除药品数据失败:" << deleteQuery.lastError().text();
         return;
     }
+
+    //手动重新加载当日所有提醒任务
+    MedReminderManager::instance()->reloadDailyReminderTasks();
 
     qDebug() << "药品信息删除成功 - 药盒编号:" << info.no;
 }
@@ -449,18 +462,22 @@ bool data_manager::createTables()
         return false;
     }
 
-    // 创建索引, 这里的索引略有冗余，可以确定的是index1和4我会用到
+    // 创建索引
     if (!query.exec("create index Index_1 on use_record(use_time);")) {
         qDebug() << "创建索引失败:" << query.lastError().text();
     }
-    if (!query.exec("create index Index_2 on use_record(use_pname);")) {
-        qDebug() << "创建索引失败:" << query.lastError().text();
-    }
-    if (!query.exec("create index Index_3 on use_record(use_mname);")) {
-        qDebug() << "创建索引失败:" << query.lastError().text();
-    }
+    //if (!query.exec("create index Index_2 on use_record(use_pname);")) {
+    //    qDebug() << "创建索引失败:" << query.lastError().text();
+    //}
+    //if (!query.exec("create index Index_3 on use_record(use_mname);")) {
+    //    qDebug() << "创建索引失败:" << query.lastError().text();
+    //}
+    //下面这个索引为了使用记录界面快速检索
     if (!query.exec("create index Index_4 on use_record(use_pname,use_mname,use_time);")) {
         qDebug() << "创建索引失败:" << query.lastError().text();
+    }
+    if (!query.exec("CREATE INDEX Index_5 ON use_record(use_no, use_pname, use_mname, use_action, use_time);")) {
+        qDebug() << "创建核心索引idx_use_record_main失败:" << query.lastError().text();
     }
 
     //创建用户名-药名的缓存表

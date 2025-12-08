@@ -40,6 +40,14 @@ QString getFormattedDateTime(); //为了得到主界面的格式化后的时间
 
 enum class info_state {SAME, NEW, MOD}; //数据一致，新的数据，数据不一致
 
+// 提醒任务的核心信息
+struct MedReminderTask {
+    QString p_name;          // 患者名称
+    QString m_name;          // 药品名称
+    unsigned short eatcount; // 服药数量
+    unsigned short no;       // 药盒编号
+};
+
 QString ocr_name_match(QString str); //ocr结果和药名匹配
 
 #endif // UTILS_H

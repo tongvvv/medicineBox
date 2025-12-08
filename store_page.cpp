@@ -224,7 +224,6 @@ void store_page::waitforres(void)
         checkTimer->start(100); // 每100ms检查一次
         dialog->exec();
         dialog->deleteLater();
-        checkTimer->deleteLater();
     }
 }
 

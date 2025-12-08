@@ -41,6 +41,7 @@ private slots:
 
 
     // QWidget interface
+    void onMedReminderTriggered(const MedReminderTask& task);
 protected:
     void resizeEvent(QResizeEvent *event);
 };

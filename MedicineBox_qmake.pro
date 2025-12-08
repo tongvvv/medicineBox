@@ -28,6 +28,7 @@ SOURCES += \
     med_detailed_info.cpp \
     med_list.cpp \
     medcine_information.cpp \
+    medreminder.cpp \
     mytimeedit.cpp \
     ocrmanager.cpp \
     plan_card.cpp \
@@ -66,6 +67,7 @@ HEADERS += \
     med_detailed_info.h \
     med_list.h \
     medcine_information.h \
+    medreminder.h \
     mytimeedit.h \
     ocrmanager.h \
     plan_card.h \

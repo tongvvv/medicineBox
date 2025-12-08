@@ -22,27 +22,6 @@ usage_plan::usage_plan(QWidget *parent)
     ui->date3->setChecked(true);
 
     update_date();
-
-    int row=0,col=0;
-    for(int ii=0; ii<5; ii++)
-    {
-        plan_card *card = new plan_card(this, ii+1);
-        m_cards.append(card);
-        QGraphicsDropShadowEffect* shadow = new QGraphicsDropShadowEffect;
-        shadow->setBlurRadius(10);
-        shadow->setOffset(8, 8);
-        shadow->setColor(palette().shadow().color());
-        card->setGraphicsEffect(shadow);
-
-        ui->card_layout->addWidget(card, row, col);
-
-        col++;
-        if(col > 1)
-        {
-            col = 0;
-            row++;
-        }
-    }
 }
 
 usage_plan::~usage_plan()

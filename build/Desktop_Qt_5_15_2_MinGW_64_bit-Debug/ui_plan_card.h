@@ -24,7 +24,7 @@ public:
     QVBoxLayout *verticalLayout;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
-    QLabel *number;
+    QLabel *no;
     QLabel *time;
     QLabel *person_name;
     QWidget *widget_2;
@@ -50,15 +50,15 @@ public:
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(30, 15, 40, 15);
-        number = new QLabel(widget);
-        number->setObjectName(QString::fromUtf8("number"));
+        no = new QLabel(widget);
+        no->setObjectName(QString::fromUtf8("no"));
         QFont font;
         font.setPointSize(18);
         font.setBold(true);
         font.setItalic(false);
-        number->setFont(font);
-        number->setAutoFillBackground(false);
-        number->setStyleSheet(QString::fromUtf8("min-width:     40px;     \n"
+        no->setFont(font);
+        no->setAutoFillBackground(false);
+        no->setStyleSheet(QString::fromUtf8("min-width:     40px;     \n"
 "min-height:    40px;     \n"
 "max-width:     40px;    \n"
 "max-height:    40px;    \n"
@@ -66,9 +66,9 @@ public:
 "border:1px solid black;  \n"
 "background: blue;\n"
 "color: white"));
-        number->setAlignment(Qt::AlignCenter);
+        no->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout->addWidget(number);
+        horizontalLayout->addWidget(no);
 
         time = new QLabel(widget);
         time->setObjectName(QString::fromUtf8("time"));
@@ -130,7 +130,7 @@ public:
     void retranslateUi(QWidget *plan_card)
     {
         plan_card->setWindowTitle(QCoreApplication::translate("plan_card", "Form", nullptr));
-        number->setText(QCoreApplication::translate("plan_card", "1", nullptr));
+        no->setText(QCoreApplication::translate("plan_card", "1", nullptr));
         time->setText(QCoreApplication::translate("plan_card", "8\357\274\23230", nullptr));
         person_name->setText(QCoreApplication::translate("plan_card", "\347\210\270\347\210\270", nullptr));
         medicine->setText(QCoreApplication::translate("plan_card", "\346\212\227\347\227\205\346\257\222\346\204\237\345\206\222\350\203\266\345\233\212     1\347\262\222", nullptr));

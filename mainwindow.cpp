@@ -4,6 +4,10 @@
 #include "change_plan_confirm.h"
 #include "data_structs.h"
 #include "dialog_common_inform.h"
+#include "medreminder.h"
+#include "QMessageBox"
+#include "utils.h"
+#include "dialog_common_inform.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -37,6 +41,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     sets = new settings(this);
     ui->stackedWidget->addWidget(sets);
+
+    data_manager::instance()->init(); //初始化数据库
+
+    MedReminderManager* reminderMgr = MedReminderManager::instance();
+
+    connect(
+        reminderMgr, &MedReminderManager::reminderTriggered,
+        this, &MainWindow::onMedReminderTriggered);
+
+    reminderMgr->startReminderService();
 
     qDebug() << size();
 }
@@ -235,4 +249,17 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
     qDebug() << size();
+}
+
+void MainWindow::onMedReminderTriggered(const MedReminderTask &task)
+{
+    dialog_common_inform dialog(this);
+    QString reminderContent = QString("患者%1请服用%2，%3粒。药盒编号%4")
+                                  .arg(task.p_name)
+                                  .arg(task.m_name)
+                                  .arg(task.eatcount)
+                                  .arg(task.no);
+    dialog.setContent(reminderContent);
+    dialog.resize(this->size().width()*0.75, this->size().height()*0.65);
+    dialog.exec(); // 阻塞式显示，关闭后自动析构
 }

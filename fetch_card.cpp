@@ -9,6 +9,7 @@
 #include "data_structs.h"
 #include "dialog_common_inform.h"
 #include "signal_route.h"
+#include "medreminder.h"
 
 fetch_card::fetch_card(QWidget *parent, unsigned short num)
     : QWidget(parent)
@@ -58,6 +59,8 @@ void fetch_card::set_detailedinfo(med_detailed_info* info)
     connect(ui->med_switch, &SwitchButton::sigSwitchChanged, [this](bool onoff){
         m_detailedinfo.inform = onoff==true?1:0;
         data_manager::instance()->update_medicine(m_detailedinfo);
+        //手动重新加载当日所有提醒任务
+        MedReminderManager::instance()->reloadDailyReminderTasks();
     });
 }
 
@@ -132,7 +135,7 @@ DialogType* fetch_card::createDialog(double widthRatio, double heightRatio)
     return dialog;
 }
 
-//这里是点击了取药按钮之后的处理函数
+///////////////这里是点击了取药按钮之后的处理函数,核心逻辑都在这里////////////////
 void fetch_card::handle_menu(QDialog *dialog)
 {
     dialog->exec(); //对话框弹出来

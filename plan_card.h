@@ -1,5 +1,6 @@
 #ifndef PLAN_CARD_H
 #define PLAN_CARD_H
+#include "utils.h"
 
 #include <QWidget>
 
@@ -12,7 +13,7 @@ class plan_card : public QWidget
     Q_OBJECT
 
 public:
-    explicit plan_card(QWidget *parent = nullptr, unsigned short num = 1);
+    explicit plan_card(MedReminderTask info, QWidget *parent = nullptr);
     ~plan_card();
 
 private:

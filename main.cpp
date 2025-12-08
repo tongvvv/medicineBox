@@ -4,6 +4,7 @@
 #include <QPluginLoader>
 #include "ocrmanager.h"
 #include "yolomanager.h"
+#include "medreminder.h"
 
 int main(int argc, char *argv[])
 {
