@@ -56,20 +56,35 @@ bool data_manager::init()
 int data_manager::get_empty_box()
 {
     QSqlQuery query;
+    if (!query.prepare("SELECT 1 FROM med_box WHERE no = :no"))
+    {
+        qCritical() << "预处理SQL失败：" << query.lastError().text();
+        return -1; // 预处理失败，直接返回无空药箱
+    }
 
-    //检查哪些编号不存在
-    for (int no = 0; no <= 23; ++no) {
-        query.prepare("SELECT 1 FROM med_box WHERE no = :no");
-        query.bindValue(":no", no);
+    // 遍历0~23号药箱，找第一个不存在的编号
+    for (int no = 0; no <= 23; ++no)
+    {
+        query.bindValue(":no", no); // 循环内仅绑定参数
 
-        if (query.exec() && !query.next()) {
+        // 执行查询 + 处理执行失败的情况
+        if (!query.exec()) {
+            qCritical() << "查询药箱编号" << no << "失败：" << query.lastError().text();
+            continue; // 失败时跳过当前编号，继续检查下一个
+        }
+
+        // query.next()返回false → 该编号不存在（空药箱）
+        if (!query.next()) {
             qDebug() << "找到空药箱（编号不存在），编号:" << no;
             return no;
         }
+
+        // 重置查询（避免下一次绑定参数受上一次结果影响）
+        query.finish();
     }
 
     qDebug() << "未找到空药箱";
-    return -2; // 没有空药箱
+    return -1; // 所有0~23号都被占用
 }
 
 void data_manager::setData(const QString &key, const QVariant &value)

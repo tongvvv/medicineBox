@@ -85,6 +85,15 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     }
     else if(pageName == "store_page")
     {
+        if(data_manager::instance()->get_empty_box() < 0)
+        {
+            dialog_common_inform dialog(this);
+            QString reminderContent = QString("药箱已满，请取出后再存");
+            dialog.setContent(reminderContent);
+            dialog.resize(this->size().width()*0.75, this->size().height()*0.65);
+            dialog.exec(); // 阻塞式显示，关闭后自动析构
+            return;
+        }
         ui->stackedWidget->setCurrentWidget(StorePage);
         StorePage->change_page1();
     }
