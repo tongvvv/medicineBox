@@ -15,7 +15,9 @@ plan_card::plan_card(MedReminderTask info, QWidget *parent)
     this->setAttribute(Qt::WA_StyledBackground, true);
 
     ui->no->setText(QString::number(info.no));
-
+    ui->time->setText(info.time.toString("hh:mm"));
+    ui->person_name->setText(info.p_name);
+    ui->medicine->setText(info.m_name);
 }
 
 plan_card::~plan_card()

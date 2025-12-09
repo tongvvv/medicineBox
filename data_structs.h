@@ -55,6 +55,7 @@ public:
     QVector<med_detailed_info*> getInformedMed();
     med_detailed_info* getOneInformedMed(int no);
 
+    QVector<med_detailed_info *> getplannedMed();
 signals:
     void fontSize_changed(GlobalFontSize size);
 

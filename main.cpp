@@ -10,13 +10,13 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    MainWindow w;
-
     data_manager::instance()->init(); //初始化数据库
 
     OcrManager::instance()->initialize();
 
     YoloManager::instance()->initialize();
+
+    MainWindow w;
 
     w.show();
     return a.exec();

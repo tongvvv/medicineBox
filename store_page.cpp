@@ -125,6 +125,12 @@ void store_page::change_page3()
     QMetaObject::invokeMethod(YoloManager::instance(), "detectObjects",
                               Qt::QueuedConnection);
     //切换界面
+    ui->stackedWidget->removeWidget(page3);
+    page3->deleteLater();
+    page3 = new store_page3(this);
+    connect(page3->findChild<QPushButton*>("next"), &QPushButton::clicked, this, &store_page::change_page4);
+    connect(page3->findChild<QPushButton*>("skip"), &QPushButton::clicked, this, &store_page::skip_page4);
+    ui->stackedWidget->addWidget(page3);
     ui->stackedWidget->setCurrentWidget(page3);
     all_label_white();
     label2blue(ui->num3);

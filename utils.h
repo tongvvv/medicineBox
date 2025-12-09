@@ -46,6 +46,7 @@ struct MedReminderTask {
     QString m_name;          // 药品名称
     unsigned short eatcount; // 服药数量
     unsigned short no;       // 药盒编号
+    QTime time; //这个仅仅供用药计划使用， 提醒机制不需要使用到这个字段
 };
 
 QString ocr_name_match(QString str); //ocr结果和药名匹配

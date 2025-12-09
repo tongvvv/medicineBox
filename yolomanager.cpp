@@ -47,7 +47,7 @@ void YoloManager::detectObjects()
     */
     QThread::sleep(3);  // 睡眠3秒, 模拟检测过程用作测试
 
-    emit detectionFinished(10);
+    emit detectionFinished(8);
 }
 
 YoloManager::YoloManager()

@@ -1,7 +1,6 @@
 #ifndef PLAN_CARD_H
 #define PLAN_CARD_H
 #include "utils.h"
-
 #include <QWidget>
 
 namespace Ui {

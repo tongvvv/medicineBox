@@ -213,6 +213,7 @@ void data_manager::setplan()
     QString eatTime = getData("setplan_eattime").toString();
     QString eatNums = getData("setplan_nums").toString();
     QDateTime currentTime = QDateTime::currentDateTime();
+    QString m_name = getData("setplan_m_name").toString();
 
     // 准备SQL更新语句
     query.prepare(R"(
@@ -244,6 +245,18 @@ void data_manager::setplan()
 
     qDebug() << "成功更新用药计划，药盒编号:" << no;
 
+    ////////////////插入到用户名-药品缓存表
+    QSqlQuery pnameMnameQuery;
+    pnameMnameQuery.prepare("INSERT OR IGNORE INTO pname_mname (p_name, m_name) VALUES (:p_name, :m_name)");
+    user = (user=="" ? "未知" : user);
+    pnameMnameQuery.bindValue(":p_name", user);
+    pnameMnameQuery.bindValue(":m_name", m_name);
+
+    if (!pnameMnameQuery.exec()) {
+        qDebug() << "插入pname_mname表失败:" << pnameMnameQuery.lastError().text();
+    }
+
+
     //手动重新加载当日所有提醒任务
     MedReminderManager::instance()->reloadDailyReminderTasks();
 
@@ -254,6 +267,7 @@ void data_manager::setplan()
     removeData("setplan_starttime");
     removeData("setplan_eattime");
     removeData("setplan_nums");
+    removeData("setplan_m_name");
 }
 
 QVector<med_detailed_info *> data_manager::getAllMed()
@@ -313,6 +327,13 @@ med_detailed_info* data_manager::getOneMed(int no)
         FROM med_box
         WHERE no = ?
     )";
+
+    if (!query.prepare(sql))
+    {
+        qCritical() << "[getOneMed] 预处理SQL失败:" << query.lastError().text()
+            << "查询编号：" << no;
+        return medInfo; // 返回空智能指针
+    }
 
     query.addBindValue(no);
 
@@ -449,13 +470,13 @@ bool data_manager::createTables()
     }
 
     // 2. 创建第一个索引
-    if (!query.exec("CREATE INDEX index_1 ON med_box(m_name)")) {
+    if (!query.exec("CREATE INDEX med_index_1 ON med_box(m_name)")) {
         qCritical() << "创建索引1失败:" << query.lastError().text();
         return false;
     }
 
     // 3. 创建第二个索引
-    if (!query.exec("CREATE INDEX index_2 ON med_box(p_name, m_name)")) {
+    if (!query.exec("CREATE INDEX med_index_2 ON med_box(p_name, m_name)")) {
         qCritical() << "创建索引2失败:" << query.lastError().text();
         return false;
     }
@@ -478,8 +499,8 @@ bool data_manager::createTables()
     }
 
     // 创建索引
-    if (!query.exec("create index Index_1 on use_record(use_time);")) {
-        qDebug() << "创建索引失败:" << query.lastError().text();
+    if (!query.exec("create index record_Index_1 on use_record(use_time);")) {
+        qDebug() << "111创建索引失败:" << query.lastError().text();
     }
     //if (!query.exec("create index Index_2 on use_record(use_pname);")) {
     //    qDebug() << "创建索引失败:" << query.lastError().text();
@@ -488,10 +509,10 @@ bool data_manager::createTables()
     //    qDebug() << "创建索引失败:" << query.lastError().text();
     //}
     //下面这个索引为了使用记录界面快速检索
-    if (!query.exec("create index Index_4 on use_record(use_pname,use_mname,use_time);")) {
+    if (!query.exec("create index record_Index_4 on use_record(use_pname,use_mname,use_time);")) {
         qDebug() << "创建索引失败:" << query.lastError().text();
     }
-    if (!query.exec("CREATE INDEX Index_5 ON use_record(use_no, use_pname, use_mname, use_action, use_time);")) {
+    if (!query.exec("CREATE INDEX record_Index_5 ON use_record(use_no, use_pname, use_mname, use_action, use_time);")) {
         qDebug() << "创建核心索引idx_use_record_main失败:" << query.lastError().text();
     }
 
@@ -592,6 +613,57 @@ QVector<med_detailed_info *> data_manager::getInformedMed()
         QString eatTimeStr = query.value("eattime").toString();
         QString eatCountStr = query.value("eatcount").toString();
         medInfo->parseEatInfo(eatTimeStr, eatCountStr);
+
+        if (medInfo->eattimes.size() != medInfo->eatcounts.size()) {delete medInfo; continue;}
+
+        detailedInfoList.append(medInfo);
+    }
+
+    qDebug() << "成功获取" << detailedInfoList.size() << "条药品信息";
+    return detailedInfoList;
+}
+
+QVector<med_detailed_info *> data_manager::getplannedMed()
+{
+    QVector<med_detailed_info *> detailedInfoList;
+    // 从数据库获取所有药品信息
+    QSqlQuery query;
+    QString sql = R"(
+        SELECT no, m_name, m_info, m_number, m_picpath, p_name, eatfreq, starttime, eattime, eatcount, lasteat, inform
+        FROM med_box
+        WHERE p_name is not null
+        ORDER BY no ASC
+    )";
+
+    if (!query.exec(sql))
+    {
+        qCritical() << "查询所有药品信息失败:" << query.lastError().text();
+        return QVector<med_detailed_info *>();
+    }
+
+    // 处理查询结果
+    while (query.next())
+    {
+        med_detailed_info* medInfo = new med_detailed_info();
+
+        // 填充基本信息
+        medInfo->no = query.value("no").toUInt();
+        medInfo->m_name = query.value("m_name").toString();
+        medInfo->m_info = query.value("m_info").toString();
+        medInfo->number = query.value("m_number").toUInt();
+        medInfo->m_picpath = query.value("m_picpath").toString();
+        medInfo->p_name = query.value("p_name").toString();
+        medInfo->eatfreq = query.value("eatfreq").toUInt();
+        medInfo->starttime = query.value("starttime").toDateTime();
+        medInfo->lasteat = query.value("lasteat").toDateTime();
+        medInfo->inform = query.value("inform").toInt();
+
+        // 解析服药时间和数量
+        QString eatTimeStr = query.value("eattime").toString();
+        QString eatCountStr = query.value("eatcount").toString();
+        medInfo->parseEatInfo(eatTimeStr, eatCountStr);
+
+        if (medInfo->eattimes.size() != medInfo->eatcounts.size()) {delete medInfo; continue;}
 
         detailedInfoList.append(medInfo);
     }

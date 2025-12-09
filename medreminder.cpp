@@ -183,13 +183,19 @@ bool MedReminderManager::isTakenInHalfHour(const MedReminderTask& task)
     query.addBindValue(halfHourAgo.toString(timeFormat));
     query.addBindValue(now.toString(timeFormat));
 
-    if (!query.exec(sql)) {
+    if (!query.exec()) {
         qCritical() << "查询服药记录失败：" << query.lastError().text();
-        return false; // 查询失败默认不提醒（或根据需求调整）
+        return false; //默认提醒
     }
 
-    query.next();
-    return query.value(0).toInt() > 0; // 有记录=半小时内吃过
+    if (!query.next()) {
+        qWarning() << "获取服药记录计数失败（无结果行）：" << query.lastError().text();
+        return false; //默认提醒
+    }
+
+    const int recordCount = query.value(0).toInt();
+
+    return recordCount > 0; // 有记录=半小时内吃过
 }
 
 // 定时器超时：处理到期的提醒任务

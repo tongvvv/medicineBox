@@ -42,8 +42,6 @@ MainWindow::MainWindow(QWidget *parent)
     sets = new settings(this);
     ui->stackedWidget->addWidget(sets);
 
-    data_manager::instance()->init(); //初始化数据库
-
     MedReminderManager* reminderMgr = MedReminderManager::instance();
 
     connect(
@@ -246,6 +244,7 @@ void MainWindow::handleSwitchToPage(const QString &pageName)
     }
     else if(pageName == "usage_plan")
     {
+        useplan->update_date();
         ui->stackedWidget->setCurrentWidget(useplan);
     }
     else if(pageName == "settings")

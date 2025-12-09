@@ -31,6 +31,8 @@ store_page3::store_page3(QWidget *parent)
     QTimer::singleShot(50,this,[this](){emit this->ui->once_a_day->toggled(true);});
 
     ui->dateEdit->setCalendarPopup(true); //设置日历弹出
+
+    ui->dateEdit->setDate(QDate::currentDate());
 }
 
 store_page3::~store_page3()
@@ -255,4 +257,6 @@ QString store_page3::getnums()
     QString ret = numsList.join(",");
     return ret;
 }
+
+
 

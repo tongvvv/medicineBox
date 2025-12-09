@@ -349,6 +349,7 @@ void fetch_card::handleWrongReturn()
 void fetch_card::on_card_plan_clicked()
 {
     data_manager::instance()->setData("setplan_no", m_detailedinfo.no);
+    data_manager::instance()->setData("setplan_m_name", m_detailedinfo.m_name);
 
     emit signal_route::instance()->switchToPage("set_plan");
 }

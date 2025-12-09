@@ -37,6 +37,7 @@ public:
             plan_card->setObjectName(QString::fromUtf8("plan_card"));
         plan_card->resize(350, 270);
         plan_card->setMinimumSize(QSize(350, 270));
+        plan_card->setMaximumSize(QSize(380, 300));
         plan_card->setStyleSheet(QString::fromUtf8("#plan_card{\n"
 "	border-radius: 8px;\n"
 "	background-color: rgb(255, 255, 255);\n"
